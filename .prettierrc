@@ -3,5 +3,14 @@
 	"tabWidth": 4,
 	"useTabs": true,
 	"arrowParens": "avoid",
-	"printWidth": 80
+	"printWidth": 80,
+	"overrides": [
+		{
+			"files": "*.md",
+			"options": {
+				"tabWidth": 2,
+				"useTabs": false
+			}
+		}
+	]
 }
