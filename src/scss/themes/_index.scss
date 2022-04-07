@@ -1,0 +1,29 @@
+@use './dark';
+@use './light';
+
+$themes: (
+	'dark': dark.$theme,
+	'light': light.$theme,
+);
+
+@each $theme-name, $theme in $themes {
+	.theme-#{$theme-name} {
+		@each $name, $value in $theme {
+			--clr-#{$name}: #{$value};
+		}
+	}
+}
+
+:root {
+	color-scheme: dark light;
+
+	@each $name, $value in dark.$theme {
+		--clr-#{$name}: #{$value};
+	}
+
+	@media (prefers-color-scheme: light) {
+		@each $name, $value in light.$theme {
+			--clr-#{$name}: #{$value};
+		}
+	}
+}

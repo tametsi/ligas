@@ -1,0 +1,7 @@
+@use '../abstracts/' as a;
+
+$theme: (
+	'font': #{a.$gray1},
+	'bg': #{a.$gray4},
+	'accent': #{a.$accent-color},
+);

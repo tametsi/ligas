@@ -1,6 +1,8 @@
 @use './base/reset';
 @use './base/typography';
 
+@use './themes';
+
 body {
 	background-color: var(--clr-bg);
 }
