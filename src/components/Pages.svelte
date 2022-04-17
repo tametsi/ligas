@@ -1,6 +1,6 @@
 <script lang="ts">
 	import activePage, { Page } from '../stores/activePage';
-	import Main from './pages/main.svelte';
+	import Main from './pages/Main.svelte';
 	import About from './pages/About.svelte';
 
 	function checkHash() {
