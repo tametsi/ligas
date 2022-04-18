@@ -18,6 +18,17 @@ npm run build
 npm run check
 ```
 
+### Build for local use
+
+If you want to use the final app locally (with a `file://` URL), you will need to replace
+
+```html
+<!-- /dist/index.html -->
+<script type="module" crossorigin src="./assets/index.[*].js"></script>
+<!-- with -->
+<script defer                     src="./assets/index.[*].js"></script>
+```
+
 ## Libraries
 
 - [Svelte](https://svelte.dev/) and [Sass](https://sass-lang.com/) are used for the UI
