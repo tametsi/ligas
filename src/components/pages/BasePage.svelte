@@ -10,3 +10,9 @@
 		<slot />
 	</main>
 {/if}
+
+<style lang="scss">
+	main {
+		padding: 1rem 2rem;
+	}
+</style>
