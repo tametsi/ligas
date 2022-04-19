@@ -3,5 +3,8 @@
 $theme: (
 	'font': #{a.$gray1},
 	'bg': #{a.$gray4},
+	'bg2': #{a.$gray5},
+	'bg3': #{a.$gray6},
 	'accent': #{a.$accent-color},
+	'accent-light': #{lighten(a.$accent-color, 6)},
 );
