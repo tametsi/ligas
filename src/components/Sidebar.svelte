@@ -16,6 +16,8 @@
 				🐸 About
 			</a>
 		</li>
+		<!-- svelte-ignore missing-declaration -->
+		<li><span class="version">Version: <b>{__APP_VERSION__}</b></span></li>
 	</div>
 </ul>
 
@@ -33,7 +35,8 @@
 
 		border-right: 0.3rem solid var(--clr-accent);
 
-		li a {
+		li a,
+		li .version {
 			$margin: 0.4rem;
 
 			display: block;
@@ -46,6 +49,9 @@
 			border-radius: 0.2rem;
 
 			transition: all 0.2s;
+		}
+
+		li a {
 			&:hover {
 				background-color: var(--clr-bg3);
 			}
@@ -57,6 +63,12 @@
 				background-color: var(--clr-bg3);
 				color: var(--clr-accent-light);
 			}
+		}
+
+		li .version {
+			text-align: center;
+			cursor: default;
+			font-size: 0.8em;
 		}
 	}
 </style>
