@@ -22,6 +22,8 @@
 </ul>
 
 <style lang="scss">
+	@use '../scss/abstracts' as a;
+
 	ul {
 		list-style: none;
 
@@ -49,6 +51,8 @@
 			border-radius: 0.2rem;
 
 			transition: all 0.2s;
+
+			@include a.text-overflow();
 		}
 
 		li a {
