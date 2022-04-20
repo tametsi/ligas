@@ -9,6 +9,11 @@
 				🏃 Main
 			</a>
 		</li>
+		<li>
+			<a href="#edit" class:active={$activePage === Page.edit}>
+				🔨 Edit
+			</a>
+		</li>
 	</div>
 	<div>
 		<li>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import activePage, { Page } from '../stores/activePage';
 	import Main from './pages/Main.svelte';
+	import Edit from './pages/Edit.svelte';
 	import About from './pages/About.svelte';
 
 	function checkHash() {
@@ -18,4 +19,5 @@
 <svelte:window on:hashchange={checkHash} />
 
 <Main />
+<Edit />
 <About />
