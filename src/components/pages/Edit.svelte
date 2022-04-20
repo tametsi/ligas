@@ -3,6 +3,15 @@
 	import activeRun from '../../stores/activeRun';
 	import FormItem from '../FormItem.svelte';
 	import BasePage from './BasePage.svelte';
+
+	let newRunner = {
+		name: '',
+		alias: '',
+	};
+
+	function addRunner() {
+		activeRun.updateSelf(x => x.addRunner(newRunner.name, newRunner.alias));
+	}
 </script>
 
 <BasePage page={Page.edit}>
@@ -17,6 +26,27 @@
 					runners passed.
 				</svelte:fragment>
 			</FormItem>
+		</figure>
+	</form>
+
+	<form on:submit|preventDefault={addRunner}>
+		<figure>
+			<figcaption>Add Runner</figcaption>
+			<FormItem name="Name">
+				<input type="text" required bind:value={newRunner.name} />
+			</FormItem>
+			<FormItem name="Alias">
+				<input type="text" bind:value={newRunner.alias} />
+				<svelte:fragment slot="details">
+					The alias will be shown if provided. The name can also be
+					seen. Both, the name and the alias are listed in the round
+					data.
+				</svelte:fragment>
+			</FormItem>
+
+			<div class="form-controls">
+				<button type="submit" class="button">Add Runner</button>
+			</div>
 		</figure>
 	</form>
 </BasePage>
