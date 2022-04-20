@@ -2,6 +2,7 @@
 	import { Page } from '../../stores/activePage';
 	import activeRun from '../../stores/activeRun';
 	import FormItem from '../FormItem.svelte';
+	import Runner from '../Runner.svelte';
 	import BasePage from './BasePage.svelte';
 
 	let newRunner = {
@@ -49,4 +50,18 @@
 			</div>
 		</figure>
 	</form>
+
+	<div class="runners">
+		{#each $activeRun.runners as runner}
+			<Runner {runner} edit />
+		{/each}
+	</div>
 </BasePage>
+
+<style lang="scss">
+	.runners {
+		display: flex;
+		justify-content: space-around;
+		flex-flow: row wrap;
+	}
+</style>
