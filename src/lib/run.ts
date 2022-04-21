@@ -27,4 +27,12 @@ export default class Run {
 			new Runner(id.toString(), name, alias)
 		);
 	}
+
+	/**
+	 * Delete a runner by its ID
+	 * @param id The given ID
+	 */
+	deleteRunner(id: string) {
+		this._runners.delete(id);
+	}
 }

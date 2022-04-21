@@ -1,11 +1,17 @@
 <script lang="ts">
 	import type Runner from '../lib/runner';
+	import activeRun from '../stores/activeRun';
 
 	export let runner: Runner;
 	export let edit = false;
 
 	let nameBig = runner.alias || runner.name || '';
 	let nameSmall = runner.alias ? runner.name : '';
+
+	function deleteSelf() {
+		if (confirm('Do you really want to delete this runner?'))
+			activeRun.updateSelf(x => x.deleteRunner(runner.id));
+	}
 </script>
 
 <div class="runner">
@@ -15,6 +21,11 @@
 			{nameSmall}
 		</p>
 	{/if}
+	<div>
+		{#if edit}
+			<button on:click={deleteSelf} class="button">Delete</button>
+		{/if}
+	</div>
 </div>
 
 <style lang="scss">
