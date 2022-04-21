@@ -7,6 +7,9 @@
 
 	let nameBig = runner.alias || runner.name || '';
 	let nameSmall = runner.alias ? runner.name : '';
+	let roundsCounted = runner.rounds.rounds.length;
+	let lastRoundLength =
+		runner.rounds.rounds[roundsCounted - 1] ?? '0:00:00:00';
 
 	function deleteSelf() {
 		if (confirm('Do you really want to delete this runner?'))
@@ -21,9 +24,12 @@
 			{nameSmall}
 		</p>
 	{/if}
-	<div>
+	<div class="details">
 		{#if edit}
 			<button on:click={deleteSelf} class="button">Delete</button>
+		{:else}
+			<span class="rounds">{roundsCounted}</span>
+			<span class="round-time">{lastRoundLength}</span>
 		{/if}
 	</div>
 </div>
@@ -57,6 +63,12 @@
 		.name-small {
 			@include a.text-overflow();
 			font-size: 1.7rem;
+		}
+
+		.details {
+			display: flex;
+			justify-content: space-between;
+			gap: 0.5rem;
 		}
 	}
 </style>
