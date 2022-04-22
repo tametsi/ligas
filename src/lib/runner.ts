@@ -29,4 +29,9 @@ class RoundManager {
 	get rounds(): Readonly<typeof this._rounds> {
 		return this._rounds;
 	}
+
+	/** The counted rounds */
+	get count() {
+		return this._rounds.length;
+	}
 }

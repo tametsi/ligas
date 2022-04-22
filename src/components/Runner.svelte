@@ -7,7 +7,7 @@
 
 	let nameBig = runner.alias || runner.name || '';
 	let nameSmall = runner.alias ? runner.name : '';
-	let roundsCounted = runner.rounds.rounds.length;
+	let roundsCounted = runner.rounds.count;
 	let lastRoundLength =
 		runner.rounds.rounds[roundsCounted - 1] ?? '0:00:00:00';
 
