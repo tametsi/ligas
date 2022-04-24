@@ -2,6 +2,7 @@
 	"compilerOptions": {
 		"composite": true,
 		"module": "esnext",
+		"target": "esnext",
 		"moduleResolution": "node",
 		"resolveJsonModule": true
 	},
@@ -9,6 +10,8 @@
 		"vite.config.ts",
 		"package.json",
 		"test/**/*.d.ts",
-		"test/**/*.test.ts"
+		"test/util/**/*.ts",
+		"test/**/*.test.ts",
+		"src/**/*.ts"
 	]
 }
