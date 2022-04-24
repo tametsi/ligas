@@ -17,7 +17,7 @@ export default class Runner {
 		return this._alias || '';
 	}
 	/** This runner`s `RoundManager` */
-	get rounds(): Readonly<typeof this._rounds> {
+	get rounds(): Readonly<RoundManager> {
 		return this._rounds;
 	}
 }
@@ -26,7 +26,7 @@ class RoundManager {
 	private _rounds: number[] = [];
 
 	/** The rounds, chronologically sorted as the time (in ms) how long the round took. */
-	get rounds(): Readonly<typeof this._rounds> {
+	get rounds(): Readonly<number[]> {
 		return this._rounds;
 	}
 
