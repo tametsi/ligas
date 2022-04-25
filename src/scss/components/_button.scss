@@ -1,0 +1,68 @@
+@use '../abstracts' as a;
+
+button {
+	&:focus-visible {
+		outline: 5px solid a.$focus-color;
+	}
+}
+
+.button {
+	$p-horizontal: 1.8rem;
+	$p-vertical: 0.8rem;
+	$p-delta-vertical: 0.3rem;
+	$m-horizontal: 1rem;
+	$m-vertical: 1rem;
+
+	font-family: inherit;
+	font-size: 1.6rem;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	color: var(--clr-text);
+	background-color: transparent;
+
+	padding: $p-vertical $p-horizontal;
+	margin: $m-vertical $m-horizontal;
+
+	border-radius: 0.5rem;
+	border: 0.2rem solid var(--clr-accent);
+
+	transition: margin 0.2s, padding 0.2s;
+	box-shadow: none;
+	cursor: pointer;
+
+	&:hover {
+		background-color: var(--clr-bg2);
+		box-shadow: none;
+	}
+	&:active {
+		background-color: var(--clr-bg2);
+		box-shadow: none;
+
+		padding: $p-vertical - $p-delta-vertical $p-horizontal;
+		margin: $m-vertical + $p-delta-vertical $m-horizontal;
+	}
+
+	&.small {
+		$p-horizontal: 1.4rem;
+		$p-vertical: 0.4rem;
+		$p-delta-vertical: 0.2rem;
+		$m-horizontal: 0.1rem;
+		$m-vertical: 0.1rem;
+
+		padding: $p-vertical $p-horizontal;
+		margin: $m-vertical $m-horizontal;
+
+		&:active {
+			padding: $p-vertical - $p-delta-vertical $p-horizontal;
+			margin: $m-vertical + $p-delta-vertical $m-horizontal;
+		}
+	}
+
+	&.warning {
+		border-color: a.$red;
+	}
+	&.success {
+		border-color: a.$green;
+	}
+}

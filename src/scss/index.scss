@@ -1,6 +1,8 @@
 @use './base/reset';
 @use './base/typography';
 
+@use './components/button';
+
 @use './themes';
 
 body {
