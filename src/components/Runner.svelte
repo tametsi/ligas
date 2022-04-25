@@ -26,7 +26,7 @@
 	{/if}
 	<div class="details">
 		{#if edit}
-			<button on:click={deleteSelf} class="button">Delete</button>
+			<button on:click={deleteSelf} class="button small">Delete</button>
 		{:else}
 			<span class="rounds">{roundsCounted}</span>
 			<span class="round-time">{lastRoundLength}</span>
