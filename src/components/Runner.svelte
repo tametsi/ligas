@@ -17,7 +17,7 @@
 	}
 </script>
 
-<div class="runner">
+<div class="runner" class:no-edit={!edit}>
 	<p class="name-big">{nameBig}</p>
 	{#if nameSmall}
 		<p class="name-small">
@@ -52,7 +52,7 @@
 
 		width: clamp(20rem, 25rem, 80vw);
 
-		&:hover {
+		&.no-edit:hover {
 			outline: 0.3rem solid var(--clr-accent);
 		}
 
