@@ -1,5 +1,5 @@
 <script>
-	import activePage, { Page } from '../stores/activePage';
+	import activePage, { Page } from '../../stores/activePage';
 </script>
 
 <ul>
@@ -27,7 +27,7 @@
 </ul>
 
 <style lang="scss">
-	@use '../scss/abstracts' as a;
+	@use '../../scss/abstracts' as a;
 
 	ul {
 		list-style: none;

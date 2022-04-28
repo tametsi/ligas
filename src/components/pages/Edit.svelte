@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { Page } from '../../stores/activePage';
 	import activeRun from '../../stores/activeRun';
-	import FormItem from '../FormItem.svelte';
-	import Runner from '../Runner.svelte';
+	import FormItem from '../elements/FormItem.svelte';
+	import Runner from '../elements/Runner.svelte';
 	import BasePage from './BasePage.svelte';
 
 	let newRunner = {

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Pages from './components/Pages.svelte';
-	import Sidebar from './components/Sidebar.svelte';
+	import Sidebar from './components/layout/Sidebar.svelte';
 </script>
 
 <div class="wrapper">

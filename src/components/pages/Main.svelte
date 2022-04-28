@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Page } from '../../stores/activePage';
 	import activeRun from '../../stores/activeRun';
-	import Runner from '../Runner.svelte';
+	import Runner from '../elements/Runner.svelte';
 	import BasePage from './BasePage.svelte';
 </script>
 

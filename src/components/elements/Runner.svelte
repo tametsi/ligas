@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type Runner from '../lib/runner';
-	import activeRun from '../stores/activeRun';
+	import type Runner from '../../lib/runner';
+	import activeRun from '../../stores/activeRun';
 
 	export let runner: Runner;
 	export let edit = false;
@@ -35,7 +35,7 @@
 </div>
 
 <style lang="scss">
-	@use '../scss/abstracts' as a;
+	@use '../../scss/abstracts' as a;
 
 	.runner {
 		display: flex;
