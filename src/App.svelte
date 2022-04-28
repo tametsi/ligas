@@ -1,12 +1,13 @@
 <script lang="ts">
 	import Pages from './components/Pages.svelte';
 	import Sidebar from './components/layout/Sidebar.svelte';
+	import Navbar from './components/layout/Navbar.svelte';
 </script>
 
 <div class="wrapper">
-	<div class="navbar">
-		<h1>LIGAS</h1>
-	</div>
+	<nav class="navbar">
+		<Navbar />
+	</nav>
 
 	<aside class="sidebar">
 		<Sidebar />
