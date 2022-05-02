@@ -1,0 +1,34 @@
+input {
+	font-size: inherit;
+	text-align: left;
+
+	background-color: var(--clr-bg2);
+	color: inherit;
+
+	width: clamp(18rem, 27rem, 70%);
+	padding: 0.7rem;
+
+	border-radius: 0.5rem;
+	box-shadow: none;
+	border: none;
+	outline: none;
+
+	&:active,
+	&:focus {
+		box-shadow: 0 0 0.4rem var(--clr-highlight);
+	}
+
+	&::placeholder {
+		opacity: 70%;
+	}
+
+	&.small {
+		font-size: 0.8em;
+		padding: 0.5rem;
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 80%;
+	}
+}
