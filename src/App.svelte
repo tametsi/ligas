@@ -39,6 +39,8 @@
 		}
 		.pages {
 			grid-area: main;
+			height: 100%;
+			overflow: auto;
 		}
 	}
 </style>
