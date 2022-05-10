@@ -74,4 +74,22 @@ describe('Timer', () => {
 		expect(timer['_startTimestamp']).toBeUndefined();
 		expect(timer['_stopTimestamp']).toBeUndefined();
 	});
+
+	it('toggle', () => {
+		timer.toggle();
+		expect(timer.state).toBe(TimerState.running);
+		timer.toggle();
+
+		expect(timer.state).toBe(TimerState.stopped);
+		expect(timer['_startTimestamp']).toBeTruthy();
+		let oldStartTimestamp = timer['_startTimestamp'];
+		expect(timer['_stopTimestamp']).toBeTruthy();
+
+		timer.toggle();
+		expect(timer.state).toBe(TimerState.running);
+		expect(timer['_startTimestamp']).toBeGreaterThanOrEqual(
+			oldStartTimestamp
+		);
+		expect(timer['_stopTimestamp']).toBeUndefined();
+	});
 });

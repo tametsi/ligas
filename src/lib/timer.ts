@@ -39,6 +39,18 @@ export default class Timer {
 		return this.getRunDuration();
 	}
 
+	toggle() {
+		switch (this.state) {
+			case TimerState.running:
+				this.stop();
+				break;
+			case TimerState.stopped:
+				this.reset();
+				this.start();
+				break;
+		}
+	}
+
 	/** Resets the timer. */
 	reset() {
 		this._startTimestamp = undefined;
