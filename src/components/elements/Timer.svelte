@@ -6,16 +6,14 @@
 	let interval: number;
 
 	activeTimer.subscribe(x => {
-		function updateTime() {
+		const updateTime = () => {
 			// TODO time formatting
 			time = x.getRunDuration().toString();
 		}
 
 		if (x.state === TimerState.running && interval === undefined)
 			interval = setInterval(
-				() => {
-					updateTime();
-				},
+				updateTime,
 				100,
 				undefined
 			);
