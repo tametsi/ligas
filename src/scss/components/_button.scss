@@ -1,6 +1,10 @@
 @use '../abstracts' as a;
 
 button {
+	border: none;
+	background-color: unset;
+	color: inherit;
+
 	&:focus-visible {
 		outline: 5px solid a.$focus-color;
 	}

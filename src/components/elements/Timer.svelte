@@ -21,3 +21,9 @@
 </script>
 
 <span>{time}</span>
+
+<style lang="scss">
+	span {
+		font-size: inherit;
+	}
+</style>
