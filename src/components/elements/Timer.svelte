@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { TimerState } from '../../lib/timer';
-	import { formatTime } from '../../lib/formatter';
+	import formatTime from '../../lib/formatTime';
 	import activeTimer from '../../stores/activeTimer';
 
 	let time: string;
