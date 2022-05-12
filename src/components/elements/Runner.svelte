@@ -1,5 +1,8 @@
 <script lang="ts">
 	import type Runner from '../../lib/runner';
+	import formatTime from '../../lib/formatTime';
+	import { TimerState } from '../../lib/timer';
+	import activeTimer from '../../stores/activeTimer';
 	import activeRun from '../../stores/activeRun';
 
 	export let runner: Runner;
@@ -8,8 +11,15 @@
 	let nameBig = runner.alias || runner.name || '';
 	let nameSmall = runner.alias ? runner.name : '';
 	let roundsCounted = runner.rounds.count;
-	let lastRoundLength =
-		runner.rounds.rounds[roundsCounted - 1] ?? '0:00:00:00';
+	let lastRoundLength = formatTime(runner.rounds.last);
+
+	function finishRound() {
+		if ($activeTimer.state === TimerState.running && !edit) {
+			runner.rounds.addByTime($activeTimer.getRunDuration());
+			roundsCounted = runner.rounds.count;
+			lastRoundLength = formatTime(runner.rounds.last);
+		}
+	}
 
 	function deleteSelf() {
 		if (confirm('Do you really want to delete this runner?'))
@@ -17,7 +27,7 @@
 	}
 </script>
 
-<div class="runner" class:no-edit={!edit}>
+<div class="runner" class:no-edit={!edit} on:click={finishRound}>
 	<p class="name-big">{nameBig}</p>
 	{#if nameSmall}
 		<p class="name-small">

@@ -25,13 +25,39 @@ export default class Runner {
 class RoundManager {
 	private _rounds: number[] = [];
 
-	/** The rounds, chronologically sorted as the time (in ms) how long the round took. */
-	get rounds(): Readonly<number[]> {
+	/** The rounds, chronologically sorted, as duration (in ms). */
+	get all(): Readonly<number[]> {
 		return this._rounds;
 	}
 
-	/** The counted rounds */
+	/** The last round as duration (in ms). */
+	get last() {
+		return this._rounds.at(-1);
+	}
+
+	/** The total amount of registered rounds. */
 	get count() {
 		return this._rounds.length;
+	}
+
+	/** The duration of all rounds added up */
+	get totalTime() {
+		return this.all.reduce((acc, cur) => acc + cur, 0) || 0;
+	}
+
+	/**
+	 * Registers a new round
+	 * @param duration time the round has taken (in ms)
+	 */
+	add(duration: number) {
+		this._rounds.push(duration);
+	}
+
+	/**
+	 * Registers a new round according to the passed time
+	 * @param time passed time (in ms) until the round was finished
+	 */
+	addByTime(time: number) {
+		this.add(time - this.totalTime);
 	}
 }
