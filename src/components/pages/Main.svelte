@@ -9,6 +9,11 @@
 	<div class="runners">
 		{#each $activeRun.runners as runner}
 			<Runner {runner} />
+		{:else}
+			<p>
+				No runners created yet.
+				<a href="#edit">Change it!</a>
+			</p>
 		{/each}
 	</div>
 </BasePage>
