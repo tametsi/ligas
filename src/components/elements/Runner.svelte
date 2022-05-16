@@ -10,14 +10,19 @@
 
 	let nameBig = runner.alias || runner.name || '';
 	let nameSmall = runner.alias ? runner.name : '';
-	let roundsCounted = runner.rounds.count;
-	let lastRoundLength = formatTime(runner.rounds.last);
+	let roundsCounted: number;
+	let lastRoundLength: string;
+
+	function update() {
+		roundsCounted = runner.rounds.count;
+		lastRoundLength = formatTime(runner.rounds.last);
+	}
+	update();
 
 	function finishRound() {
 		if ($activeTimer.state === TimerState.running && !edit) {
 			runner.rounds.addByTime($activeTimer.getRunDuration());
-			roundsCounted = runner.rounds.count;
-			lastRoundLength = formatTime(runner.rounds.last);
+			update();
 		}
 	}
 
