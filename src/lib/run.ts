@@ -24,7 +24,7 @@ export default class Run {
 
 		this._runners.set(
 			id.toString(),
-			new Runner(id.toString(), name, alias)
+			new Runner(this, id.toString(), name, alias)
 		);
 	}
 

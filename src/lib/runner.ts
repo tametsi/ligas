@@ -1,7 +1,10 @@
+import type Run from './run';
+
 export default class Runner {
 	private _rounds = new RoundManager();
 
 	constructor(
+		private _run: Run,
 		private _id: string,
 		private _name: string,
 		private _alias?: string
@@ -16,9 +19,21 @@ export default class Runner {
 	get alias() {
 		return this._alias || '';
 	}
-	/** This runner`s `RoundManager` */
+	/** This runner's `RoundManager` */
 	get rounds(): Readonly<RoundManager> {
 		return this._rounds;
+	}
+	/** The `Run` this runner currently belongs to */
+	get run(): Readonly<Run> {
+		return this._run;
+	}
+
+	/** The distance this runner already covered in the current run*/
+	get distance() {
+		return (
+			Math.round(this._run.roundLength * this._rounds.count * 10 || 0) /
+			10
+		);
 	}
 }
 
