@@ -3,6 +3,7 @@
 	import Main from './pages/Main.svelte';
 	import Edit from './pages/Edit.svelte';
 	import About from './pages/About.svelte';
+	import Export from './pages/Export.svelte';
 
 	function checkHash() {
 		const hash = window.location.hash.substring(1);
@@ -20,4 +21,5 @@
 
 <Main />
 <Edit />
+<Export />
 <About />

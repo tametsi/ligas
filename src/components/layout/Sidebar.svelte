@@ -14,6 +14,11 @@
 				🔨 Edit
 			</a>
 		</li>
+		<li>
+			<a href="#export" class:active={$activePage === Page.export}>
+				📥 Export
+			</a>
+		</li>
 	</div>
 	<div>
 		<li>
