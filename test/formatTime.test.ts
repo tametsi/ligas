@@ -1,4 +1,4 @@
-import formatTime from '../src/lib/formatTime';
+import formatTime from '../src/lib/util/formatTime';
 
 describe('formatTime', () => {
 	it('formatting', () => {

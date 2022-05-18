@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type Runner from '../../lib/runner';
-	import formatTime from '../../lib/formatTime';
+	import formatTime from '../../lib/util/formatTime';
 	import { TimerState } from '../../lib/timer';
 	import activeTimer from '../../stores/activeTimer';
 	import activeRun from '../../stores/activeRun';
