@@ -12,10 +12,12 @@
 	let nameSmall = runner.alias ? runner.name : '';
 	let roundsCounted: number;
 	let lastRoundLength: string;
+	let roundTrend: number;
 
 	function update() {
 		roundsCounted = runner.rounds.count;
 		lastRoundLength = formatTime(runner.rounds.last);
+		roundTrend = Math.round(runner.rounds.trend / 1000);
 	}
 	update();
 
@@ -45,6 +47,12 @@
 		{:else}
 			<span class="rounds">{roundsCounted}</span>
 			<span class="round-time">{lastRoundLength}</span>
+			<span
+				class="round-trend"
+				class:trend-negative={roundTrend > 0}
+				class:trend-positive={roundTrend < 0}
+				>{roundTrend > 0 ? '+' : ''}{roundTrend}s</span
+			>
 		{/if}
 	</div>
 </div>
@@ -84,6 +92,13 @@
 			display: flex;
 			justify-content: space-between;
 			gap: 0.5rem;
+
+			.trend-positive {
+				color: a.$green;
+			}
+			.trend-negative {
+				color: a.$red;
+			}
 		}
 	}
 </style>
