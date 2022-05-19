@@ -60,12 +60,14 @@ class RoundManager {
 		return this.all.reduce((acc, cur) => acc + cur, 0) || 0;
 	}
 
+	/** The average time of a round (in ms) */
 	get averageTime() {
-		return this.totalTime / this.all.length || 0;
+		return this.totalTime / this.count || 0;
 	}
 
+	/** The time of the last round compared with the average round time*/
 	get trend() {
-		return this._rounds?.[this._rounds.length - 1] - this.averageTime || 0;
+		return this.last - this.averageTime || 0;
 	}
 
 	/**
