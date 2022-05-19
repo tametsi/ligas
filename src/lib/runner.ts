@@ -60,6 +60,14 @@ class RoundManager {
 		return this.all.reduce((acc, cur) => acc + cur, 0) || 0;
 	}
 
+	get averageTime() {
+		return this.totalTime / this.all.length || 0;
+	}
+
+	get trend() {
+		return this._rounds?.[this._rounds.length - 1] - this.averageTime || 0;
+	}
+
 	/**
 	 * Registers a new round
 	 * @param duration time the round has taken (in ms)

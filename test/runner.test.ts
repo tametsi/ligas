@@ -39,5 +39,22 @@ describe('Runner', () => {
 			expect(runner.rounds.count).toBe(2);
 			expect(runner.rounds.totalTime).toBe(25);
 		});
+
+		it('average & trend', () => {
+			expect(runner.rounds.averageTime).toBe(0);
+			expect(runner.rounds.trend).toBe(0);
+
+			runner.rounds.add(-10);
+			expect(runner.rounds.averageTime).toBe(-10);
+			expect(runner.rounds.trend).toBe(0);
+
+			runner.rounds.add(10);
+			expect(runner.rounds.averageTime).toBe(0);
+			expect(runner.rounds.trend).toBe(10);
+
+			runner.rounds.add(30);
+			expect(runner.rounds.averageTime).toBe(10);
+			expect(runner.rounds.trend).toBe(20);
+		});
 	});
 });
