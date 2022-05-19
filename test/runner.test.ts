@@ -1,3 +1,4 @@
+import Run from '../src/lib/run';
 import Runner from '../src/lib/runner';
 
 describe('Runner', () => {
@@ -5,7 +6,7 @@ describe('Runner', () => {
 		let runner: Runner;
 
 		beforeEach(() => {
-			runner = new Runner('1', 'name');
+			runner = new Runner(new Run(), '1', 'name');
 		});
 
 		it('init', () => {
