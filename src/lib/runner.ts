@@ -1,4 +1,5 @@
 import type Run from './run';
+import formatTime from './util/formatTime';
 
 export default class Runner {
 	private _rounds = new RoundManager();
@@ -28,12 +29,24 @@ export default class Runner {
 		return this._run;
 	}
 
-	/** The distance this runner already covered in the current run*/
+	/** The distance this runner already covered in the current run */
 	get distance() {
 		return (
 			Math.round(this._run.roundLength * this._rounds.count * 10 || 0) /
 			10
 		);
+	}
+
+	/** The statistics of this runner (including naming and performance) */
+	get stats() {
+		return [
+			this.name,
+			this.alias,
+			`${this.rounds.count}`,
+			`${this.distance}`,
+			`${Math.round(this.rounds.variation / 1000)}`,
+			...this.rounds.all.map(ms => formatTime(ms)),
+		];
 	}
 }
 
@@ -65,9 +78,16 @@ class RoundManager {
 		return this.totalTime / this.count || 0;
 	}
 
-	/** The time of the last round compared with the average round time*/
+	/** The time of the last round compared with the average round time */
 	get trend() {
 		return this.last - this.averageTime || 0;
+	}
+
+	/** The difference in time between the fastest and slowest round (in ms) */
+	get variation() {
+		return this.count > 0
+			? Math.max(...this.all) - Math.min(...this.all)
+			: 0;
 	}
 
 	/**
