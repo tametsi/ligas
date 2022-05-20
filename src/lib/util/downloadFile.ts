@@ -23,9 +23,16 @@ export function downloadFile(data: string, options?: DownloadOptions) {
 	URL.revokeObjectURL(url);
 }
 
-export function downloadCsv(rows: string[], filename?: string) {
+export interface CsvOptions {
+	filename?: string;
+	seperator?: string;
+}
+
+export function downloadCsv(data: string[][], options?: CsvOptions) {
+	const rows = data.map(columns => columns.join(options?.seperator || '\t'));
+
 	downloadFile(rows.join('\n'), {
-		filename: filename || 'file.csv',
+		filename: options?.filename || 'file.csv',
 		type: 'application/csv;charset=utf-8;',
 	});
 }
