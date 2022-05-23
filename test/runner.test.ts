@@ -40,21 +40,25 @@ describe('Runner', () => {
 			expect(runner.rounds.totalTime).toBe(25);
 		});
 
-		it('average & trend', () => {
+		it('average, trend & variation', () => {
 			expect(runner.rounds.averageTime).toBe(0);
 			expect(runner.rounds.trend).toBe(0);
+			expect(runner.rounds.variation).toBe(0);
 
 			runner.rounds.add(-10);
 			expect(runner.rounds.averageTime).toBe(-10);
 			expect(runner.rounds.trend).toBe(0);
+			expect(runner.rounds.variation).toBe(0);
 
 			runner.rounds.add(10);
 			expect(runner.rounds.averageTime).toBe(0);
 			expect(runner.rounds.trend).toBe(10);
+			expect(runner.rounds.variation).toBe(20);
 
 			runner.rounds.add(30);
 			expect(runner.rounds.averageTime).toBe(10);
 			expect(runner.rounds.trend).toBe(20);
+			expect(runner.rounds.variation).toBe(40);
 		});
 	});
 });
