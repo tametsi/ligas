@@ -29,7 +29,11 @@ export interface CsvOptions {
 }
 
 export function downloadCsv(data: string[][], options?: CsvOptions) {
-	const rows = data.map(columns => columns.join(options?.seperator || '\t'));
+	const seperator = options?.seperator || ',';
+	const rows = [
+		`sep=${seperator}`,
+		...data.map(columns => columns.join(`${seperator}\t`)),
+	];
 
 	downloadFile(rows.join('\n'), {
 		filename: options?.filename || 'file.csv',

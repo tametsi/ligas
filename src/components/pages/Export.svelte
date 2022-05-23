@@ -16,7 +16,7 @@
 		const stats = $activeRun.runners.map(runner => runner.stats);
 
 		const data = [header, ...stats];
-		downloadCsv(data, { filename: 'run.csv', seperator: ';\t' });
+		downloadCsv(data, { filename: 'run.csv' });
 	}
 </script>
 
