@@ -11,6 +11,21 @@ export default class Run {
 		return [...this._runners.values()];
 	}
 
+	/** The statistics of this run (naming and performance of all runners) */
+	get stats() {
+		const header = [
+			'Name',
+			'Alias',
+			'Rounds',
+			'Distance (in m)',
+			'Max. Difference (in s)',
+			'Rounds (Format: mm:ss:ff)',
+		];
+		const stats = this.runners.map(runner => runner.stats);
+
+		return [header, ...stats];
+	}
+
 	/**
 	 * Adds a runner with the given Information to this run
 	 * @param name The name of the new runner
