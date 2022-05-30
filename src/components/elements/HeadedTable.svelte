@@ -12,8 +12,10 @@
 <table>
 	<thead>
 		<tr>
-			{#each data[0] as header}
-				<th>{header}</th>
+			{#each data[0] as header, i}
+				<th colspan={data[0].length - 1 <= i ? maxLength - i : 1}>
+					{header}
+				</th>
 			{/each}
 		</tr>
 	</thead>
