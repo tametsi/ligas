@@ -66,7 +66,7 @@
 		flex-flow: column nowrap;
 
 		user-select: none;
-		cursor: pointer;
+		cursor: default;
 
 		background-color: var(--clr-bg2);
 		border-radius: 0.5rem;
@@ -76,6 +76,7 @@
 		width: clamp(20rem, 25rem, 80vw);
 
 		&.no-edit:hover {
+			cursor: pointer;
 			outline: 0.3rem solid var(--clr-accent);
 		}
 
