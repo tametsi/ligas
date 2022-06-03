@@ -2,9 +2,10 @@
 	import Pages from './components/Pages.svelte';
 	import Sidebar from './components/layout/Sidebar.svelte';
 	import Navbar from './components/layout/Navbar.svelte';
+	import sidebarOpened from './stores/sidebarOpened';
 </script>
 
-<div class="wrapper">
+<div class="wrapper" class:sidebar-closed={!$sidebarOpened}>
 	<nav class="navbar">
 		<Navbar />
 	</nav>
@@ -29,6 +30,11 @@
 
 		height: 100vh;
 		overflow-y: hidden;
+
+		transition: grid-template-columns 0.2s;
+		&.sidebar-closed {
+			grid-template-columns: 0 1fr;
+		}
 
 		.navbar {
 			grid-area: nav;
