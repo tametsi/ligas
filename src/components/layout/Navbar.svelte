@@ -1,6 +1,8 @@
 <script lang="ts">
 	import activeTimer from '../../stores/activeTimer';
 	import Timer from '../elements/Timer.svelte';
+	import { PlayIcon, PauseIcon } from 'svelte-feather-icons';
+	import { TimerState } from '../../lib/timer';
 
 	function toggleTimer() {
 		activeTimer.updateSelf(x => x.toggle());
@@ -11,7 +13,13 @@
 	<h1>LIGAS</h1>
 
 	<div class="timer">
-		<button on:click={toggleTimer}>Toggle Timer</button>
+		<button on:click={toggleTimer}>
+			{#if $activeTimer.state === TimerState.running}
+				<PauseIcon />
+			{:else}
+				<PlayIcon />
+			{/if}
+		</button>
 		<Timer />
 	</div>
 </div>
