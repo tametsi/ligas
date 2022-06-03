@@ -19,6 +19,7 @@
 		"sass": "^1.49.0",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.2.7",
+		"svelte-feather-icons": "^4.0.0",
 		"svelte-preprocess": "^4.9.8",
 		"tslib": "^2.3.1",
 		"typescript": "^4.5.4",
