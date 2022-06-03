@@ -1,29 +1,35 @@
 <script>
 	import activePage, { Page } from '../../stores/activePage';
+	import {
+		HomeIcon,
+		Edit2Icon,
+		DatabaseIcon,
+		CoffeeIcon,
+	} from 'svelte-feather-icons';
 </script>
 
 <ul>
 	<div>
 		<li>
 			<a href="#main" class:active={$activePage === Page.main}>
-				🏃 Main
+				<HomeIcon class="icon-in-text" /> Main
 			</a>
 		</li>
 		<li>
 			<a href="#edit" class:active={$activePage === Page.edit}>
-				🔨 Edit
+				<Edit2Icon class="icon-in-text" /> Edit
 			</a>
 		</li>
 		<li>
 			<a href="#export" class:active={$activePage === Page.export}>
-				📥 Export
+				<DatabaseIcon class="icon-in-text" /> Export
 			</a>
 		</li>
 	</div>
 	<div>
 		<li>
 			<a href="#about" class:active={$activePage === Page.about}>
-				🐸 About
+				<CoffeeIcon class="icon-in-text" /> About
 			</a>
 		</li>
 		<!-- svelte-ignore missing-declaration -->
