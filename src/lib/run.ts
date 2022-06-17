@@ -1,4 +1,4 @@
-import Runner from './runner';
+import Runner from '@lib/runner';
 
 export default class Run {
 	private _runners: Map<string, Runner> = new Map();

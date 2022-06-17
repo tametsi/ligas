@@ -1,9 +1,9 @@
 <script lang="ts">
-	import activeTimer from '../../stores/activeTimer';
-	import Timer from '../elements/Timer.svelte';
 	import { MenuIcon, XIcon, PlayIcon, PauseIcon } from 'svelte-feather-icons';
-	import { TimerState } from '../../lib/timer';
-	import sidebarOpened from '../../stores/sidebarOpened';
+	import Timer from '@components/elements/Timer.svelte';
+	import { TimerState } from '@lib/timer';
+	import activeTimer from '@stores/activeTimer';
+	import sidebarOpened from '@stores/sidebarOpened';
 
 	function toggleTimer() {
 		activeTimer.updateSelf(x => x.toggle());
@@ -38,8 +38,6 @@
 </div>
 
 <style lang="scss">
-	@use '../../scss/abstracts' as a;
-
 	.wrapper {
 		display: flex;
 		justify-content: space-between;

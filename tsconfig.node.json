@@ -4,7 +4,13 @@
 		"module": "esnext",
 		"target": "esnext",
 		"moduleResolution": "node",
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		"baseUrl": ".",
+		"paths": {
+			"@components/*": ["src/components/*"],
+			"@lib/*": ["src/lib/*"],
+			"@stores/*": ["src/stores/*"]
+		}
 	},
 	"include": [
 		"vite.config.ts",

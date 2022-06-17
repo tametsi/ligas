@@ -1,11 +1,11 @@
 <script>
-	import activePage, { Page } from '../../stores/activePage';
 	import {
 		HomeIcon,
 		Edit2Icon,
 		DatabaseIcon,
 		CoffeeIcon,
 	} from 'svelte-feather-icons';
+	import activePage, { Page } from '@stores/activePage';
 </script>
 
 <ul>
@@ -38,8 +38,6 @@
 </ul>
 
 <style lang="scss">
-	@use '../../scss/abstracts' as a;
-
 	ul {
 		list-style: none;
 
@@ -68,7 +66,7 @@
 
 			transition: all 0.2s;
 
-			@include a.text-overflow();
+			@include text-overflow();
 		}
 
 		li a {

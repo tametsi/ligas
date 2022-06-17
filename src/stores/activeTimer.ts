@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import Timer from '../lib/timer';
+import Timer from '@lib/timer';
 
 function createStore() {
 	const { set, subscribe, update } = writable(new Timer());

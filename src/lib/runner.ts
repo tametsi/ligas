@@ -1,5 +1,5 @@
-import type Run from './run';
-import formatTime from './util/formatTime';
+import type Run from '@lib/run';
+import formatTime from '@lib/util/formatTime';
 
 export default class Runner {
 	private _rounds = new RoundManager();

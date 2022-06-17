@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import Run from '../lib/run';
+import Run from '@lib/run';
 
 function createStore() {
 	const { set, subscribe, update } = writable(new Run());

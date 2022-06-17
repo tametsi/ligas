@@ -1,9 +1,9 @@
 <script lang="ts">
-	import activeRun from '../../stores/activeRun';
-	import { Page } from '../../stores/activePage';
+	import activeRun from '@stores/activeRun';
+	import { Page } from '@stores/activePage';
 	import BasePage from './BasePage.svelte';
-	import HeadedTable from '../elements/HeadedTable.svelte';
-	import { downloadCsv } from '../../lib/util/downloadFile';
+	import HeadedTable from '@components/elements/HeadedTable.svelte';
+	import { downloadCsv } from '@lib/util/downloadFile';
 
 	function exportData() {
 		downloadCsv($activeRun.stats, { filename: 'run.csv' });

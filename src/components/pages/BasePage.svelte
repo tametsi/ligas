@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import activePage, { Page } from '../../stores/activePage';
+	import activePage, { Page } from '@stores/activePage';
 
 	export let page: Page;
 </script>

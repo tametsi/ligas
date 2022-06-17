@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type Runner from '../../lib/runner';
-	import formatTime from '../../lib/util/formatTime';
-	import { TimerState } from '../../lib/timer';
-	import activeTimer from '../../stores/activeTimer';
-	import activeRun from '../../stores/activeRun';
+	import type Runner from '@lib/runner';
+	import formatTime from '@lib/util/formatTime';
+	import { TimerState } from '@lib/timer';
+	import activeTimer from '@stores/activeTimer';
+	import activeRun from '@stores/activeRun';
 
 	export let runner: Runner;
 	export let edit = false;
@@ -58,8 +58,6 @@
 </div>
 
 <style lang="scss">
-	@use '../../scss/abstracts' as a;
-
 	.runner {
 		display: flex;
 		justify-content: space-between;
@@ -81,11 +79,11 @@
 		}
 
 		.name-big {
-			@include a.text-overflow();
+			@include text-overflow();
 			font-size: 2.5rem;
 		}
 		.name-small {
-			@include a.text-overflow();
+			@include text-overflow();
 			font-size: 1.7rem;
 		}
 
@@ -95,10 +93,10 @@
 			gap: 0.5rem;
 
 			.trend-positive {
-				color: a.$green;
+				color: $green;
 			}
 			.trend-negative {
-				color: a.$red;
+				color: $red;
 			}
 		}
 	}

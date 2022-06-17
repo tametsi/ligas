@@ -1,9 +1,9 @@
 <script lang="ts">
-	import activePage, { Page } from '../stores/activePage';
-	import Main from './pages/Main.svelte';
-	import Edit from './pages/Edit.svelte';
-	import About from './pages/About.svelte';
-	import Export from './pages/Export.svelte';
+	import activePage, { Page } from '@stores/activePage';
+	import Main from '@components/pages/Main.svelte';
+	import Edit from '@components/pages/Edit.svelte';
+	import About from '@components/pages/About.svelte';
+	import Export from '@components/pages/Export.svelte';
 
 	function checkHash() {
 		const hash = window.location.hash.substring(1);
