@@ -49,8 +49,6 @@
 
 		background-color: var(--clr-bg2);
 
-		border-right: 0.3rem solid var(--clr-accent);
-
 		li a,
 		li .version {
 			$margin: 0.4rem;

@@ -8,4 +8,5 @@ $theme: (
 	'bg3': #{a.$gray6},
 	'accent': #{a.$accent-color},
 	'accent-light': #{lighten(a.$accent-color, 6)},
+	'accent-transparent': #{transparentize(a.$accent-color, 0.5)}
 );

@@ -38,10 +38,12 @@
 
 		.navbar {
 			grid-area: nav;
+			box-shadow: 0px 2px 2px rgba($black, 0.6);
 		}
 		.sidebar {
 			grid-area: side;
 			overflow-y: auto;
+			box-shadow: 2px 1px 1px var(--clr-accent-transparent);
 		}
 		.pages {
 			grid-area: main;
