@@ -1,7 +1,7 @@
 <script lang="ts">
 	import activeRun from '@stores/activeRun';
 	import { Page } from '@stores/activePage';
-	import BasePage from './BasePage.svelte';
+	import BasePage from '@components/pages/BasePage.svelte';
 	import HeadedTable from '@components/elements/HeadedTable.svelte';
 	import { downloadCsv } from '@lib/util/downloadFile';
 

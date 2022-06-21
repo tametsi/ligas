@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Pages from './components/Pages.svelte';
-	import Sidebar from './components/layout/Sidebar.svelte';
-	import Navbar from './components/layout/Navbar.svelte';
-	import sidebarOpened from './stores/sidebarOpened';
+	import Pages from '@components/Pages.svelte';
+	import Sidebar from '@components/layout/Sidebar.svelte';
+	import Navbar from '@components/layout/Navbar.svelte';
+	import sidebarOpened from '@stores/sidebarOpened';
 </script>
 
 <div class="wrapper" class:sidebar-closed={!$sidebarOpened}>

@@ -2,7 +2,7 @@
 	import { Page } from '@stores/activePage';
 	import activeRun from '@stores/activeRun';
 	import Runner from '@components/elements/Runner.svelte';
-	import BasePage from './BasePage.svelte';
+	import BasePage from '@components/pages/BasePage.svelte';
 </script>
 
 <BasePage page={Page.main}>

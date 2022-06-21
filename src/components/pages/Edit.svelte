@@ -3,7 +3,7 @@
 	import activeRun from '@stores/activeRun';
 	import FormItem from '@components/elements/FormItem.svelte';
 	import Runner from '@components/elements/Runner.svelte';
-	import BasePage from './BasePage.svelte';
+	import BasePage from '@components/pages/BasePage.svelte';
 
 	let newRunner = {
 		name: '',

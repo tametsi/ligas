@@ -7,7 +7,7 @@
 		DatabaseIcon,
 		HeartIcon,
 	} from 'svelte-feather-icons';
-	import BasePage from './BasePage.svelte';
+	import BasePage from '@components/pages/BasePage.svelte';
 </script>
 
 <BasePage page={Page.about}>
