@@ -1,4 +1,10 @@
-# LIGAS - Time measurement made easy!
+# LIGAS
+
+> LIGAS - Time measurement made easy!
+
+LIGAS let's you easily measure the round times
+of various runners by clicking on them. Export the data
+at the end and you're finished!
 
 ## Setup
 
@@ -33,3 +39,9 @@ If you want to use the final app locally (with a `file://` URL), you will need t
 
 - [Svelte](https://svelte.dev/) and [Sass](https://sass-lang.com/) are used for the UI
 - [Vite](https://vitejs.dev/) is used to build the app
+- [Feather](http://feathericons.com/) provides the icons in the app
+
+## License
+
+This project is licensed under the
+[MIT License](https://github.com/tametsi/ligas/blob/main/LICENSE)
