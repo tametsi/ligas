@@ -2,6 +2,7 @@
 	import Pages from '@components/Pages.svelte';
 	import Sidebar from '@components/layout/Sidebar.svelte';
 	import Navbar from '@components/layout/Navbar.svelte';
+	import CheckForUpdate from '@components/elements/CheckForUpdate.svelte';
 	import sidebarOpened from '@stores/sidebarOpened';
 </script>
 
@@ -17,6 +18,8 @@
 	<div class="pages">
 		<Pages />
 	</div>
+
+	<CheckForUpdate />
 </div>
 
 <style lang="scss">
