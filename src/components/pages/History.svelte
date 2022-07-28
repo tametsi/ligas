@@ -20,7 +20,24 @@
 			{#each [...runHistory.getEntries()] as [id, savedRun]}
 				<div class="entry">
 					<div class="content">
-						<pre>{JSON.stringify(savedRun.content, null, 2)}</pre>
+						<div class="run">
+							<p>Runners:</p>
+							<div class="runners">
+								{#each savedRun.content.runners as runner}
+									<div class="runner">
+										<p>Name: {runner.name}</p>
+										<p>Alias: {runner.alias}</p>
+										<p>
+											Rounds: {runner.rounds.rounds
+												.length}
+										</p>
+									</div>
+								{:else}
+									<p class="runner">None</p>
+								{/each}
+							</div>
+							<p>Round Length: {savedRun.content.roundLength}</p>
+						</div>
 						<div class="dates">
 							<p>
 								Created: {new Date(
@@ -66,6 +83,20 @@
 		.content {
 			display: flex;
 			justify-content: space-between;
+
+			.run {
+				.runners {
+					display: flex;
+					flex-wrap: wrap;
+
+					.runner {
+						padding: 1rem;
+						margin: 0.5rem;
+						border-radius: 0.5rem;
+						box-shadow: inset 0 0 1em #00000050;
+					}
+				}
+			}
 
 			.dates {
 				display: flex;
