@@ -2,14 +2,16 @@ import type Run from '@lib/run';
 import formatTime from '@lib/util/formatTime';
 
 export default class Runner {
-	private _rounds = new RoundManager();
+	private _rounds: RoundManager;
 
 	constructor(
 		private _run: Run,
 		private _id: string,
 		private _name: string,
 		private _alias?: string
-	) {}
+	) {
+		this._rounds = new RoundManager(_run.save);
+	}
 
 	get id() {
 		return this._id;
@@ -48,13 +50,32 @@ export default class Runner {
 			...this.rounds.all.map(ms => formatTime(ms)),
 		];
 	}
+
+	/** Creates a new runner from an json-like object */
+	static fromJSON(run: Run, json: ReturnType<Runner['toJSON']>) {
+		const runner = new Runner(run, json.id, json.name, json.alias);
+		runner._rounds = RoundManager.fromJSON(json.rounds, run.save);
+		return runner;
+	}
+
+	/** Converts this runner to a json-like object */
+	toJSON() {
+		return {
+			id: this.id,
+			name: this.name,
+			alias: this.alias,
+			rounds: this.rounds.toJSON(),
+		};
+	}
 }
 
 class RoundManager {
 	private _rounds: number[] = [];
 
+	constructor(private _updateCb?: () => void) {}
+
 	/** The rounds, chronologically sorted, as duration (in ms). */
-	get all(): Readonly<number[]> {
+	get all() {
 		return this._rounds;
 	}
 
@@ -96,6 +117,7 @@ class RoundManager {
 	 */
 	add(duration: number) {
 		this._rounds.push(duration);
+		this._updateCb?.();
 	}
 
 	/**
@@ -104,5 +126,22 @@ class RoundManager {
 	 */
 	addByTime(time: number) {
 		this.add(time - this.totalTime);
+	}
+
+	/** Creates a new round-manager from an json-like object */
+	static fromJSON(
+		json: ReturnType<RoundManager['toJSON']>,
+		updateCb?: () => void
+	) {
+		const rounds = new RoundManager(updateCb);
+		rounds._rounds = json.rounds;
+		return rounds;
+	}
+
+	/** Converts this round-manager to a json-like object */
+	toJSON() {
+		return {
+			rounds: this.all,
+		};
 	}
 }
