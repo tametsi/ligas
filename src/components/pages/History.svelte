@@ -4,9 +4,10 @@
 	import Run, { runHistory } from '@lib/run';
 	import activeRun from '@stores/activeRun';
 
-	let unique = {};
+	let entries = [...runHistory.getEntries()];
+
 	function reload() {
-		unique = {};
+		entries = [...runHistory.getEntries()];
 	}
 	runHistory.onUpdate = reload;
 </script>
@@ -16,57 +17,56 @@
 		<figure>
 			<figcaption>Run History</figcaption>
 		</figure>
-		{#key unique}
-			{#each [...runHistory.getEntries()] as [id, savedRun]}
-				<div class="entry">
-					<div class="content">
-						<div class="run">
-							<p>Runners:</p>
-							<div class="runners">
-								{#each savedRun.content.runners as runner}
-									<div class="runner">
-										<p>Name: {runner.name}</p>
-										<p>Alias: {runner.alias}</p>
-										<p>
-											Rounds: {runner.rounds.rounds
-												.length}
-										</p>
-									</div>
-								{:else}
-									<p class="runner">None</p>
-								{/each}
-							</div>
-							<p>Round Length: {savedRun.content.roundLength}</p>
+		{#each entries as [id, savedRun]}
+			<div class="entry">
+				<div class="content">
+					<div class="run">
+						<p>Runners:</p>
+						<div class="runners">
+							{#each savedRun.content.runners as runner}
+								<div class="runner">
+									<p>Name: {runner.name}</p>
+									<p>Alias: {runner.alias}</p>
+									<p>
+										Rounds: {runner.rounds.rounds.length}
+									</p>
+								</div>
+							{:else}
+								<p class="runner">None</p>
+							{/each}
 						</div>
-						<div class="dates">
-							<p>
-								Created: {new Date(
-									savedRun.created
-								).toLocaleString()}
-							</p>
-							<p>
-								Last modified: {new Date(
-									savedRun.lastChanged
-								).toLocaleString()}
-							</p>
-						</div>
+						<p>Round Length: {savedRun.content.roundLength}</p>
 					</div>
-
-					<button
-						on:click={() =>
-							($activeRun = Run.fromJSON(savedRun.content))}
-						class="button small">Load</button
-					>
-					<button
-						on:click={() => {
-							runHistory.removeEntry(id);
-							reload();
-						}}
-						class="button small warning">Delete</button
-					>
+					<div class="dates">
+						<p>
+							Created: {new Date(
+								savedRun.created
+							).toLocaleString()}
+						</p>
+						<p>
+							Last modified: {new Date(
+								savedRun.lastChanged
+							).toLocaleString()}
+						</p>
+					</div>
 				</div>
-			{/each}
-		{/key}
+
+				<button
+					on:click={() => {
+						$activeRun = Run.fromJSON(savedRun.content);
+						reload();
+					}}
+					class="button small">Load</button
+				>
+				<button
+					on:click={() => {
+						runHistory.removeEntry(id);
+						reload();
+					}}
+					class="button small warning">Delete</button
+				>
+			</div>
+		{/each}
 	</form>
 </BasePage>
 
