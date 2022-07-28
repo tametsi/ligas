@@ -4,10 +4,16 @@
 	import Run, { runHistory } from '@lib/run';
 	import activeRun from '@stores/activeRun';
 
-	let entries = [...runHistory.getEntries()];
+	let entries = getSortedEntries();
+
+	function getSortedEntries() {
+		return [...runHistory.getEntries()].sort(
+			(a, b) => b[1].lastChanged - a[1].lastChanged
+		);
+	}
 
 	function reload() {
-		entries = [...runHistory.getEntries()];
+		entries = getSortedEntries();
 	}
 	runHistory.onUpdate = reload;
 </script>
