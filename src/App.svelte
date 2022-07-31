@@ -4,6 +4,15 @@
 	import Navbar from '@components/layout/Navbar.svelte';
 	import CheckForUpdate from '@components/elements/CheckForUpdate.svelte';
 	import sidebarOpened from '@stores/sidebarOpened';
+	import activeTheme, { Theme } from '@stores/activeTheme';
+
+	activeTheme.subscribe(x => {
+		document.body.classList.forEach(x => {
+			if (x.startsWith('theme-')) document.body.classList.remove(x);
+		});
+
+		document.body.classList.add(`theme-${Theme[x]}`);
+	});
 </script>
 
 <div class="wrapper" class:sidebar-closed={!$sidebarOpened}>
