@@ -3,7 +3,7 @@ import Runner from '@lib/runner';
 export default class Run {
 	private _runners: Map<string, Runner> = new Map();
 
-	/** The distance of a single round in this run (in meters) */
+	/** The distance of a single round in this run */
 	public roundLength = 400;
 
 	/** All the runners currently being part of this run */
@@ -17,7 +17,7 @@ export default class Run {
 			'Name',
 			'Alias',
 			'Rounds',
-			'Distance (in m)',
+			'Distance',
 			'Max. Difference (in s)',
 			'Rounds (Format: mm:ss:ff)',
 		];
