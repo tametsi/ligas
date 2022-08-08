@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Page } from '@stores/activePage';
-	import activeRun from '@stores/activeRun';
+	import activeSession from '@stores/activeSession';
 	import FormItem from '@components/elements/FormItem.svelte';
 	import Runner from '@components/elements/Runner.svelte';
 	import BasePage from '@components/pages/BasePage.svelte';
@@ -11,7 +11,9 @@
 	};
 
 	function addRunner() {
-		activeRun.updateSelf(x => x.addRunner(newRunner.name, newRunner.alias));
+		activeSession.updateSelf(session =>
+			session.run.addRunner(newRunner.name, newRunner.alias)
+		);
 	}
 </script>
 
@@ -20,7 +22,10 @@
 		<figure>
 			<figcaption>Run Details</figcaption>
 			<FormItem name="Round Length">
-				<input type="number" bind:value={$activeRun.roundLength} />
+				<input
+					type="number"
+					bind:value={$activeSession.run.roundLength}
+				/>
 				<svelte:fragment slot="details">
 					Specify the length of a single round to give LIGAS the
 					possibility to calculate the complete route length the
@@ -52,7 +57,7 @@
 	</form>
 
 	<div class="runners">
-		{#each $activeRun.runners as runner}
+		{#each $activeSession.run.runners as runner}
 			<Runner {runner} edit />
 		{/each}
 	</div>

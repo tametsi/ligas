@@ -1,9 +1,4 @@
-import History from '@lib/util/history';
 import Runner from '@lib/runner';
-
-export const runHistory = new History<Run, ReturnType<Run['toJSON']>>(
-	'savedRuns'
-);
 
 export default class Run {
 	private _runners: Map<string, Runner> = new Map();

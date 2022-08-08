@@ -1,12 +1,12 @@
 <script lang="ts">
-	import activeRun from '@stores/activeRun';
+	import activeSession from '@stores/activeSession';
 	import { Page } from '@stores/activePage';
 	import BasePage from '@components/pages/BasePage.svelte';
 	import HeadedTable from '@components/elements/HeadedTable.svelte';
 	import { downloadCsv } from '@lib/util/downloadFile';
 
 	function exportData() {
-		downloadCsv($activeRun.stats, { filename: 'run.csv' });
+		downloadCsv($activeSession.run.stats, { filename: 'run.csv' });
 	}
 </script>
 
@@ -15,7 +15,7 @@
 		<figure>
 			<figcaption>Export data</figcaption>
 
-			<HeadedTable data={$activeRun.stats} />
+			<HeadedTable data={$activeSession.run.stats} />
 
 			<div class="form-controls">
 				<button type="submit" class="button">Export</button>

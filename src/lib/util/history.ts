@@ -55,7 +55,7 @@ export default class History<
 	InputType extends Storable<OutputType>,
 	OutputType
 > {
-	constructor(private readonly name: string, public onUpdate = () => {}) {
+	constructor(private readonly name: string, public onUpdate?: () => void) {
 		if (localStorage.getItem(this.name) === null) this.setHistory({});
 	}
 
@@ -77,14 +77,7 @@ export default class History<
 		const history = this.getHistory();
 		history[id] = entry;
 		this.setHistory(history);
-		this.onUpdate();
-	};
-
-	/** Updates a history-entry in local storage */
-	private updateEntry = (id: string, content: InputType) => {
-		const entry = this.getEntry(id);
-		entry.update(content.toJSON());
-		this.setEntry(id, entry);
+		this.onUpdate?.();
 	};
 
 	/** Available identifier with 8 characters of [a-z0-9] */
@@ -102,12 +95,7 @@ export default class History<
 		const id = this.generateId();
 		const entry = new HistoryEntry(content);
 		this.setEntry(id, entry);
-		return (content: InputType) => this.updateEntry(id, content);
-	};
-
-	/** Removes a entry out of local storage */
-	removeEntry = (id: string) => {
-		this.setEntry(id, undefined);
+		return id;
 	};
 
 	/**
@@ -128,5 +116,17 @@ export default class History<
 			])
 		);
 		return entries;
+	};
+
+	/** Updates a history-entry in local storage */
+	updateEntry = (id: string, content: InputType) => {
+		const entry = this.getEntry(id);
+		entry.update(content.toJSON());
+		this.setEntry(id, entry);
+	};
+
+	/** Removes a entry out of local storage */
+	removeEntry = (id: string) => {
+		this.setEntry(id, undefined);
 	};
 }
