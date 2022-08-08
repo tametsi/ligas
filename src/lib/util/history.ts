@@ -51,6 +51,14 @@ interface Storable<OutputType> {
 	toJSON: () => OutputType;
 }
 
+export enum HistorySorting {
+	ModificationAscending,
+	ModificationDescending,
+	CreationAscending,
+	CreationDescending,
+	Default,
+}
+
 export default class History<
 	InputType extends Storable<OutputType>,
 	OutputType
@@ -116,6 +124,22 @@ export default class History<
 			])
 		);
 		return entries;
+	};
+
+	/** Retrieves all entries from this history sorted */
+	getEntriesSorted = (sorting = HistorySorting.Default) => {
+		const sorter =
+			sorting === HistorySorting.ModificationAscending
+				? (a, b) => a[1].lastChanged - b[1].lastChanged
+				: sorting === HistorySorting.ModificationDescending
+				? (a, b) => b[1].lastChanged - a[1].lastChanged
+				: sorting === HistorySorting.CreationAscending
+				? (a, b) => a[1].created - b[1].created
+				: sorting === HistorySorting.CreationDescending
+				? (a, b) => b[1].created - a[1].created
+				: undefined;
+
+		return new Map([...this.getEntries()].sort(sorter));
 	};
 
 	/** Updates a history-entry in local storage */

@@ -1,20 +1,18 @@
 <script lang="ts">
 	import { Page } from '@stores/activePage';
 	import BasePage from '@components/pages/BasePage.svelte';
+	import FormItem from '@components/elements/FormItem.svelte';
+	import { HistorySorting } from '@lib/util/history';
 	import Session, { sessionHistory } from '@lib/session';
 	import activeSession from '@stores/activeSession';
 	import Timer from '@lib/timer';
 	import formatTime from '@lib/util/formatTime';
 
-	let entries = getSortedEntries();
-	function getSortedEntries() {
-		return [...sessionHistory.getEntries()].sort(
-			(a, b) => b[1].lastChanged - a[1].lastChanged
-		);
-	}
+	let currentSorting = HistorySorting.ModificationDescending;
+	let entries = [...sessionHistory.getEntriesSorted(currentSorting)];
 
 	function reload() {
-		entries = getSortedEntries();
+		entries = [...sessionHistory.getEntriesSorted(currentSorting)];
 	}
 	sessionHistory.onUpdate = reload;
 
@@ -47,6 +45,22 @@
 		<figure>
 			<figcaption>Run History</figcaption>
 		</figure>
+		<FormItem name="Sort By">
+			<select bind:value={currentSorting} on:change={reload}>
+				<option value={HistorySorting.ModificationDescending}>
+					Modification Date: Newest to oldest
+				</option>
+				<option value={HistorySorting.ModificationAscending}>
+					Modification Date: Oldest to newest
+				</option>
+				<option value={HistorySorting.CreationDescending}>
+					Creation Date: Newest to oldest
+				</option>
+				<option value={HistorySorting.CreationAscending}>
+					Creation Date: Oldest to newest
+				</option>
+			</select>
+		</FormItem>
 		{#each entries as [id, { content: session, content: { timer, run }, created, lastChanged }]}
 			{#if id !== $activeSession.id}
 				<div class="entry">
@@ -117,6 +131,11 @@
 </BasePage>
 
 <style lang="scss">
+	select,
+	option {
+		padding: 0.5rem;
+	}
+
 	.entry {
 		user-select: none;
 		cursor: default;
