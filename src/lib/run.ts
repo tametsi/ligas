@@ -7,12 +7,8 @@ export const runHistory = new History<Run, ReturnType<Run['toJSON']>>(
 
 export default class Run {
 	private _runners: Map<string, Runner> = new Map();
-	public save: () => void;
 
-	constructor() {
-		const updater = runHistory.createEntry(this);
-		this.save = () => updater(this);
-	}
+	constructor() {}
 
 	/** The distance of a single round in this run (in meters) */
 	public roundLength = 400;
@@ -58,7 +54,6 @@ export default class Run {
 	 */
 	private addExistingRunner(runner: Runner) {
 		this._runners.set(runner.id, runner);
-		this.save();
 	}
 
 	/**
@@ -67,7 +62,6 @@ export default class Run {
 	 */
 	deleteRunner(id: string) {
 		this._runners.delete(id);
-		this.save();
 	}
 
 	/** Creates a new Run from an json-like object */
@@ -77,7 +71,6 @@ export default class Run {
 		json.runners.forEach(jsonRunner =>
 			run.addExistingRunner(Runner.fromJSON(run, jsonRunner))
 		);
-		run.save();
 		return run;
 	}
 
