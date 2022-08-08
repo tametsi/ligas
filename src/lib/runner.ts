@@ -10,7 +10,7 @@ export default class Runner {
 		private _name: string,
 		private _alias?: string
 	) {
-		this._rounds = new RoundManager();
+		this._rounds = new RoundManager(_run.save);
 	}
 
 	get id() {
@@ -54,7 +54,7 @@ export default class Runner {
 	/** Creates a new runner from an json-like object */
 	static fromJSON(run: Run, json: ReturnType<Runner['toJSON']>) {
 		const runner = new Runner(run, json.id, json.name, json.alias);
-		runner._rounds = RoundManager.fromJSON(json.rounds);
+		runner._rounds = RoundManager.fromJSON(json.rounds, run.save);
 		return runner;
 	}
 
@@ -72,7 +72,7 @@ export default class Runner {
 class RoundManager {
 	private _rounds: number[] = [];
 
-	constructor() {}
+	constructor(private _updateCb?: () => void) {}
 
 	/** The rounds, chronologically sorted, as duration (in ms). */
 	get all() {
@@ -117,6 +117,7 @@ class RoundManager {
 	 */
 	add(duration: number) {
 		this._rounds.push(duration);
+		this._updateCb?.();
 	}
 
 	/**
@@ -128,8 +129,11 @@ class RoundManager {
 	}
 
 	/** Creates a new round-manager from an json-like object */
-	static fromJSON(json: ReturnType<RoundManager['toJSON']>) {
-		const rounds = new RoundManager();
+	static fromJSON(
+		json: ReturnType<RoundManager['toJSON']>,
+		updateCb?: () => void
+	) {
+		const rounds = new RoundManager(updateCb);
 		rounds._rounds = json.rounds;
 		return rounds;
 	}
