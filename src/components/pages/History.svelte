@@ -107,6 +107,11 @@
 					>
 				</div>
 			{/if}
+		{:else}
+			<p>
+				No history entries created yet, but your current progress will
+				be automatically saved when you leave the page.
+			</p>
 		{/each}
 	</form>
 </BasePage>
