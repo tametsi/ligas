@@ -37,7 +37,8 @@
 	}
 
 	function deleteSession(id: string) {
-		sessionHistory.removeEntry(id);
+		if (confirm('Do you really want to delete this session?'))
+			sessionHistory.removeEntry(id);
 	}
 </script>
 
