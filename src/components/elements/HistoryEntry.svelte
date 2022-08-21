@@ -3,7 +3,7 @@
 	import formatTime from '@lib/util/formatTime';
 	import Session, { sessionHistory } from '@lib/session';
 	import activeSession from '@stores/activeSession';
-	import type Run from '../../lib/run';
+	import type Run from '@lib/run';
 
 	export let id: string,
 		timer: ReturnType<Timer['toJSON']>,
@@ -40,17 +40,20 @@
 	<div class="content">
 		<div class="session">
 			<p>
-				Time: {formatTime(Timer.fromJSON(timer).getRunDuration())}
+				Time:
+				<b>{formatTime(Timer.fromJSON(timer).getRunDuration())}</b>
 			</p>
 
 			<p>Runners:</p>
 			<div class="runners">
 				{#each run.runners as runner}
 					<div class="runner">
-						<p>Name: {runner.name}</p>
-						<p>Alias: {runner.alias}</p>
+						<p>Name: <b>{runner.name}</b></p>
+						{#if runner.alias}
+							<p>Alias: <b>{runner.alias}</b></p>
+						{/if}
 						<p>
-							Rounds: {runner.rounds.rounds.length}
+							Rounds: <b>{runner.rounds.rounds.length}</b>
 						</p>
 					</div>
 				{:else}
@@ -59,30 +62,39 @@
 			</div>
 
 			<p>
-				Round Length: {run.roundLength}
+				Round Length: <b>{run.roundLength}</b>
 			</p>
 		</div>
 
 		<div class="dates">
 			<p>
-				Last modified: {new Date(lastChanged).toLocaleString()}
+				Last modified: <b>{new Date(lastChanged).toLocaleString()}</b>
 			</p>
 			<p>
-				Created: {new Date(created).toLocaleString()}
+				Created: <b>{new Date(created).toLocaleString()}</b>
 			</p>
 		</div>
 	</div>
 
-	<button on:click={() => loadSession(id, session)} class="button small">
+	<button
+		on:click={() => loadSession(id, session)}
+		class="button small"
+		title="Loads this session. This session will be modified."
+	>
 		Load
 	</button>
 	<button
 		on:click={() => loadSession(id, session, true)}
 		class="button small"
+		title="Copies this session and loads the copy. This session will stay untouched."
 	>
 		Copy & Load
 	</button>
-	<button on:click={() => deleteSession(id)} class="button small warning">
+	<button
+		on:click={() => deleteSession(id)}
+		class="button small warning"
+		title="Deletes this session."
+	>
 		Delete
 	</button>
 </div>
