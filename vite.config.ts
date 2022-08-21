@@ -14,6 +14,9 @@ export default defineConfig({
 			'@stores': path.resolve(__dirname, './src/stores'),
 		},
 	},
+	server: {
+		port: 3000,
+	},
 	plugins: [svelte()],
 	base: './',
 	define: {
