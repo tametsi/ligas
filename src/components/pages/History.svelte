@@ -8,6 +8,7 @@
 	import HistoryEntry from '@components/elements/HistoryEntry.svelte';
 
 	let currentSorting = HistorySorting.ModificationDescending;
+	let excludeEmptySessions = true;
 	let entries = [...sessionHistory.getEntriesSorted(currentSorting)].filter(
 		x => x[0] !== $activeSession.id
 	);
@@ -41,10 +42,26 @@
 				</option>
 			</select>
 		</FormItem>
+
+		<FormItem name="Exclude Empty Sessions">
+			<input type="checkbox" bind:checked={excludeEmptySessions} />
+			<svelte:fragment slot="details">
+				Empty sessions are sessions without runners.
+			</svelte:fragment>
+		</FormItem>
 	</form>
 
 	{#each entries as [id, { content: session, content: { timer, run }, created, lastChanged }]}
-		<HistoryEntry {id} {session} {timer} {run} {created} {lastChanged} />
+		{#if !(excludeEmptySessions && run.runners.length === 0)}
+			<HistoryEntry
+				{id}
+				{session}
+				{timer}
+				{run}
+				{created}
+				{lastChanged}
+			/>
+		{/if}
 	{:else}
 		<p>
 			No history entries created yet, but your current progress will be
