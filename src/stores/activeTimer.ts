@@ -1,19 +1,4 @@
-import { writable } from 'svelte/store';
 import Timer from '@lib/timer';
+import { createWriteableObjectStore } from '@stores/createStore';
 
-function createStore() {
-	const { set, subscribe, update } = writable(new Timer());
-
-	return {
-		set,
-		subscribe,
-		updateSelf: (updater: (x: Timer) => void) => {
-			update(x => {
-				updater(x);
-				return x;
-			});
-		},
-	};
-}
-
-export default createStore();
+export default createWriteableObjectStore(new Timer());
