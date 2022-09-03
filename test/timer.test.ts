@@ -1,5 +1,4 @@
 import Timer, { TimerState } from '../src/lib/timer';
-import sleep from './util/sleep';
 
 describe('Timer', () => {
 	let timer: Timer;
@@ -28,21 +27,20 @@ describe('Timer', () => {
 		expect(runDuration).toBe(timer.getRunDuration());
 	});
 
-	it('correct measuring', async () => {
-		const startTimestamp = timer.start();
+	it('correct measuring', () => {
+		vi.useFakeTimers({ now: 0, toFake: ['Date'] });
+		timer.start();
 
-		await sleep(100);
-		const runTimeAfter100 = timer.getRunDuration();
-		const timerValidatingTimestamp = new Date().valueOf();
-		await sleep(100);
+		vi.advanceTimersByTime(1214);
+		expect(timer.getRunDuration()).toBe(1214);
 
+		vi.advanceTimersByTime(2796);
 		const runDuration = timer.stop();
 
 		expect(runDuration).toBe(timer.getRunDuration());
-		expect(runTimeAfter100).toBeGreaterThanOrEqual(100);
-		expect(runTimeAfter100).toBeLessThanOrEqual(
-			timerValidatingTimestamp - startTimestamp
-		);
+		expect(runDuration).toBe(1214 + 2796);
+
+		vi.useRealTimers();
 	});
 
 	it('calling methods multiple times', () => {
