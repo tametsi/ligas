@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { MenuIcon, XIcon, PlayIcon, PauseIcon } from 'svelte-feather-icons';
 	import Timer from '@components/elements/Timer.svelte';
+	import ThemePicker from '@components/elements/ThemePicker.svelte';
 	import { TimerState } from '@lib/timer';
 	import activeSession from '@stores/activeSession';
 	import sidebarOpened from '@stores/sidebarOpened';
@@ -26,6 +27,8 @@
 	<h1>LIGAS</h1>
 
 	<div class="timer">
+		<ThemePicker />
+
 		<button on:click={toggleTimer}>
 			{#if $activeSession.timer.state === TimerState.running}
 				<PauseIcon />

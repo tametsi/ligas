@@ -28,6 +28,7 @@ npm run check
 
 If you want to use the final app locally (with a `file://` URL), you will need to replace
 
+<!-- prettier-ignore -->
 ```html
 <!-- /dist/index.html -->
 <script type="module" crossorigin src="./assets/index.[*].js"></script>

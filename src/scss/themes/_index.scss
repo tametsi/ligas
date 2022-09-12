@@ -20,10 +20,4 @@ $themes: (
 	@each $name, $value in dark.$theme {
 		--clr-#{$name}: #{$value};
 	}
-
-	@media (prefers-color-scheme: light) {
-		@each $name, $value in light.$theme {
-			--clr-#{$name}: #{$value};
-		}
-	}
 }
