@@ -56,8 +56,23 @@ export enum HistorySorting {
 	ModificationDescending,
 	CreationAscending,
 	CreationDescending,
-	Default,
+	None,
 }
+
+const HistorySorters: {
+	[key in HistorySorting]: (
+		a: [string, HistoryEntry<unknown>],
+		b: [string, HistoryEntry<unknown>]
+	) => number;
+} = Object.freeze({
+	[HistorySorting.ModificationAscending]: (a, b) =>
+		a[1].lastChanged - b[1].lastChanged,
+	[HistorySorting.ModificationDescending]: (a, b) =>
+		b[1].lastChanged - a[1].lastChanged,
+	[HistorySorting.CreationAscending]: (a, b) => a[1].created - b[1].created,
+	[HistorySorting.CreationDescending]: (a, b) => b[1].created - a[1].created,
+	[HistorySorting.None]: () => 0,
+});
 
 export default class History<
 	InputType extends Storable<OutputType>,
@@ -127,19 +142,8 @@ export default class History<
 	};
 
 	/** Retrieves all entries from this history sorted */
-	getEntriesSorted = (sorting = HistorySorting.Default) => {
-		const sorter =
-			sorting === HistorySorting.ModificationAscending
-				? (a, b) => a[1].lastChanged - b[1].lastChanged
-				: sorting === HistorySorting.ModificationDescending
-				? (a, b) => b[1].lastChanged - a[1].lastChanged
-				: sorting === HistorySorting.CreationAscending
-				? (a, b) => a[1].created - b[1].created
-				: sorting === HistorySorting.CreationDescending
-				? (a, b) => b[1].created - a[1].created
-				: undefined;
-
-		return new Map([...this.getEntries()].sort(sorter));
+	getEntriesSorted = (sorting = HistorySorting.None) => {
+		return [...this.getEntries()].sort(HistorySorters[sorting]);
 	};
 
 	/** Updates a history-entry in local storage */

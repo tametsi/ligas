@@ -9,14 +9,14 @@
 
 	let currentSorting = HistorySorting.ModificationDescending;
 	let excludeEmptySessions = true;
-	let entries = [...sessionHistory.getEntriesSorted(currentSorting)].filter(
-		x => x[0] !== $activeSession.id
-	);
+	let entries = sessionHistory
+		.getEntriesSorted(currentSorting)
+		.filter(x => x[0] !== $activeSession.id);
 
 	function reload() {
-		entries = [...sessionHistory.getEntriesSorted(currentSorting)].filter(
-			x => x[0] !== $activeSession.id
-		);
+		entries = sessionHistory
+			.getEntriesSorted(currentSorting)
+			.filter(x => x[0] !== $activeSession.id);
 	}
 	sessionHistory.onUpdate = reload;
 </script>
