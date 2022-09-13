@@ -64,4 +64,22 @@ export default class Timer {
 			(this._stopTimestamp ?? new Date().valueOf()) - this._startTimestamp
 		);
 	}
+
+	/** Creates a new timer from an json-like object */
+	static fromJSON(json: ReturnType<Timer['toJSON']>) {
+		const timer = new Timer();
+		timer._startTimestamp = json.startTimestamp;
+		timer._stopTimestamp = json.stopTimestamp;
+		timer._state = json.state;
+		return timer;
+	}
+
+	/** Converts this timer to a json-like object */
+	toJSON() {
+		return {
+			startTimestamp: this._startTimestamp,
+			stopTimestamp: this._stopTimestamp,
+			state: this._state,
+		};
+	}
 }

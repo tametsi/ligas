@@ -4,6 +4,7 @@
 	import Edit from '@components/pages/Edit.svelte';
 	import About from '@components/pages/About.svelte';
 	import Export from '@components/pages/Export.svelte';
+	import History from '@components/pages/History.svelte';
 
 	function checkHash() {
 		const hash = window.location.hash.substring(1);
@@ -22,4 +23,5 @@
 <Main />
 <Edit />
 <Export />
+<History />
 <About />

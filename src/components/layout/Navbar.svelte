@@ -3,11 +3,11 @@
 	import Timer from '@components/elements/Timer.svelte';
 	import ThemePicker from '@components/elements/ThemePicker.svelte';
 	import { TimerState } from '@lib/timer';
-	import activeTimer from '@stores/activeTimer';
+	import activeSession from '@stores/activeSession';
 	import sidebarOpened from '@stores/sidebarOpened';
 
 	function toggleTimer() {
-		activeTimer.updateSelf(x => x.toggle());
+		activeSession.updateSelf(session => session.timer.toggle());
 	}
 
 	function toggleSidebar() {
@@ -30,7 +30,7 @@
 		<ThemePicker />
 
 		<button on:click={toggleTimer}>
-			{#if $activeTimer.state === TimerState.running}
+			{#if $activeSession.timer.state === TimerState.running}
 				<PauseIcon />
 			{:else}
 				<PlayIcon />

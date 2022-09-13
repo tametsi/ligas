@@ -38,10 +38,15 @@ export default class Run {
 			id += 1;
 		} while (this._runners.has(id.toString()));
 
-		this._runners.set(
-			id.toString(),
-			new Runner(this, id.toString(), name, alias)
-		);
+		this.addExistingRunner(new Runner(this, id.toString(), name, alias));
+	}
+
+	/**
+	 * Adds an pre-existing runner to this run
+	 * @param runner The runner itself
+	 */
+	private addExistingRunner(runner: Runner) {
+		this._runners.set(runner.id, runner);
 	}
 
 	/**
@@ -50,5 +55,23 @@ export default class Run {
 	 */
 	deleteRunner(id: string) {
 		this._runners.delete(id);
+	}
+
+	/** Creates a new Run from an json-like object */
+	static fromJSON(json: ReturnType<Run['toJSON']>) {
+		const run = new Run();
+		run.roundLength = json.roundLength;
+		json.runners.forEach(jsonRunner =>
+			run.addExistingRunner(Runner.fromJSON(run, jsonRunner))
+		);
+		return run;
+	}
+
+	/** Converts this run to a json-like object */
+	toJSON() {
+		return {
+			runners: this.runners.map(runner => runner.toJSON()),
+			roundLength: this.roundLength,
+		};
 	}
 }

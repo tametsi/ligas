@@ -2,8 +2,7 @@
 	import type Runner from '@lib/runner';
 	import formatTime from '@lib/util/formatTime';
 	import { TimerState } from '@lib/timer';
-	import activeTimer from '@stores/activeTimer';
-	import activeRun from '@stores/activeRun';
+	import activeSession from '@stores/activeSession';
 
 	export let runner: Runner;
 	export let edit = false;
@@ -22,15 +21,17 @@
 	update();
 
 	function finishRound() {
-		if ($activeTimer.state === TimerState.running && !edit) {
-			runner.rounds.addByTime($activeTimer.getRunDuration());
+		if ($activeSession.timer.state === TimerState.running && !edit) {
+			runner.rounds.addByTime($activeSession.timer.getRunDuration());
 			update();
 		}
 	}
 
 	function deleteSelf() {
 		if (confirm('Do you really want to delete this runner?'))
-			activeRun.updateSelf(x => x.deleteRunner(runner.id));
+			activeSession.updateSelf(session =>
+				session.run.deleteRunner(runner.id)
+			);
 	}
 </script>
 

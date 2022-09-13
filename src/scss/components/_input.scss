@@ -31,4 +31,8 @@ input {
 		cursor: not-allowed;
 		opacity: 80%;
 	}
+
+	&[type='checkbox'] {
+		width: auto;
+	}
 }
