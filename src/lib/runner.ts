@@ -2,16 +2,14 @@ import type Run from '@lib/run';
 import formatTime from '@lib/util/formatTime';
 
 export default class Runner {
-	private _rounds: RoundManager;
+	private _rounds = new RoundManager();
 
 	constructor(
 		private _run: Run,
 		private _id: string,
 		private _name: string,
 		private _alias?: string
-	) {
-		this._rounds = new RoundManager();
-	}
+	) {}
 
 	get id() {
 		return this._id;
@@ -71,8 +69,6 @@ export default class Runner {
 
 class RoundManager {
 	private _rounds: number[] = [];
-
-	constructor() {}
 
 	/** The rounds, chronologically sorted, as duration (in ms). */
 	get all() {
