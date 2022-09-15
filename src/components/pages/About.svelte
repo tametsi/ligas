@@ -4,7 +4,7 @@
 		FeatherIcon,
 		GithubIcon,
 		WatchIcon,
-		DatabaseIcon,
+		CpuIcon,
 		HeartIcon,
 	} from 'svelte-feather-icons';
 	import BasePage from '@components/pages/BasePage.svelte';
@@ -16,11 +16,11 @@
 	<section>
 		<p class="box">LIGAS - Time measurement made easy!</p>
 		<p>
-			LIGAS let's you easily measure the round times
+			LIGAS is a tool to simplify the measurement
 			<WatchIcon class="icon-in-text" />
-			of various runners by clicking on them. Export the data
-			<DatabaseIcon class="icon-in-text" />
-			at the end and you're finished!
+			and managment
+			<CpuIcon class="icon-in-text" />
+			of round times during a competition.
 		</p>
 	</section>
 

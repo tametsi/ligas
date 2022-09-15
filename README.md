@@ -2,9 +2,7 @@
 
 > LIGAS - Time measurement made easy!
 
-LIGAS let's you easily measure the round times
-of various runners by clicking on them. Export the data
-at the end and you're finished!
+LIGAS is a tool to simplify the measurement and managment of round times during a competition.
 
 ## Setup
 
