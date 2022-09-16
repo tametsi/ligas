@@ -74,6 +74,24 @@ button {
 }
 
 .button-icon {
+	width: 4.5rem;
+	height: 4.5rem;
+
 	cursor: pointer;
-	padding: 1rem;
+
+	padding: 0.8rem;
+	margin: 0.2rem;
+
+	border-radius: 0.3rem;
+	background-color: var(--clr-bg2);
+	border: 0.2rem solid var(--clr-bg2);
+
+	transition: scale 0.2s;
+
+	&:hover {
+		background-color: transparent;
+	}
+	&:active {
+		scale: 0.9;
+	}
 }

@@ -4,7 +4,9 @@
 	import FormItem from '@components/elements/FormItem.svelte';
 	import Runner from '@components/elements/Runner.svelte';
 	import BasePage from '@components/pages/BasePage.svelte';
+	import { GridIcon, ListIcon } from 'svelte-feather-icons';
 
+	let layoutGrid = true;
 	let newRunner = {
 		name: '',
 		alias: '',
@@ -56,9 +58,23 @@
 		</figure>
 	</form>
 
-	<div class="runners">
+	<div class="runner-layout">
+		<button class="button-icon" on:click={() => (layoutGrid = true)}>
+			<GridIcon size="25" />
+		</button>
+
+		<button class="button-icon" on:click={() => (layoutGrid = false)}>
+			<ListIcon size="25" />
+		</button>
+	</div>
+
+	<div
+		class="runners"
+		class:layout-grid={layoutGrid}
+		class:layout-list={!layoutGrid}
+	>
 		{#each $activeSession.run.runners as runner}
-			<Runner {runner} edit />
+			<Runner {runner} edit row={!layoutGrid} />
 		{/each}
 	</div>
 </BasePage>
@@ -67,6 +83,12 @@
 	.runners {
 		display: flex;
 		justify-content: space-around;
-		flex-flow: row wrap;
+
+		&.layout-grid {
+			flex-flow: row wrap;
+		}
+		&.layout-list {
+			flex-flow: column nowrap;
+		}
 	}
 </style>
