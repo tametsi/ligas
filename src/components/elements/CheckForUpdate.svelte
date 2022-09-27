@@ -38,6 +38,12 @@
 				<p>
 					New Updates provide you with a better experience, new
 					features and sometimes less bugs.
+					<br />
+					Feel free to check out the
+					<a
+						href="https://github.com/tametsi/ligas/blob/main/CHANGELOG.md"
+						target="_blank">CHANGELOG</a
+					>.
 				</p>
 				<a
 					class="button success"
