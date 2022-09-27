@@ -4,6 +4,17 @@
 
 LIGAS is a tool to simplify the measurement and managment of round times during a competition.
 
+## Usage
+
+The online version can be found [here](https://tametsi.github.io/ligas/)
+
+There is also the option to use the app locally. To do so, follow these steps:
+
+1. download [the latest release](https://github.com/tametsi/ligas/releases/latest/download/ligas.zip)
+2. unzip the `ligas.zip` file
+3. open the `ligas` folder
+4. open the `index.html` file with a modern browser (e.g. [Firefox](https://www.mozilla.org/en-US/firefox/new/), [Brave](https://brave.com/), Chrome, (Edge, Opera))
+
 ## Setup
 
 Requires [Node.js](https://nodejs.org/)
