@@ -2,7 +2,8 @@ name: CD
 
 on:
   release:
-    types: [created]
+    types: [published, released, edited]
+  workflow_dispatch:
 
 jobs:
   build-deploy:
