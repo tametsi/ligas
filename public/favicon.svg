@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+ <style>.a{fill:#292929}.b{stroke:#292929;stroke-linecap:round;stroke-linejoin:round;}@media(prefers-color-scheme:dark){.a{fill:#efefef}.b{stroke:#efefef;}}</style>
+ <path class="a" d="m14.4 19.429q0.31428 0 0.54286 0.22857 0.22857 0.22857 0.22857 0.54286v1.0286q0 0.31428-0.22857 0.54286-0.22857 0.22857-0.54286 0.22857h-11.629q-0.31429 0-0.54286-0.22857t-0.22857-0.54286v-18.457q0-0.31429 0.22857-0.54286t0.54286-0.22857h1.1714q0.31429 0 0.54286 0.22857t0.22857 0.54286v16.657z"/>
+ <path d="m17.498 18.297c1.555-1.3202 2.4512-3.257 2.4512-5.2969 4.83e-4 -3.8381-3.1111-6.9497-6.9492-6.9492-2.1249-2.542e-4 -4.1332 0.97185-5.4512 2.6387" fill="none" stroke="#1ca8b6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.1033"/>
+ <rect class="b" x="9.8034" y="2.8033" width="6.3933" height=".39333" stroke-width="1.6067"/>
+ <rect class="b" transform="rotate(44)" x="18.294" y=".23441" width="3.6786" height=".1786" stroke-width=".8214"/>
+</svg>
