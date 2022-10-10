@@ -3,6 +3,10 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 
+	&.thin {
+		width: auto;
+	}
+
 	thead {
 		font-weight: normal;
 		font-size: 1.2em;
