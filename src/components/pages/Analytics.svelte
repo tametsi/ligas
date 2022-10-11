@@ -2,7 +2,7 @@
 	import { Page } from '@stores/activePage';
 	import BasePage from '@components/pages/BasePage.svelte';
 	import { onMount } from 'svelte';
-	import activeRun from '@stores/activeRun';
+	import activeSession from '@stores/activeSession';
 	import FormItem from '@components/elements/FormItem.svelte';
 	import type Runner from '@lib/runner';
 
@@ -59,7 +59,7 @@
 					bind:value={selectedRunner}
 					on:change={canvasSetup}
 				>
-					{#each $activeRun.runners as runner}
+					{#each $activeSession.run.runners as runner}
 						<option value={runner}>{runner.name}</option>
 					{/each}
 				</select>
