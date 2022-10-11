@@ -13,20 +13,15 @@
 
 	function drawCurve() {
 		ctx.beginPath();
-		selectedRunner.rounds.all.forEach((value, index) => {
+		const fastestRound = Math.max(...selectedRunner.rounds.all);
+		selectedRunner.rounds.all.forEach((v, i, arr) => {
 			ctx.moveTo(
-				index * xIntervallLenght,
-				yCanvasHeight -
-					(selectedRunner.rounds.all[index] /
-						Math.max(...selectedRunner.rounds.all)) *
-						yCanvasHeight
+				i * xIntervallLenght,
+				yCanvasHeight - (v / fastestRound) * yCanvasHeight
 			);
 			ctx.lineTo(
-				(index + 1) * xIntervallLenght,
-				yCanvasHeight -
-					(selectedRunner.rounds.all[index + 1] /
-						Math.max(...selectedRunner.rounds.all)) *
-						yCanvasHeight
+				(i + 1) * xIntervallLenght,
+				yCanvasHeight - (arr[i + 1] / fastestRound) * yCanvasHeight
 			);
 		});
 		ctx.stroke();
