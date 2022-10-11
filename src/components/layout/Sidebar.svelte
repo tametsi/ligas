@@ -5,6 +5,8 @@
 		DatabaseIcon,
 		CoffeeIcon,
 		ActivityIcon,
+		BookIcon,
+		BookOpenIcon,
 	} from 'svelte-feather-icons';
 	import activePage, { Page } from '@stores/activePage';
 </script>
@@ -29,6 +31,16 @@
 		<li>
 			<a href="#analytics" class:active={$activePage === Page.analytics}>
 				<ActivityIcon class="icon-in-text" /> Analytics
+			</a>
+		</li>
+		<li>
+			<a href="#history" class:active={$activePage === Page.history}>
+				{#if $activePage === Page.history}
+					<BookOpenIcon class="icon-in-text" />
+				{:else}
+					<BookIcon class="icon-in-text" />
+				{/if}
+				History
 			</a>
 		</li>
 	</div>

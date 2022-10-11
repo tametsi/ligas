@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { Page } from '@stores/activePage';
-	import activeRun from '@stores/activeRun';
+	import activeSession from '@stores/activeSession';
 	import Runner from '@components/elements/Runner.svelte';
 	import BasePage from '@components/pages/BasePage.svelte';
 </script>
 
 <BasePage page={Page.main}>
 	<div class="runners">
-		{#each $activeRun.runners as runner}
+		{#each $activeSession.run.runners as runner}
 			<Runner {runner} />
 		{:else}
 			<p>

@@ -17,6 +17,8 @@ button {
 	$m-horizontal: 1rem;
 	$m-vertical: 1rem;
 
+	display: inline-block;
+
 	font-family: inherit;
 	font-size: 1.6rem;
 	text-align: center;
@@ -68,5 +70,28 @@ button {
 	}
 	&.success {
 		border-color: a.$green;
+	}
+}
+
+.button-icon {
+	width: 4.5rem;
+	height: 4.5rem;
+
+	cursor: pointer;
+
+	padding: 0.8rem;
+	margin: 0.2rem;
+
+	border-radius: 0.3rem;
+	background-color: var(--clr-bg2);
+	border: 0.2rem solid var(--clr-bg2);
+
+	transition: scale 0.2s;
+
+	&:hover {
+		background-color: transparent;
+	}
+	&:active {
+		scale: 0.9;
 	}
 }

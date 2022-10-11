@@ -48,13 +48,30 @@ export default class Runner {
 			...this.rounds.all.map(ms => formatTime(ms)),
 		];
 	}
+
+	/** Creates a new runner from an json-like object */
+	static fromJSON(run: Run, json: ReturnType<Runner['toJSON']>) {
+		const runner = new Runner(run, json.id, json.name, json.alias);
+		runner._rounds = RoundManager.fromJSON(json.rounds);
+		return runner;
+	}
+
+	/** Converts this runner to a json-like object */
+	toJSON() {
+		return {
+			id: this.id,
+			name: this.name,
+			alias: this.alias,
+			rounds: this.rounds.toJSON(),
+		};
+	}
 }
 
 class RoundManager {
 	private _rounds: number[] = [];
 
 	/** The rounds, chronologically sorted, as duration (in ms). */
-	get all(): Readonly<number[]> {
+	get all() {
 		return this._rounds;
 	}
 
@@ -104,5 +121,19 @@ class RoundManager {
 	 */
 	addByTime(time: number) {
 		this.add(time - this.totalTime);
+	}
+
+	/** Creates a new round-manager from an json-like object */
+	static fromJSON(json: ReturnType<RoundManager['toJSON']>) {
+		const rounds = new RoundManager();
+		rounds._rounds = json.rounds;
+		return rounds;
+	}
+
+	/** Converts this round-manager to a json-like object */
+	toJSON() {
+		return {
+			rounds: this.all,
+		};
 	}
 }

@@ -2,11 +2,11 @@
 	import type Runner from '@lib/runner';
 	import formatTime from '@lib/util/formatTime';
 	import { TimerState } from '@lib/timer';
-	import activeTimer from '@stores/activeTimer';
-	import activeRun from '@stores/activeRun';
+	import activeSession from '@stores/activeSession';
 
 	export let runner: Runner;
 	export let edit = false;
+	export let row = false;
 
 	let nameBig = runner.alias || runner.name || '';
 	let nameSmall = runner.alias ? runner.name : '';
@@ -22,19 +22,21 @@
 	update();
 
 	function finishRound() {
-		if ($activeTimer.state === TimerState.running && !edit) {
-			runner.rounds.addByTime($activeTimer.getRunDuration());
+		if ($activeSession.timer.state === TimerState.running && !edit) {
+			runner.rounds.addByTime($activeSession.timer.getRunDuration());
 			update();
 		}
 	}
 
 	function deleteSelf() {
 		if (confirm('Do you really want to delete this runner?'))
-			activeRun.updateSelf(x => x.deleteRunner(runner.id));
+			activeSession.updateSelf(session =>
+				session.run.deleteRunner(runner.id)
+			);
 	}
 </script>
 
-<div class="runner" class:no-edit={!edit} on:click={finishRound}>
+<div class="runner" class:row class:no-edit={!edit} on:click={finishRound}>
 	<p class="name-big">{nameBig}</p>
 	{#if nameSmall}
 		<p class="name-small">
@@ -80,19 +82,54 @@
 			outline: 0.3rem solid var(--clr-accent);
 		}
 
+		$font-size-name-big: 2.5rem;
+		&.row {
+			margin: 0.1rem 1rem;
+
+			width: 100%;
+
+			display: grid;
+			grid-template-columns: auto 1fr auto;
+			grid-template-areas: 'name-big name-small details';
+			gap: 1.5rem;
+
+			&:first-of-type {
+				margin-top: 1rem;
+			}
+			&:last-of-type {
+				margin-bottom: 1rem;
+			}
+
+			.name-small {
+				font-size: $font-size-name-big;
+				&::before {
+					content: '(';
+				}
+				&::after {
+					content: ')';
+				}
+			}
+		}
+
 		.name-big {
 			@include text-overflow();
-			font-size: 2.5rem;
+			font-size: $font-size-name-big;
+
+			grid-area: name-big;
 		}
 		.name-small {
 			@include text-overflow();
 			font-size: 1.7rem;
+
+			grid-area: name-small;
 		}
 
 		.details {
 			display: flex;
 			justify-content: space-between;
 			gap: 0.5rem;
+
+			grid-area: details;
 
 			.trend-positive {
 				color: $green;

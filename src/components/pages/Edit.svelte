@@ -1,17 +1,21 @@
 <script lang="ts">
 	import { Page } from '@stores/activePage';
-	import activeRun from '@stores/activeRun';
+	import activeSession from '@stores/activeSession';
 	import FormItem from '@components/elements/FormItem.svelte';
 	import Runner from '@components/elements/Runner.svelte';
 	import BasePage from '@components/pages/BasePage.svelte';
+	import { GridIcon, ListIcon } from 'svelte-feather-icons';
 
+	let layoutGrid = true;
 	let newRunner = {
 		name: '',
 		alias: '',
 	};
 
 	function addRunner() {
-		activeRun.updateSelf(x => x.addRunner(newRunner.name, newRunner.alias));
+		activeSession.updateSelf(session =>
+			session.run.addRunner(newRunner.name, newRunner.alias)
+		);
 	}
 </script>
 
@@ -20,7 +24,10 @@
 		<figure>
 			<figcaption>Run Details</figcaption>
 			<FormItem name="Round Length">
-				<input type="number" bind:value={$activeRun.roundLength} />
+				<input
+					type="number"
+					bind:value={$activeSession.run.roundLength}
+				/>
 				<svelte:fragment slot="details">
 					Specify the length of a single round to give LIGAS the
 					possibility to calculate the complete route length the
@@ -51,9 +58,23 @@
 		</figure>
 	</form>
 
-	<div class="runners">
-		{#each $activeRun.runners as runner}
-			<Runner {runner} edit />
+	<div class="runner-layout">
+		<button class="button-icon" on:click={() => (layoutGrid = true)}>
+			<GridIcon size="25" />
+		</button>
+
+		<button class="button-icon" on:click={() => (layoutGrid = false)}>
+			<ListIcon size="25" />
+		</button>
+	</div>
+
+	<div
+		class="runners"
+		class:layout-grid={layoutGrid}
+		class:layout-list={!layoutGrid}
+	>
+		{#each $activeSession.run.runners as runner}
+			<Runner {runner} edit row={!layoutGrid} />
 		{/each}
 	</div>
 </BasePage>
@@ -62,6 +83,12 @@
 	.runners {
 		display: flex;
 		justify-content: space-around;
-		flex-flow: row wrap;
+
+		&.layout-grid {
+			flex-flow: row wrap;
+		}
+		&.layout-list {
+			flex-flow: column nowrap;
+		}
 	}
 </style>

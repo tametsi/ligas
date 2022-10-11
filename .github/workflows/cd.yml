@@ -1,0 +1,22 @@
+name: CD
+
+on:
+  release:
+    types: [published, released, edited]
+  workflow_dispatch:
+
+jobs:
+  build-deploy:
+    name: BUILD 🔨 & DEPLOY 🚀
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: npm ci
+      - run: npm run build
+
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist # The folder the action should deploy.
