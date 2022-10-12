@@ -1,6 +1,7 @@
 {
 	"recommendations": [
 		"exodiusstudios.comment-anchors",
-		"svelte.svelte-vscode"
+		"svelte.svelte-vscode",
+		"EditorConfig.EditorConfig"
 	]
 }
