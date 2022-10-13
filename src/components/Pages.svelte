@@ -5,6 +5,7 @@
 	import About from '@components/pages/About.svelte';
 	import Export from '@components/pages/Export.svelte';
 	import History from '@components/pages/History.svelte';
+	import Settings from './pages/Settings.svelte';
 
 	function checkHash() {
 		const hash = window.location.hash.substring(1);
@@ -24,4 +25,5 @@
 <Edit />
 <Export />
 <History />
+<Settings />
 <About />
