@@ -1,47 +1,20 @@
 <script lang="ts">
 	import { Page } from '@stores/activePage';
 	import BasePage from '@components/pages/BasePage.svelte';
-	import { onMount } from 'svelte';
 	import activeSession from '@stores/activeSession';
 	import FormItem from '@components/elements/FormItem.svelte';
 	import type Runner from '@lib/runner';
+	import Chart from 'svelte-frappe-charts';
 
-	let c: HTMLCanvasElement;
-	let ctx: CanvasRenderingContext2D;
 	let selectedRunner: Runner;
-	let xIntervallLenght: number, yCanvasHeight: number;
-
-	function drawCurve() {
-		ctx.beginPath();
-		const fastestRound = Math.max(...selectedRunner.rounds.all);
-		selectedRunner.rounds.all.forEach((v, i, arr) => {
-			ctx.moveTo(
-				i * xIntervallLenght,
-				yCanvasHeight - (v / fastestRound) * yCanvasHeight
-			);
-			ctx.lineTo(
-				(i + 1) * xIntervallLenght,
-				yCanvasHeight - (arr[i + 1] / fastestRound) * yCanvasHeight
-			);
-		});
-		ctx.stroke();
-		ctx.fill();
-	}
-
-	function canvasSetup() {
-		ctx = c.getContext('2d');
-		ctx.strokeStyle = '#1ca8b6';
-		ctx.lineWidth = 3;
-		xIntervallLenght = c.width / (selectedRunner.rounds.all.length - 1);
-		yCanvasHeight = c.height;
-
-		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-		drawCurve();
-	}
-
-	onMount(() => {
-		canvasSetup();
-	});
+	$: data = {
+		labels: selectedRunner?.rounds?.all?.map?.((_, i) => `Round: ${i + 1}`),
+		datasets: [
+			{
+				values: selectedRunner?.rounds?.all?.map?.(v => v / 1000),
+			},
+		],
+	};
 </script>
 
 <BasePage page={Page.analytics}>
@@ -49,11 +22,7 @@
 		<figure>
 			<figcaption>Stats</figcaption>
 			<FormItem name="Select Runner">
-				<select
-					id="runers"
-					bind:value={selectedRunner}
-					on:change={canvasSetup}
-				>
+				<select bind:value={selectedRunner}>
 					{#each $activeSession.run.runners as runner}
 						<option value={runner}>{runner.name}</option>
 					{/each}
@@ -104,15 +73,5 @@
 		</tbody>
 	</table>
 
-	<canvas bind:this={c} height="500" width="1000" />
+	<Chart {data} type="line" lineOptions={{ regionFill: 1 }} />
 </BasePage>
-
-<style lang="scss">
-	canvas {
-		height: 50rem;
-		width: 100rem;
-		max-width: 100%;
-		border: 0.2rem solid var(--clr-bg3);
-		margin-top: 1rem;
-	}
-</style>
