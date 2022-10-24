@@ -20,7 +20,7 @@
 <BasePage page={Page.analytics}>
 	<form on:submit|preventDefault>
 		<figure>
-			<figcaption>Stats</figcaption>
+			<figcaption>Analytics</figcaption>
 			<FormItem name="Select Runner">
 				<select bind:value={selectedRunner}>
 					{#each $activeSession.run.runners as runner}
