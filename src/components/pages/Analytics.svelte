@@ -7,6 +7,12 @@
 	import Chart from 'svelte-frappe-charts';
 
 	let selectedRunner: Runner;
+	// avoid having an invalid runner (not in run.runners)
+	$: selectedRunner = $activeSession.run.runners
+		.map(x => x.id)
+		.includes(selectedRunner?.id)
+		? selectedRunner
+		: $activeSession.run.runners[0];
 	$: data = {
 		labels: selectedRunner?.rounds?.all?.map?.((_, i) => `Round: ${i + 1}`),
 		datasets: [
