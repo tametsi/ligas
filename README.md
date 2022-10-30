@@ -33,6 +33,9 @@ npm run build
 
 # check the project with svelte-check
 npm run check
+
+# format all files with prettier
+npm run format
 ```
 
 ### :computer: Build to use locally

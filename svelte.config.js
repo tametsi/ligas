@@ -5,7 +5,7 @@ export default {
 	// for more information about preprocessors
 	preprocess: sveltePreprocess({
 		scss: {
-			prependData: "@import 'src/scss/abstracts';"
-		}
+			prependData: "@import 'src/scss/abstracts';",
+		},
 	}),
 };
