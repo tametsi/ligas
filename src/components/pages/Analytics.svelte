@@ -65,15 +65,19 @@
 			<tr>
 				<td>Fastest Round</td>
 				<td
-					>{Math.min(...(selectedRunner?.rounds?.all ?? [0])) /
-						1000}s</td
+					>{selectedRunner?.rounds?.all.length !== 0
+						? Math.min(...(selectedRunner?.rounds?.all ?? [0])) /
+						  1000
+						: 0}s</td
 				>
 			</tr>
 			<tr>
 				<td>Slowest Round</td>
-				<td
-					>{Math.max(...(selectedRunner?.rounds?.all ?? [0])) /
-						1000}s</td
+				<td>
+					{selectedRunner?.rounds?.all.length !== 0
+						? Math.max(...(selectedRunner?.rounds?.all ?? [0])) /
+						  1000
+						: 0}s</td
 				>
 			</tr>
 		</tbody>
