@@ -15,6 +15,7 @@
 	"include": [
 		"vite.config.ts",
 		"package.json",
+		"src/manifest.json",
 		"test/**/*.d.ts",
 		"test/util/**/*.ts",
 		"test/**/*.test.ts",
