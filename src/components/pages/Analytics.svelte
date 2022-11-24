@@ -7,6 +7,7 @@
 	import Chart from 'svelte-frappe-charts';
 
 	let selectedRunner: Runner;
+	//avoid having an invalid runner (not in run.runners)
 	$: selectedRunner = $activeSession.run.runners
 		.map(x => x.id)
 		.includes(selectedRunner?.id)
@@ -92,4 +93,4 @@
 			<p>No runners available</p>
 		</article>
 	{/if}
-</BasePage>
+	</BasePage>
