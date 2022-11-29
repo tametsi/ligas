@@ -10,7 +10,8 @@
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"test": "vitest run",
 		"test:watch": "vitest",
-		"test:verbose": "vitest --reporter verbose"
+		"test:verbose": "vitest --reporter verbose",
+		"gen:assets": "npx pwa-asset-generator ./assets/logo.html ./public/icons -i index.html -m ./src/manifest.json --path-override /icons --splash-only && npx pwa-asset-generator ./assets/logo.html ./public/icons -i index.html -m ./src/manifest.json --path-override /icons -d && prettier -w ./src/manifest.json ./index.html"
 	},
 	"devDependencies": {
 		"@sveltejs/vite-plugin-svelte": "^1.0.1",
