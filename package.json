@@ -8,6 +8,8 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"format": "prettier --write --ignore-unknown .",
+		"format:check": "prettier --check --ignore-unknown .",
 		"test": "vitest run",
 		"test:watch": "vitest",
 		"test:verbose": "vitest --reporter verbose",
@@ -16,7 +18,8 @@
 	"devDependencies": {
 		"@sveltejs/vite-plugin-svelte": "^1.0.1",
 		"@tsconfig/svelte": "^2.0.1",
-		"prettier": "^2.5.1",
+		"prettier": "^2.7.1",
+		"prettier-plugin-svelte": "^2.8.0",
 		"sass": "^1.49.0",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.2.7",
