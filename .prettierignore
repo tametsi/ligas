@@ -2,6 +2,7 @@
 /coverage
 /dist
 /dist-ssr
+/.github/ISSUE_TEMPLATE
 
 # Logs
 logs

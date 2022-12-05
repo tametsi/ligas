@@ -2,7 +2,7 @@
 
 LIGAS is a tool to simplify the measurement and managment of round times during a competition.
 
-- :tada: [Releases](https://github.com/tametsi/ligas/releases/)
+- :tada: Installable as PWA
 - :pushpin: [Online Version](https://ligas.dev)
 - :memo: [Changelog](https://github.com/tametsi/ligas/blob/main/CHANGELOG.md)
 
@@ -10,12 +10,7 @@ LIGAS is a tool to simplify the measurement and managment of round times during 
 
 The online version can be found [here](https://ligas.dev)
 
-There is also the option to use the app locally. To do so, follow these steps:
-
-1. download [the latest :ghost: release](https://github.com/tametsi/ligas/releases/latest/download/ligas.zip)
-2. unzip the `ligas.zip` file
-3. open the `ligas` folder
-4. open the `index.html` file with a modern browser (e.g. [Firefox](https://www.mozilla.org/en-US/firefox/new/), [Brave](https://brave.com/), Chrome, (Edge, Opera))
+You can install this app as PWA. To do so open the page and follow [this guide](https://web.dev/learn/pwa/installation/#desktop-installation)
 
 ## :electric_plug: Setup project
 
@@ -36,18 +31,6 @@ npm run check
 
 # format all files with prettier
 npm run format
-```
-
-### :computer: Build to use locally
-
-If you want to use the final app locally (with a `file://` URL), you will need to replace
-
-<!-- prettier-ignore -->
-```html
-<!-- /dist/index.html -->
-<script type="module" crossorigin src="./assets/index.[*].js"></script>
-<!-- with -->
-<script defer                     src="./assets/index.[*].js"></script>
 ```
 
 ## Libraries
