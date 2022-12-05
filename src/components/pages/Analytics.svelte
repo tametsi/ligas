@@ -90,7 +90,13 @@
 	{:else}
 		<article>
 			<h2>Analytics</h2>
-			<p>No runners available</p>
+			<p>No runners created yet. <a href="#edit">Change it!</a></p>
 		</article>
 	{/if}
 </BasePage>
+
+<style lang="scss">
+	.thin {
+		width: 27.3rem;
+	}
+</style>
