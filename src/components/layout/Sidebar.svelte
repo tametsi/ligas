@@ -44,8 +44,6 @@
 				<CoffeeIcon class="icon-in-text" /> About
 			</a>
 		</li>
-		<!-- svelte-ignore missing-declaration -->
-		<li><span class="version">Version: <b>{__APP_VERSION__}</b></span></li>
 	</div>
 </ul>
 
@@ -61,8 +59,7 @@
 
 		background-color: var(--clr-bg2);
 
-		li a,
-		li .version {
+		li a {
 			$margin: 0.4rem;
 
 			display: block;
@@ -91,12 +88,6 @@
 				background-color: var(--clr-bg3);
 				color: var(--clr-accent-light);
 			}
-		}
-
-		li .version {
-			text-align: center;
-			cursor: default;
-			font-size: 0.8em;
 		}
 	}
 </style>
