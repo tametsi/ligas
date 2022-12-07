@@ -1,8 +1,8 @@
 name: CD
 
 on:
-  release:
-    types: [published, released, edited]
+  push:
+    branches: [stable]
   workflow_dispatch:
 
 jobs:
@@ -12,6 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: stable
 
       - run: npm ci
       - run: npm run build
