@@ -38,7 +38,7 @@
 			</figure>
 		</form>
 
-		<table class="thin">
+		<table>
 			<tbody>
 				<tr>
 					<td>Name</td>
@@ -96,7 +96,7 @@
 </BasePage>
 
 <style lang="scss">
-	.thin {
-		width: 27.3rem;
+	table {
+		width: 47.4rem;
 	}
 </style>
