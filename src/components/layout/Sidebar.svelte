@@ -4,6 +4,7 @@
 		Edit2Icon,
 		DatabaseIcon,
 		CoffeeIcon,
+		ActivityIcon,
 		BookIcon,
 		BookOpenIcon,
 	} from 'svelte-feather-icons';
@@ -25,6 +26,11 @@
 		<li>
 			<a href="#export" class:active={$activePage === Page.export}>
 				<DatabaseIcon class="icon-in-text" /> Export
+			</a>
+		</li>
+		<li>
+			<a href="#analytics" class:active={$activePage === Page.analytics}>
+				<ActivityIcon class="icon-in-text" /> Analytics
 			</a>
 		</li>
 		<li>
