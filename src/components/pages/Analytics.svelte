@@ -14,10 +14,10 @@
 		? selectedRunner
 		: $activeSession.run.runners[0];
 	$: data = {
-		labels: selectedRunner?.rounds?.all?.map?.((_, i) => `Round: ${i + 1}`),
+		labels: selectedRunner?.rounds.all.map((_, i) => `Round: ${i + 1}`),
 		datasets: [
 			{
-				values: selectedRunner?.rounds?.all?.map?.(v => v / 1000),
+				values: selectedRunner?.rounds.all.map(v => v / 1000),
 			},
 		],
 	};
@@ -50,7 +50,7 @@
 				</tr>
 				<tr>
 					<td>Rounds</td>
-					<td>{selectedRunner?.rounds?.all?.length ?? '-'}</td>
+					<td>{selectedRunner?.rounds.count ?? '-'}</td>
 				</tr>
 				<tr>
 					<td>Distance</td>
@@ -59,16 +59,16 @@
 				<tr>
 					<td>Avarage Roundtime</td>
 					<td
-						>{Math.round(selectedRunner?.rounds?.averageTime ?? 0) /
+						>{Math.round(selectedRunner?.rounds.averageTime ?? 0) /
 							1000}s</td
 					>
 				</tr>
 				<tr>
 					<td>Fastest Round</td>
 					<td
-						>{selectedRunner?.rounds?.all.length !== 0
+						>{selectedRunner?.rounds.count !== 0
 							? Math.min(
-									...(selectedRunner?.rounds?.all ?? [0])
+									...(selectedRunner?.rounds.all ?? [0])
 							  ) / 1000
 							: 0}s</td
 					>
@@ -76,9 +76,9 @@
 				<tr>
 					<td>Slowest Round</td>
 					<td>
-						{selectedRunner?.rounds?.all.length !== 0
+						{selectedRunner?.rounds.count !== 0
 							? Math.max(
-									...(selectedRunner?.rounds?.all ?? [0])
+									...(selectedRunner?.rounds.all ?? [0])
 							  ) / 1000
 							: 0}s</td
 					>
