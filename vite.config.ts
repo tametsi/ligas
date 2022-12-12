@@ -23,9 +23,6 @@ export default defineConfig({
 	plugins: [
 		svelte(),
 		VitePWA({
-			devOptions: {
-				enabled: true,
-			},
 			includeAssets: ['favicon.ico', 'favicon.svg', 'apple-icon-180.png'],
 			manifest: manifest,
 		}),
