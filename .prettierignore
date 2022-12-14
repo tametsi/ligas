@@ -1,8 +1,11 @@
 /node_modules
 /coverage
 /dist
+/dev-dist
 /dist-ssr
 /.github/ISSUE_TEMPLATE
+
+pnpm-lock.yaml
 
 # Logs
 logs

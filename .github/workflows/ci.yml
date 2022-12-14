@@ -12,12 +12,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: 'npm'
-      - run: npm ci
-      - run: npm test
-      - run: npm run check
-      - run: npm run build
-      - run: npm run format:check
+          node-version: 18
+          cache: 'pnpm'
+
+      - run: pnpm i
+      - run: pnpm test
+      - run: pnpm check
+      - run: pnpm build
+      - run: pnpm format:check

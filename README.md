@@ -18,19 +18,19 @@ Requires [Node.js](https://nodejs.org/)
 
 ```bash
 # install dependencies
-npm install
+pnpm install
 
 # start dev server
-npm run dev
+pnpm dev
 
 # build the app
-npm run build
+pnpm build
 
 # check the project with svelte-check
-npm run check
+pnpm check
 
 # format all files with prettier
-npm run format
+pnpm format
 ```
 
 ## Libraries
