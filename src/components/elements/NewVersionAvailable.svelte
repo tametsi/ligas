@@ -24,8 +24,9 @@
 			Feel free to check out the
 			<a
 				href="https://github.com/tametsi/ligas/blob/main/CHANGELOG.md"
-				target="_blank">CHANGELOG</a
-			>.
+				target="_blank"
+				rel="noopener noreferrer">CHANGELOG</a
+			>
 		</p>
 		<button class="button success" on:click={updateSw}>
 			<DownloadIcon class="icon-in-text" /> Update & Reload

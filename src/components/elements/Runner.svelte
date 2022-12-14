@@ -36,7 +36,7 @@
 	}
 </script>
 
-<div class="runner" class:row class:no-edit={!edit} on:click={finishRound}>
+<button class="runner" class:row class:no-edit={!edit} on:click={finishRound}>
 	<p class="name-big">{nameBig}</p>
 	{#if nameSmall}
 		<p class="name-small">
@@ -59,7 +59,7 @@
 			>
 		{/if}
 	</div>
-</div>
+</button>
 
 <style lang="scss">
 	.runner {
