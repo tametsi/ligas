@@ -1,0 +1,53 @@
+<!-- 
+	This file is used to generate icons and
+	splash screen images with
+	https://github.com/elegantapp/pwa-asset-generator
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>generate icon assets</title>
+
+		<style>
+			* {
+				box-sizing: border-box;
+				padding: 0;
+				margin: 0;
+			}
+			.wrapper {
+				height: 100vh;
+				width: 100%;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				background-color: #efefef;
+			}
+			.logo {
+				object-fit: contain;
+				width: 100%;
+				height: 100%;
+				padding: calc(50vh - 30%) calc(50vw - 40%);
+			}
+			@media (prefers-color-scheme: dark) {
+				.wrapper {
+					background-color: #3b3e45;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<object
+				class="logo"
+				data="../public/favicon.svg"
+				type="image/svg+xml"
+			></object>
+		</div>
+	</body>
+</html>

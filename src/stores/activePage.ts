@@ -4,6 +4,7 @@ export enum Page {
 	main,
 	edit,
 	export,
+	analytics,
 	history,
 	settings,
 	about,

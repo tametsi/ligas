@@ -73,7 +73,7 @@
 		class:layout-grid={layoutGrid}
 		class:layout-list={!layoutGrid}
 	>
-		{#each $activeSession.run.runners as runner}
+		{#each $activeSession.run.runners as runner (runner.id)}
 			<Runner {runner} edit row={!layoutGrid} />
 		{/each}
 	</div>

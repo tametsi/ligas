@@ -4,6 +4,7 @@ button {
 	border: none;
 	background-color: unset;
 	color: inherit;
+	text-align: inherit;
 
 	&:focus-visible {
 		outline: 5px solid a.$focus-color;

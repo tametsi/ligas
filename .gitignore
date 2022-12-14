@@ -2,6 +2,7 @@
 /coverage
 /dist
 /dist-ssr
+/dev-dist
 
 *todo*
 *__gi*

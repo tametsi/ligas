@@ -2,8 +2,11 @@
 
 import { defineConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { VitePWA } from 'vite-plugin-pwa';
+import * as manifest from './src/manifest.json';
 import { version } from './package.json';
 import * as path from 'path';
+import { env } from 'process';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,10 +20,20 @@ export default defineConfig({
 	server: {
 		port: 3000,
 	},
-	plugins: [svelte()],
+	plugins: [
+		svelte(),
+		VitePWA({
+			includeAssets: ['favicon.ico', 'favicon.svg', 'apple-icon-180.png'],
+			manifest: manifest,
+		}),
+	],
 	base: './',
 	define: {
-		__APP_VERSION__: JSON.stringify(version),
+		__APP_VERSION_STRING__: JSON.stringify(
+			env.GITHUB_SHA
+				? `Commit: ${process.env.GITHUB_SHA} (v${version})`
+				: `Version: ${version}`
+		),
 	},
 	test: {
 		globals: true,

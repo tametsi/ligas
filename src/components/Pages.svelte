@@ -4,6 +4,7 @@
 	import Edit from '@components/pages/Edit.svelte';
 	import About from '@components/pages/About.svelte';
 	import Export from '@components/pages/Export.svelte';
+	import Analytics from '@components/pages/Analytics.svelte';
 	import History from '@components/pages/History.svelte';
 	import Settings from './pages/Settings.svelte';
 
@@ -24,6 +25,7 @@
 <Main />
 <Edit />
 <Export />
+<Analytics />
 <History />
 <Settings />
 <About />

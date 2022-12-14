@@ -2,7 +2,7 @@
 	import Pages from '@components/Pages.svelte';
 	import Sidebar from '@components/layout/Sidebar.svelte';
 	import Navbar from '@components/layout/Navbar.svelte';
-	import CheckForUpdate from '@components/elements/CheckForUpdate.svelte';
+	import NewVersionAvailable from '@components/elements/NewVersionAvailable.svelte';
 	import sidebarOpened from '@stores/sidebarOpened';
 	import activeTheme, { Theme } from '@stores/activeTheme';
 
@@ -28,7 +28,7 @@
 		<Pages />
 	</div>
 
-	<CheckForUpdate />
+	<NewVersionAvailable />
 </div>
 
 <style lang="scss">

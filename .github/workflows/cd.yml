@@ -1,8 +1,8 @@
 name: CD
 
 on:
-  release:
-    types: [published, released, edited]
+  push:
+    branches: [stable]
   workflow_dispatch:
 
 jobs:
@@ -12,9 +12,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: stable
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
 
-      - run: npm ci
-      - run: npm run build
+      - run: pnpm i
+      - run: pnpm build
 
       - uses: JamesIves/github-pages-deploy-action@v4
         with:

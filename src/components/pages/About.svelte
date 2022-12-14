@@ -89,6 +89,11 @@
 			and TypeScript
 		</p>
 	</section>
+
+	<section>
+		<!-- svelte-ignore missing-declaration -->
+		<p>{__APP_VERSION_STRING__}</p>
+	</section>
 </BasePage>
 
 <style lang="scss">
