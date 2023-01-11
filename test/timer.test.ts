@@ -8,7 +8,7 @@ describe('Timer', () => {
 	});
 
 	it('starting', () => {
-		expect(timer.state).toBe(TimerState.stopped);
+		expect(timer.state).toBe(TimerState.reset);
 
 		const startTimestamp = timer.start();
 
@@ -23,7 +23,7 @@ describe('Timer', () => {
 
 		expect(timer['_stopTimestamp']).toBe(startTimestamp + runDuration);
 
-		expect(timer.state).toBe(TimerState.stopped);
+		expect(timer.state).toBe(TimerState.reset);
 		expect(runDuration).toBe(timer.getRunDuration());
 	});
 
@@ -52,7 +52,7 @@ describe('Timer', () => {
 		const runDuration = timer.stop();
 		const secondRunDuration = timer.stop();
 
-		expect(timer.state).toBe(TimerState.stopped);
+		expect(timer.state).toBe(TimerState.reset);
 
 		expect(startTimestamp).toBeTypeOf('number');
 		expect(startTimestamp).toBeTruthy();
@@ -68,26 +68,53 @@ describe('Timer', () => {
 		timer.start();
 		timer.reset();
 
-		expect(timer.state).toBe(TimerState.stopped);
+		expect(timer.state).toBe(TimerState.reset);
 		expect(timer['_startTimestamp']).toBeUndefined();
 		expect(timer['_stopTimestamp']).toBeUndefined();
 	});
 
-	it('toggle', () => {
-		timer.toggle();
+	it('pause (states)', () => {
+		timer.pause(); // start
 		expect(timer.state).toBe(TimerState.running);
-		timer.toggle();
-
-		expect(timer.state).toBe(TimerState.stopped);
 		expect(timer['_startTimestamp']).toBeTruthy();
-		let oldStartTimestamp = timer['_startTimestamp'];
-		expect(timer['_stopTimestamp']).toBeTruthy();
-
-		timer.toggle();
-		expect(timer.state).toBe(TimerState.running);
-		expect(timer['_startTimestamp']).toBeGreaterThanOrEqual(
-			oldStartTimestamp
-		);
+		expect(timer['_pauseStart']).toBeUndefined();
 		expect(timer['_stopTimestamp']).toBeUndefined();
+
+		timer.pause(); // pause
+		expect(timer.state).toBe(TimerState.paused);
+		expect(timer['_startTimestamp']).toBeTruthy();
+		expect(timer['_pauseStart']).toBeTruthy();
+		expect(timer['_pauseTimes'].length).toBe(0);
+		expect(timer['_stopTimestamp']).toBeUndefined();
+
+		timer.pause(); // unpause
+		expect(timer.state).toBe(TimerState.running);
+		expect(timer['_startTimestamp']).toBeTruthy();
+		expect(timer['_pauseStart']).toBeUndefined();
+		expect(timer['_pauseTimes'].length).toBe(1);
+		expect(timer['_stopTimestamp']).toBeUndefined();
+	});
+
+	it('pause (runtime calculation)', () => {
+		const timerAdvanceTimes = [1214, 7352, 4739];
+
+		vi.useFakeTimers({ now: 0, toFake: ['Date'] });
+		timer.pause(); // start
+
+		vi.advanceTimersByTime(timerAdvanceTimes[0]);
+		expect(timer.getRunDuration()).toBe(timerAdvanceTimes[0]);
+
+		timer.pause(); // pause
+
+		vi.advanceTimersByTime(timerAdvanceTimes[1]);
+		expect(timer.getRunDuration()).toBe(timerAdvanceTimes[0]);
+
+		timer.pause(); // unpause
+		vi.advanceTimersByTime(timerAdvanceTimes[2]);
+		expect(timer.getRunDuration()).toBe(
+			timerAdvanceTimes[0] + timerAdvanceTimes[2]
+		);
+
+		vi.useRealTimers();
 	});
 });
