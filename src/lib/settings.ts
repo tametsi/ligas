@@ -3,9 +3,18 @@ export enum Theme {
 	light,
 }
 
+export enum SessionLoading {
+	Never,
+	IncompleteSessions,
+	Always,
+}
+
 const storageId = 'settings';
 export default class Settings {
-	constructor(public theme = Theme.dark) {}
+	constructor(
+		public theme = Theme.dark,
+		public sessionLoading = SessionLoading.Never
+	) {}
 
 	/** Loads the settings from local storage */
 	static load() {
@@ -21,13 +30,14 @@ export default class Settings {
 
 	/** Creates new settings from an json-like object */
 	static fromJSON(json: ReturnType<Settings['toJSON']>) {
-		return new Settings(json.theme);
+		return new Settings(json.theme, json.sessionLoading);
 	}
 
 	/** Converts the settings to a json-like object */
 	toJSON() {
 		return {
 			theme: this.theme,
+			sessionLoading: this.sessionLoading,
 		};
 	}
 }

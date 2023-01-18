@@ -1,7 +1,7 @@
 import Settings from '@lib/settings';
 import { get } from 'svelte/store';
 import { createWriteableObjectStore } from './createStore';
-export { Theme } from '@lib/settings';
+export { Theme, SessionLoading } from '@lib/settings';
 
 const activeSettings = createWriteableObjectStore(
 	Settings.load() ?? new Settings()

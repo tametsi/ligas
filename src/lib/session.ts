@@ -1,6 +1,7 @@
 import History from '@lib/util/history';
 import Run from '@lib/run';
 import Timer from '@lib/timer';
+export { HistorySorting } from '@lib/util/history';
 
 export const sessionHistory = new History<
 	Session,
@@ -9,6 +10,7 @@ export const sessionHistory = new History<
 
 export default class Session {
 	constructor(public timer: Timer, public run: Run, public id?: string) {}
+	public completed = false;
 
 	/** Saves this session to history */
 	save() {
