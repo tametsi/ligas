@@ -1,10 +1,13 @@
 import Settings from '@lib/settings';
-import { get } from 'svelte/store';
 import { createWriteableObjectStore } from './createStore';
 export { Theme, SessionLoading } from '@lib/settings';
 
 const activeSettings = createWriteableObjectStore(
 	Settings.load() ?? new Settings()
 );
-window.addEventListener('beforeunload', () => get(activeSettings).save());
+window.addEventListener('storage', ({ key }) => {
+	if (key !== 'settings') return;
+	activeSettings.set(Settings.load());
+});
+activeSettings.subscribe(settings => settings.save());
 export default activeSettings;
