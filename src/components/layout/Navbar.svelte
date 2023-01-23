@@ -1,15 +1,19 @@
 <script lang="ts">
-	import { MenuIcon, XIcon, PlayIcon, PauseIcon } from 'svelte-feather-icons';
-	import Timer from '@components/elements/Timer.svelte';
 	import ThemePicker from '@components/elements/ThemePicker.svelte';
+	import Timer from '@components/elements/Timer.svelte';
 	import { TimerState } from '@lib/timer';
 	import activeSession from '@stores/activeSession';
 	import sidebarOpened from '@stores/sidebarOpened';
+	import {
+		MenuIcon,
+		PauseIcon,
+		PlayIcon,
+		RotateCcwIcon,
+		XIcon,
+	} from 'svelte-feather-icons';
 
-	function toggleTimer() {
-		activeSession.updateSelf(session => session.timer.toggle());
-	}
-
+	const pauseTimer = () => activeSession.updateSelf(x => x.timer.pause());
+	const resetTimer = () => activeSession.updateSelf(x => x.timer.reset());
 	function toggleSidebar() {
 		$sidebarOpened = !$sidebarOpened;
 	}
@@ -29,12 +33,15 @@
 	<div class="timer">
 		<ThemePicker />
 
-		<button on:click={toggleTimer}>
+		<button on:click={pauseTimer}>
 			{#if $activeSession.timer.state === TimerState.running}
 				<PauseIcon />
 			{:else}
 				<PlayIcon />
 			{/if}
+		</button>
+		<button on:click={resetTimer}>
+			<RotateCcwIcon />
 		</button>
 		<Timer />
 	</div>

@@ -1,12 +1,15 @@
 export enum TimerState {
-	stopped,
+	paused,
+	reset,
 	running,
 }
 
 export default class Timer {
 	private _startTimestamp: number;
 	private _stopTimestamp: number;
-	private _state = TimerState.stopped;
+	private _pauseStart: number;
+	private _pauseTimes: number[] = [];
+	private _state = TimerState.reset;
 
 	/** The timer`s current state */
 	get state() {
@@ -26,43 +29,61 @@ export default class Timer {
 		return this._startTimestamp;
 	}
 
+	/** Toggles pause state, starts the timer if reset */
+	pause() {
+		// start
+		if (this._state === TimerState.reset) return this.start();
+
+		// unpause
+		if (this._state === TimerState.paused) return this._unpause();
+
+		// pause
+		this._pause();
+	}
+
+	private _pause() {
+		this._state = TimerState.paused;
+		this._pauseStart = new Date().valueOf();
+	}
+	private _unpause() {
+		this._pauseTimes.push(new Date().valueOf() - this._pauseStart);
+		this._pauseStart = undefined;
+
+		this._state = TimerState.running;
+	}
+
 	/**
 	 * Stops the timer.
 	 * @returns the timer´s run duration equal to `getRunDuration()` or -1 if failed
 	 */
 	stop() {
-		if (this.state === TimerState.stopped) return -1;
+		if (this.state === TimerState.reset) return -1;
 
 		this._stopTimestamp = new Date().valueOf();
-		this._state = TimerState.stopped;
+		this._state = TimerState.reset;
 
 		return this.getRunDuration();
-	}
-
-	toggle() {
-		switch (this.state) {
-			case TimerState.running:
-				this.stop();
-				break;
-			case TimerState.stopped:
-				this.reset();
-				this.start();
-				break;
-		}
 	}
 
 	/** Resets the timer. */
 	reset() {
 		this._startTimestamp = undefined;
 		this._stopTimestamp = undefined;
-		this._state = TimerState.stopped;
+		this._pauseTimes = [];
+		this._pauseStart = undefined;
+		this._state = TimerState.reset;
 	}
 
 	/** @returns the total timer`s run duration */
 	getRunDuration(): number {
-		return (
-			(this._stopTimestamp ?? new Date().valueOf()) - this._startTimestamp
-		);
+		const now = new Date().valueOf();
+		// calculate pauses
+		let totalPause = this._pauseTimes.reduce((prev, x) => prev + x, 0);
+
+		if (this.state === TimerState.paused)
+			totalPause += now - this._pauseStart;
+
+		return (this._stopTimestamp ?? now) - this._startTimestamp - totalPause;
 	}
 
 	/** Creates a new timer from an json-like object */
