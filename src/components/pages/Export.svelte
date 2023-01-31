@@ -10,7 +10,7 @@
 	}
 </script>
 
-<BasePage page={Page.export}>
+<BasePage page={Page.Export}>
 	<form on:submit|preventDefault={exportData}>
 		<figure>
 			<figcaption>Export data</figcaption>

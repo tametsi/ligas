@@ -6,7 +6,7 @@
 	import activeSettings, { SessionLoading } from '@stores/activeSettings';
 </script>
 
-<BasePage page={Page.settings}>
+<BasePage page={Page.Settings}>
 	<form on:submit|preventDefault>
 		<figure>
 			<figcaption>Settings</figcaption>

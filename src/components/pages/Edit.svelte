@@ -19,7 +19,7 @@
 	}
 </script>
 
-<BasePage page={Page.edit}>
+<BasePage page={Page.Edit}>
 	<form on:submit|preventDefault>
 		<figure>
 			<figcaption>Run Details</figcaption>

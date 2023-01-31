@@ -10,7 +10,7 @@
 	import BasePage from '@components/pages/BasePage.svelte';
 </script>
 
-<BasePage page={Page.about}>
+<BasePage page={Page.About}>
 	<h2>About</h2>
 
 	<section>

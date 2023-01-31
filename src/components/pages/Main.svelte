@@ -5,7 +5,7 @@
 	import BasePage from '@components/pages/BasePage.svelte';
 </script>
 
-<BasePage page={Page.main}>
+<BasePage page={Page.Main}>
 	<div class="runners">
 		{#each $activeSession.run.runners as runner}
 			<Runner {runner} />

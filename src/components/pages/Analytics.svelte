@@ -23,7 +23,7 @@
 	};
 </script>
 
-<BasePage page={Page.analytics}>
+<BasePage page={Page.Analytics}>
 	{#if $activeSession.run.runners.length != 0}
 		<form on:submit|preventDefault>
 			<figure>

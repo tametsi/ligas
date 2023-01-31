@@ -23,7 +23,7 @@
 	sessionHistory.onUpdate = reload;
 </script>
 
-<BasePage page={Page.history}>
+<BasePage page={Page.History}>
 	<form on:submit|preventDefault>
 		<figure>
 			<figcaption>Run History</figcaption>
