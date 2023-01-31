@@ -12,7 +12,7 @@
 		const hash = window.location.hash.substring(1);
 		if (!Object.keys(Page).includes(hash)) return;
 
-		$activePage = Page[hash as keyof typeof Page] ?? Page.main;
+		$activePage = Page[hash as keyof typeof Page] ?? Page.Main;
 	}
 	checkHash();
 

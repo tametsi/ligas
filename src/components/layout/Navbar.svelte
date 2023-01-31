@@ -31,7 +31,7 @@
 
 	<div class="timer">
 		<button on:click={pauseTimer}>
-			{#if $activeSession.timer.state === TimerState.running}
+			{#if $activeSession.timer.state === TimerState.Running}
 				<PauseIcon />
 			{:else}
 				<PlayIcon />

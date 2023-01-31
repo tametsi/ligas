@@ -11,11 +11,11 @@
 		const updateTime = () => (time = formatTime(timer.getRunDuration()));
 		updateTime();
 
-		if (timer.state === TimerState.running && interval === undefined)
+		if (timer.state === TimerState.Running && interval === undefined)
 			interval = setInterval(updateTime, 100, undefined);
 		else if (
-			(timer.state === TimerState.reset ||
-				timer.state === TimerState.paused) &&
+			(timer.state === TimerState.Reset ||
+				timer.state === TimerState.Paused) &&
 			interval >= 0
 		) {
 			clearInterval(interval);

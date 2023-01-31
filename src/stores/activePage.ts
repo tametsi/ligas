@@ -1,13 +1,13 @@
 import { writable } from 'svelte/store';
 
 export enum Page {
-	main,
-	edit,
-	export,
-	analytics,
-	history,
-	settings,
-	about,
+	Main,
+	Edit,
+	Export,
+	Analytics,
+	History,
+	Settings,
+	About,
 }
 
-export default writable<Page>(Page.main);
+export default writable<Page>(Page.Main);

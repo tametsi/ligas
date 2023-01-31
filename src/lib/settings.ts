@@ -1,6 +1,6 @@
 export enum Theme {
-	dark,
-	light,
+	Dark,
+	Light,
 }
 
 export enum SessionLoading {
@@ -12,7 +12,7 @@ export enum SessionLoading {
 const storageId = 'settings';
 export default class Settings {
 	constructor(
-		public theme = Theme.dark,
+		public theme = Theme.Dark,
 		public sessionLoading = SessionLoading.Never
 	) {}
 

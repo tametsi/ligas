@@ -22,7 +22,7 @@
 	update();
 
 	function finishRound() {
-		if ($activeSession.timer.state === TimerState.running && !edit) {
+		if ($activeSession.timer.state === TimerState.Running && !edit) {
 			runner.rounds.addByTime($activeSession.timer.getRunDuration());
 			update();
 		}
