@@ -6,6 +6,7 @@ export enum Page {
 	export,
 	analytics,
 	history,
+	settings,
 	about,
 }
 

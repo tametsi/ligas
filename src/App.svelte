@@ -4,14 +4,13 @@
 	import Navbar from '@components/layout/Navbar.svelte';
 	import NewVersionAvailable from '@components/elements/NewVersionAvailable.svelte';
 	import sidebarOpened from '@stores/sidebarOpened';
-	import activeTheme, { Theme } from '@stores/activeTheme';
+	import activeSettings, { Theme } from '@stores/activeSettings';
 
-	activeTheme.subscribe(x => {
+	activeSettings.subscribe(settings => {
 		document.body.classList.forEach(x => {
 			if (x.startsWith('theme-')) document.body.classList.remove(x);
 		});
-
-		document.body.classList.add(`theme-${Theme[x]}`);
+		document.body.classList.add(`theme-${Theme[settings.theme]}`);
 	});
 </script>
 

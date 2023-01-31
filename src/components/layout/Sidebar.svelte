@@ -7,6 +7,7 @@
 		ActivityIcon,
 		BookIcon,
 		BookOpenIcon,
+		SettingsIcon,
 	} from 'svelte-feather-icons';
 	import activePage, { Page } from '@stores/activePage';
 </script>
@@ -45,6 +46,11 @@
 		</li>
 	</div>
 	<div>
+		<li>
+			<a href="#settings" class:active={$activePage === Page.settings}>
+				<SettingsIcon class="icon-in-text" /> Settings
+			</a>
+		</li>
 		<li>
 			<a href="#about" class:active={$activePage === Page.about}>
 				<CoffeeIcon class="icon-in-text" /> About

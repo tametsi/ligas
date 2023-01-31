@@ -1,5 +1,4 @@
 <script lang="ts">
-	import ThemePicker from '@components/elements/ThemePicker.svelte';
 	import Timer from '@components/elements/Timer.svelte';
 	import { TimerState } from '@lib/timer';
 	import activeSession from '@stores/activeSession';
@@ -31,8 +30,6 @@
 	<h1>LIGAS</h1>
 
 	<div class="timer">
-		<ThemePicker />
-
 		<button on:click={pauseTimer}>
 			{#if $activeSession.timer.state === TimerState.running}
 				<PauseIcon />
