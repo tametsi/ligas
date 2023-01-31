@@ -3,7 +3,9 @@
 	import BasePage from '@components/pages/BasePage.svelte';
 	import FormItem from '@components/elements/FormItem.svelte';
 	import { HistorySorting } from '@lib/util/history';
-	import { sessionHistory } from '@lib/session';
+	import Session, { sessionHistory } from '@lib/session';
+	import Timer from '@lib/timer';
+	import Run from '@lib/run';
 	import activeSession from '@stores/activeSession';
 	import HistoryEntry from '@components/elements/HistoryEntry.svelte';
 
@@ -49,6 +51,14 @@
 				Empty sessions are sessions without runners.
 			</svelte:fragment>
 		</FormItem>
+		<button
+			class="button"
+			on:click={() => {
+				$activeSession.save();
+				$activeSession = new Session(new Timer(), new Run());
+			}}
+			>New Run
+		</button>
 	</form>
 
 	{#each entries as [id, { content: session, content: { timer, run }, created, lastChanged }]}
