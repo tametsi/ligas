@@ -8,10 +8,10 @@ import activeSettings, { SessionLoading } from './activeSettings';
 const lastSessionEntry = sessionHistory.getEntriesSorted(
 	HistorySorting.ModificationDescending
 )[0];
-const lastSession = Session.fromJSON(
-	lastSessionEntry[1].content,
-	lastSessionEntry[0]
-);
+const lastSession =
+	lastSessionEntry === undefined
+		? new Session(new Timer(), new Run())
+		: Session.fromJSON(lastSessionEntry[1].content, lastSessionEntry[0]);
 
 const loading = get(activeSettings).sessionLoading;
 const activeSession = createWriteableObjectStore(
