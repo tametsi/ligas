@@ -13,7 +13,11 @@
 
 		if (timer.state === TimerState.running && interval === undefined)
 			interval = setInterval(updateTime, 100, undefined);
-		else if (timer.state === TimerState.stopped && interval >= 0) {
+		else if (
+			(timer.state === TimerState.reset ||
+				timer.state === TimerState.paused) &&
+			interval >= 0
+		) {
 			clearInterval(interval);
 			interval = undefined;
 			updateTime();
