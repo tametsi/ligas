@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { Page } from '@stores/activePage';
-	import activeSession from '@stores/activeSession';
 	import Runner from '@components/elements/Runner.svelte';
 	import BasePage from '@components/pages/BasePage.svelte';
+	import activeSession from '@stores/activeSession';
+	import { link } from 'svelte-spa-router';
 </script>
 
-<BasePage page={Page.Main}>
+<BasePage>
 	<div class="runners">
 		{#each $activeSession.run.runners as runner}
 			<Runner {runner} />
 		{:else}
 			<p>
 				No runners created yet.
-				<a href="#edit">Change it!</a>
+				<a href="/edit" use:link>Change it!</a>
 			</p>
 		{/each}
 	</div>

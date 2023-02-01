@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { Page } from '@stores/activePage';
-	import BasePage from '@components/pages/BasePage.svelte';
-	import activeSession from '@stores/activeSession';
 	import FormItem from '@components/elements/FormItem.svelte';
+	import BasePage from '@components/pages/BasePage.svelte';
 	import type Runner from '@lib/runner';
+	import activeSession from '@stores/activeSession';
 	import Chart from 'svelte-frappe-charts';
+	import { link } from 'svelte-spa-router';
 
 	let selectedRunner: Runner;
 	//avoid having an invalid runner (not in run.runners)
@@ -23,7 +23,7 @@
 	};
 </script>
 
-<BasePage page={Page.Analytics}>
+<BasePage>
 	{#if $activeSession.run.runners.length != 0}
 		<form on:submit|preventDefault>
 			<figure>
@@ -88,7 +88,9 @@
 	{:else}
 		<article>
 			<h2>Analytics</h2>
-			<p>No runners created yet. <a href="#edit">Change it!</a></p>
+			<p>
+				No runners created yet. <a href="/edit" use:link>Change it!</a>
+			</p>
 		</article>
 	{/if}
 </BasePage>

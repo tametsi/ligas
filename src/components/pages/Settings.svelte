@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { Page } from '../../stores/activePage';
 	import BasePage from './BasePage.svelte';
 	import FormItem from '@components/elements/FormItem.svelte';
 	import ThemePicker from '@components/elements/ThemePicker.svelte';
 	import activeSettings, { SessionLoading } from '@stores/activeSettings';
 </script>
 
-<BasePage page={Page.Settings}>
+<BasePage>
 	<form on:submit|preventDefault>
 		<figure>
 			<figcaption>Settings</figcaption>

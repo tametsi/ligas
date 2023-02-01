@@ -9,50 +9,48 @@
 		BookOpenIcon,
 		SettingsIcon,
 	} from 'svelte-feather-icons';
-	import activePage, { Page } from '@stores/activePage';
+	import { link } from 'svelte-spa-router';
+	import active from 'svelte-spa-router/active';
 </script>
 
 <ul>
 	<div>
 		<li>
-			<a href="#main" class:active={$activePage === Page.Main}>
+			<a href="/" use:link use:active>
 				<HomeIcon class="icon-in-text" /> Main
 			</a>
 		</li>
 		<li>
-			<a href="#edit" class:active={$activePage === Page.Edit}>
+			<a href="/edit" use:link use:active>
 				<Edit2Icon class="icon-in-text" /> Edit
 			</a>
 		</li>
 		<li>
-			<a href="#export" class:active={$activePage === Page.Export}>
+			<a href="/export" use:link use:active>
 				<DatabaseIcon class="icon-in-text" /> Export
 			</a>
 		</li>
 		<li>
-			<a href="#analytics" class:active={$activePage === Page.Analytics}>
+			<a href="/analytics" use:link use:active>
 				<ActivityIcon class="icon-in-text" /> Analytics
 			</a>
 		</li>
 		<li>
-			<a href="#history" class:active={$activePage === Page.History}>
-				{#if $activePage === Page.History}
-					<BookOpenIcon class="icon-in-text" />
-				{:else}
-					<BookIcon class="icon-in-text" />
-				{/if}
+			<a href="/history" use:link use:active>
+				<BookOpenIcon class="icon-in-text active-icon" />
+				<BookIcon class="icon-in-text inactive-icon" />
 				History
 			</a>
 		</li>
 	</div>
 	<div>
 		<li>
-			<a href="#settings" class:active={$activePage === Page.Settings}>
+			<a href="/settings" use:link use:active>
 				<SettingsIcon class="icon-in-text" /> Settings
 			</a>
 		</li>
 		<li>
-			<a href="#about" class:active={$activePage === Page.About}>
+			<a href="/about" use:link use:active>
 				<CoffeeIcon class="icon-in-text" /> About
 			</a>
 		</li>
@@ -96,9 +94,23 @@
 				letter-spacing: -0.1rem;
 			}
 
-			&.active {
+			:global(.inactive-icon) {
+				display: inline-block;
+			}
+			:global(.active-icon) {
+				display: none;
+			}
+			// :global() because class will be added by the router
+			&:global(.active) {
 				background-color: var(--clr-bg3);
 				color: var(--clr-accent-light);
+
+				:global(.active-icon) {
+					display: inline-block;
+				}
+				:global(.inactive-icon) {
+					display: none;
+				}
 			}
 		}
 	}

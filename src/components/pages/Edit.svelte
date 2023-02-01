@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Page } from '@stores/activePage';
 	import activeSession from '@stores/activeSession';
 	import FormItem from '@components/elements/FormItem.svelte';
 	import Runner from '@components/elements/Runner.svelte';
@@ -19,7 +18,7 @@
 	}
 </script>
 
-<BasePage page={Page.Edit}>
+<BasePage>
 	<form on:submit|preventDefault>
 		<figure>
 			<figcaption>Run Details</figcaption>

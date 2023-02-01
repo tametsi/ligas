@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Page } from '@stores/activePage';
+	import BasePage from '@components/pages/BasePage.svelte';
 	import {
 		FeatherIcon,
 		GithubIcon,
@@ -7,10 +7,9 @@
 		CpuIcon,
 		HeartIcon,
 	} from 'svelte-feather-icons';
-	import BasePage from '@components/pages/BasePage.svelte';
 </script>
 
-<BasePage page={Page.About}>
+<BasePage>
 	<h2>About</h2>
 
 	<section>

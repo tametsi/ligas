@@ -11,6 +11,7 @@ specifiers:
   svelte-feather-icons: ^4.0.0
   svelte-frappe-charts: ^1.10.0
   svelte-preprocess: ^5.0.0
+  svelte-spa-router: ^3.3.0
   tslib: ^2.4.1
   typescript: ^4.9.4
   vite: ^4.0.1
@@ -29,6 +30,7 @@ devDependencies:
   svelte-feather-icons: 4.0.0
   svelte-frappe-charts: 1.10.0_svelte@3.55.0
   svelte-preprocess: 5.0.0_w4bde2rvgeyvumrvkf4nnr7gzi
+  svelte-spa-router: 3.3.0
   tslib: 2.4.1
   typescript: 4.9.4
   vite: 4.0.1_sass@1.56.2
@@ -2686,6 +2688,11 @@ packages:
       functions-have-names: 1.2.3
     dev: true
 
+  /regexparam/2.0.1:
+    resolution: {integrity: sha512-zRgSaYemnNYxUv+/5SeoHI0eJIgTL/A2pUtXUPLHQxUldagouJ9p+K6IbIZ/JiQuCEv2E2B1O11SjVQy3aMCkw==}
+    engines: {node: '>=8'}
+    dev: true
+
   /regexpu-core/5.2.2:
     resolution: {integrity: sha512-T0+1Zp2wjF/juXMrMxHxidqGYn8U4R+zleSJhX9tQ1PUsS8a9UtYfbsF9LdiVgNX3kiX8RNaKM42nfSgvFJjmw==}
     engines: {node: '>=4'}
@@ -3097,6 +3104,12 @@ packages:
       strip-indent: 3.0.0
       svelte: 3.55.0
       typescript: 4.9.4
+    dev: true
+
+  /svelte-spa-router/3.3.0:
+    resolution: {integrity: sha512-cwRNe7cxD43sCvSfEeaKiNZg3FCizGxeMcf7CPiWRP3jKXjEma3vxyyuDtPOam6nWbVxl9TNM3hlE/i87ZlqcQ==}
+    dependencies:
+      regexparam: 2.0.1
     dev: true
 
   /svelte/3.55.0:

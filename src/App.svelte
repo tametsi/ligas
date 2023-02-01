@@ -1,10 +1,11 @@
 <script lang="ts">
-	import Pages from '@components/Pages.svelte';
 	import Sidebar from '@components/layout/Sidebar.svelte';
 	import Navbar from '@components/layout/Navbar.svelte';
 	import NewVersionAvailable from '@components/elements/NewVersionAvailable.svelte';
 	import sidebarOpened from '@stores/sidebarOpened';
 	import activeSettings, { Theme } from '@stores/activeSettings';
+	import Router from 'svelte-spa-router';
+	import routes from './routes';
 
 	activeSettings.subscribe(settings => {
 		document.body.classList.forEach(x => {
@@ -24,7 +25,7 @@
 	</aside>
 
 	<div class="pages">
-		<Pages />
+		<Router {routes} />
 	</div>
 
 	<NewVersionAvailable />

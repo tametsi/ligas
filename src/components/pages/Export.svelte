@@ -1,6 +1,5 @@
 <script lang="ts">
 	import activeSession from '@stores/activeSession';
-	import { Page } from '@stores/activePage';
 	import BasePage from '@components/pages/BasePage.svelte';
 	import HeadedTable from '@components/elements/HeadedTable.svelte';
 	import { downloadCsv } from '@lib/util/downloadFile';
@@ -10,7 +9,7 @@
 	}
 </script>
 
-<BasePage page={Page.Export}>
+<BasePage>
 	<form on:submit|preventDefault={exportData}>
 		<figure>
 			<figcaption>Export data</figcaption>

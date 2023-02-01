@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Page } from '@stores/activePage';
 	import BasePage from '@components/pages/BasePage.svelte';
 	import FormItem from '@components/elements/FormItem.svelte';
 	import { HistorySorting } from '@lib/util/history';
@@ -23,7 +22,7 @@
 	sessionHistory.onUpdate = reload;
 </script>
 
-<BasePage page={Page.History}>
+<BasePage>
 	<form on:submit|preventDefault>
 		<figure>
 			<figcaption>Run History</figcaption>
