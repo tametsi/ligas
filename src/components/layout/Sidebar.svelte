@@ -11,47 +11,54 @@
 	} from 'svelte-feather-icons';
 	import { link } from 'svelte-spa-router';
 	import active from 'svelte-spa-router/active';
+	import { _ } from '@lib/util/translations';
 </script>
 
 <ul>
 	<div>
 		<li>
 			<a href="/" use:link use:active>
-				<HomeIcon class="icon-in-text" /> Main
+				<HomeIcon class="icon-in-text" />
+				{$_('main.title')}
 			</a>
 		</li>
 		<li>
 			<a href="/edit" use:link use:active>
-				<Edit2Icon class="icon-in-text" /> Edit
+				<Edit2Icon class="icon-in-text" />
+				{$_('edit.title')}
 			</a>
 		</li>
 		<li>
 			<a href="/export" use:link use:active>
-				<DatabaseIcon class="icon-in-text" /> Export
+				<DatabaseIcon class="icon-in-text" />
+				{$_('export.title')}
 			</a>
 		</li>
 		<li>
 			<a href="/analytics" use:link use:active>
-				<ActivityIcon class="icon-in-text" /> Analytics
+				<ActivityIcon class="icon-in-text" />
+				{$_('analytics.title')}
 			</a>
 		</li>
 		<li>
 			<a href="/history" use:link use:active>
 				<BookOpenIcon class="icon-in-text active-icon" />
 				<BookIcon class="icon-in-text inactive-icon" />
-				History
+				{$_('history.title')}
 			</a>
 		</li>
 	</div>
 	<div>
 		<li>
 			<a href="/settings" use:link use:active>
-				<SettingsIcon class="icon-in-text" /> Settings
+				<SettingsIcon class="icon-in-text" />
+				{$_('settings.title')}
 			</a>
 		</li>
 		<li>
 			<a href="/about" use:link use:active>
-				<CoffeeIcon class="icon-in-text" /> About
+				<CoffeeIcon class="icon-in-text" />
+				{$_('about.title')}
 			</a>
 		</li>
 	</div>

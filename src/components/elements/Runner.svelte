@@ -3,6 +3,7 @@
 	import formatTime from '@lib/util/formatTime';
 	import { TimerState } from '@lib/timer';
 	import activeSession from '@stores/activeSession';
+	import { _ } from '@lib/util/translations';
 
 	export let runner: Runner;
 	export let edit = false;
@@ -29,7 +30,7 @@
 	}
 
 	function deleteSelf() {
-		if (confirm('Do you really want to delete this runner?'))
+		if (confirm($_('runner.delete_prompt')))
 			activeSession.updateSelf(session =>
 				session.run.deleteRunner(runner.id)
 			);
@@ -46,7 +47,7 @@
 	<div class="details">
 		{#if edit}
 			<button on:click={deleteSelf} class="button small warning">
-				Delete
+				{$_('runner.delete')}
 			</button>
 		{:else}
 			<span class="rounds">{roundsCounted}</span>

@@ -4,6 +4,7 @@
 	import Session, { sessionHistory } from '@lib/session';
 	import activeSession from '@stores/activeSession';
 	import type Run from '@lib/run';
+	import { _ } from '@lib/util/translations';
 
 	export let id: string,
 		timer: ReturnType<Timer['toJSON']>,
@@ -19,9 +20,9 @@
 	) {
 		if (
 			confirm(
-				`Do you really want to ${
-					copy ? 'copy' : 'load'
-				} that session? Your current session will be lost!`
+				`${$_('history.entry.load_prompt.0')} ${
+					copy ? $_('history.entry.copy') : $_('history.entry.load')
+				}${$_('history.entry.load_prompt.1')}`
 			)
 		) {
 			$activeSession.delete();
@@ -31,7 +32,7 @@
 	}
 
 	function deleteSession(id: string) {
-		if (confirm('Do you really want to delete this session?'))
+		if (confirm($_('history.entry.delete_prompt')))
 			sessionHistory.removeEntry(id);
 	}
 </script>
@@ -40,38 +41,44 @@
 	<div class="content">
 		<div class="session">
 			<p>
-				Time:
+				{$_('history.entry.time')}
 				<b>{formatTime(Timer.fromJSON(timer).getRunDuration())}</b>
 			</p>
 
-			<p>Runners:</p>
+			<p>{$_('history.entry.runners')}:</p>
 			<div class="runners">
 				{#each run.runners as runner}
 					<div class="runner">
-						<p>Name: <b>{runner.name}</b></p>
+						<p>{$_('runner.stats.name')}: <b>{runner.name}</b></p>
 						{#if runner.alias}
-							<p>Alias: <b>{runner.alias}</b></p>
+							<p>
+								{$_('runner.stats.alias')}:
+								<b>{runner.alias}</b>
+							</p>
 						{/if}
 						<p>
-							Rounds: <b>{runner.rounds.rounds.length}</b>
+							{$_('runner.stats.rounds')}:
+							<b>{runner.rounds.rounds.length}</b>
 						</p>
 					</div>
 				{:else}
-					<p class="runner">None</p>
+					<p class="runner">{$_('history.entry.none')}</p>
 				{/each}
 			</div>
 
 			<p>
-				Round Length: <b>{run.roundLength}</b>
+				{$_('edit.round_length')}: <b>{run.roundLength}</b>
 			</p>
 		</div>
 
 		<div class="dates">
 			<p>
-				Last modified: <b>{new Date(lastChanged).toLocaleString()}</b>
+				{$_('history.entry.last_modified')}:
+				<b>{new Date(lastChanged).toLocaleString()}</b>
 			</p>
 			<p>
-				Created: <b>{new Date(created).toLocaleString()}</b>
+				{$_('history.entry.created')}:
+				<b>{new Date(created).toLocaleString()}</b>
 			</p>
 		</div>
 	</div>
@@ -81,21 +88,21 @@
 		class="button small"
 		title="Loads this session. This session will be modified."
 	>
-		Load
+		{$_('history.entry.load')}
 	</button>
 	<button
 		on:click={() => loadSession(id, session, true)}
 		class="button small"
 		title="Copies this session and loads the copy. This session will stay untouched."
 	>
-		Copy & Load
+		{$_('history.entry.copy')} & {$_('history.entry.load')}
 	</button>
 	<button
 		on:click={() => deleteSession(id)}
 		class="button small warning"
 		title="Deletes this session."
 	>
-		Delete
+		{$_('history.entry.delete')}
 	</button>
 </div>
 

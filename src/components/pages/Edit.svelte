@@ -4,6 +4,7 @@
 	import Runner from '@components/elements/Runner.svelte';
 	import BasePage from '@components/pages/BasePage.svelte';
 	import { GridIcon, ListIcon } from 'svelte-feather-icons';
+	import { _ } from '@lib/util/translations';
 
 	let layoutGrid = true;
 	let newRunner = {
@@ -21,16 +22,14 @@
 <BasePage>
 	<form on:submit|preventDefault>
 		<figure>
-			<figcaption>Run Details</figcaption>
-			<FormItem name="Round Length">
+			<figcaption>{$_('edit.run_details')}</figcaption>
+			<FormItem name={$_('edit.round_length')}>
 				<input
 					type="number"
 					bind:value={$activeSession.run.roundLength}
 				/>
 				<svelte:fragment slot="details">
-					Specify the length of a single round to give LIGAS the
-					possibility to calculate the complete route length the
-					runners passed.
+					{$_('edit.round_length_description')}
 				</svelte:fragment>
 			</FormItem>
 		</figure>
@@ -38,21 +37,21 @@
 
 	<form on:submit|preventDefault={addRunner}>
 		<figure>
-			<figcaption>Add Runner</figcaption>
-			<FormItem name="Name">
+			<figcaption>{$_('edit.add_runner')}</figcaption>
+			<FormItem name={$_('runner.stats.name')}>
 				<input type="text" required bind:value={newRunner.name} />
 			</FormItem>
-			<FormItem name="Alias">
+			<FormItem name={$_('runner.stats.alias')}>
 				<input type="text" bind:value={newRunner.alias} />
 				<svelte:fragment slot="details">
-					The alias will be shown if provided. The name can also be
-					seen. Both, the name and the alias are listed in the round
-					data.
+					{$_('edit.alias_description')}
 				</svelte:fragment>
 			</FormItem>
 
 			<div class="form-controls">
-				<button type="submit" class="button">Add Runner</button>
+				<button type="submit" class="button"
+					>{$_('edit.add_runner')}</button
+				>
 			</div>
 		</figure>
 	</form>

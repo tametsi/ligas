@@ -5,6 +5,8 @@
 	import activeSession from '@stores/activeSession';
 	import Chart from 'svelte-frappe-charts';
 	import { link } from 'svelte-spa-router';
+	import { get } from 'svelte/store';
+	import { _ } from '@lib/util/translations';
 
 	let selectedRunner: Runner;
 	//avoid having an invalid runner (not in run.runners)
@@ -14,7 +16,9 @@
 		? selectedRunner
 		: $activeSession.run.runners[0];
 	$: data = {
-		labels: selectedRunner?.rounds.all.map((_, i) => `Round: ${i + 1}`),
+		labels: selectedRunner?.rounds.all.map(
+			(_v, i) => `${get(_)('analytics.round')}: ${i + 1}`
+		),
 		datasets: [
 			{
 				values: selectedRunner?.rounds.all.map(v => v / 1000),
@@ -27,8 +31,8 @@
 	{#if $activeSession.run.runners.length != 0}
 		<form on:submit|preventDefault>
 			<figure>
-				<figcaption>Analytics</figcaption>
-				<FormItem name="Select Runner">
+				<figcaption>{$_('analytics.title')}</figcaption>
+				<FormItem name={$_('analytics.select_runner')}>
 					<select bind:value={selectedRunner}>
 						{#each $activeSession.run.runners as runner}
 							<option value={runner}>{runner.name}</option>
@@ -41,30 +45,30 @@
 		<table>
 			<tbody>
 				<tr>
-					<td>Name</td>
+					<td>{$_('runner.stats.name')}</td>
 					<td>{selectedRunner?.name ?? '-'}</td>
 				</tr>
 				<tr>
-					<td>Alias</td>
+					<td>{$_('runner.stats.alias')}</td>
 					<td>{selectedRunner?.alias ?? '-'}</td>
 				</tr>
 				<tr>
-					<td>Rounds</td>
+					<td>{$_('runner.stats.rounds')}</td>
 					<td>{selectedRunner?.rounds.count ?? '-'}</td>
 				</tr>
 				<tr>
-					<td>Distance</td>
+					<td>{$_('runner.stats.distance')}</td>
 					<td>{selectedRunner?.distance ?? '-'}</td>
 				</tr>
 				<tr>
-					<td>Avarage Roundtime</td>
+					<td>{$_('runner.stats.average_roundtime')}</td>
 					<td
 						>{Math.round(selectedRunner?.rounds.averageTime ?? 0) /
 							1000}s</td
 					>
 				</tr>
 				<tr>
-					<td>Fastest Round</td>
+					<td>{$_('runner.stats.fastest_round')}</td>
 					<td
 						>{selectedRunner?.rounds.count !== 0
 							? Math.min(...(selectedRunner?.rounds.all ?? [0])) /
@@ -73,7 +77,7 @@
 					>
 				</tr>
 				<tr>
-					<td>Slowest Round</td>
+					<td>{$_('runner.stats.slowest_round')}</td>
 					<td>
 						{selectedRunner?.rounds.count !== 0
 							? Math.max(...(selectedRunner?.rounds.all ?? [0])) /
@@ -87,9 +91,10 @@
 		<Chart {data} type="line" lineOptions={{ regionFill: 1 }} />
 	{:else}
 		<article>
-			<h2>Analytics</h2>
+			<h2>{$_('analytics.title')}</h2>
 			<p>
-				No runners created yet. <a href="/edit" use:link>Change it!</a>
+				{$_('main.no_runners')}
+				<a href="/edit" use:link>{$_('main.change_it')}</a>
 			</p>
 		</article>
 	{/if}

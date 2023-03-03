@@ -25,6 +25,7 @@
 		"svelte-check": "^2.10.2",
 		"svelte-feather-icons": "^4.0.0",
 		"svelte-frappe-charts": "^1.10.0",
+		"svelte-i18n": "^3.6.0",
 		"svelte-preprocess": "^5.0.0",
 		"svelte-spa-router": "^3.3.0",
 		"tslib": "^2.4.1",

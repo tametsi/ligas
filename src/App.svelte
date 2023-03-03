@@ -6,6 +6,7 @@
 	import activeSettings, { Theme } from '@stores/activeSettings';
 	import Router from 'svelte-spa-router';
 	import routes from './routes';
+	import { setupTranslations } from '@lib/util/translations';
 
 	activeSettings.subscribe(settings => {
 		document.body.classList.forEach(x => {
@@ -13,6 +14,7 @@
 		});
 		document.body.classList.add(`theme-${Theme[settings.theme]}`);
 	});
+	setupTranslations();
 </script>
 
 <div class="wrapper" class:sidebar-closed={!$sidebarOpened}>

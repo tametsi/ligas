@@ -3,6 +3,7 @@
 	import BasePage from '@components/pages/BasePage.svelte';
 	import activeSession from '@stores/activeSession';
 	import { link } from 'svelte-spa-router';
+	import { _ } from '@lib/util/translations';
 </script>
 
 <BasePage>
@@ -11,8 +12,8 @@
 			<Runner {runner} />
 		{:else}
 			<p>
-				No runners created yet.
-				<a href="/edit" use:link>Change it!</a>
+				{$_('main.no_runners')}
+				<a href="/edit" use:link>{$_('main.change_it')}</a>
 			</p>
 		{/each}
 	</div>

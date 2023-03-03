@@ -7,6 +7,7 @@
 	import Run from '@lib/run';
 	import activeSession from '@stores/activeSession';
 	import HistoryEntry from '@components/elements/HistoryEntry.svelte';
+	import { _ } from '@lib/util/translations';
 
 	let currentSorting = HistorySorting.ModificationDescending;
 	let excludeEmptySessions = true;
@@ -25,29 +26,29 @@
 <BasePage>
 	<form on:submit|preventDefault>
 		<figure>
-			<figcaption>Run History</figcaption>
+			<figcaption>{$_('history.title')}</figcaption>
 		</figure>
-		<FormItem name="Sort By">
+		<FormItem name={$_('history.sorting.title')}>
 			<select bind:value={currentSorting} on:change={reload}>
 				<option value={HistorySorting.ModificationDescending}>
-					Modification Date: Newest to oldest
+					{$_('history.sorting.modification_descending')}
 				</option>
 				<option value={HistorySorting.ModificationAscending}>
-					Modification Date: Oldest to newest
+					{$_('history.sorting.modification_ascending')}
 				</option>
 				<option value={HistorySorting.CreationDescending}>
-					Creation Date: Newest to oldest
+					{$_('history.sorting.creation_descending')}
 				</option>
 				<option value={HistorySorting.CreationAscending}>
-					Creation Date: Oldest to newest
+					{$_('history.sorting.creation_ascending')}
 				</option>
 			</select>
 		</FormItem>
 
-		<FormItem name="Exclude Empty Sessions">
+		<FormItem name={$_('history.empty_sessions')}>
 			<input type="checkbox" bind:checked={excludeEmptySessions} />
 			<svelte:fragment slot="details">
-				Empty sessions are sessions without runners.
+				{$_('history.empty_sessions_description')}
 			</svelte:fragment>
 		</FormItem>
 		<button
@@ -56,7 +57,7 @@
 				$activeSession.save();
 				$activeSession = new Session(new Timer(), new Run());
 			}}
-			>New Run
+			>{$_('history.new_run')}
 		</button>
 	</form>
 
@@ -73,8 +74,7 @@
 		{/if}
 	{:else}
 		<p>
-			No history entries created yet, but your current progress will be
-			automatically saved when you leave the page.
+			{$_('history.no_entries')}
 		</p>
 	{/each}
 </BasePage>
