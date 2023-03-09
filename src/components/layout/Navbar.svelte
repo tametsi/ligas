@@ -43,20 +43,3 @@
 		<Timer />
 	</div>
 </div>
-
-<style lang="scss">
-	.wrapper {
-		display: flex;
-		justify-content: space-between;
-
-		background-color: var(--clr-bg2);
-
-		padding: 0.2rem 1rem;
-
-		h1,
-		.timer {
-			font-size: 3rem;
-			user-select: none;
-		}
-	}
-</style>

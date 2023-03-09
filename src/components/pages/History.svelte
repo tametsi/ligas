@@ -78,10 +78,3 @@
 		</p>
 	{/each}
 </BasePage>
-
-<style lang="scss">
-	select,
-	option {
-		padding: 0.5rem;
-	}
-</style>

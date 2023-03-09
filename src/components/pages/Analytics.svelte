@@ -94,9 +94,3 @@
 		</article>
 	{/if}
 </BasePage>
-
-<style lang="scss">
-	table {
-		width: 47.4rem;
-	}
-</style>

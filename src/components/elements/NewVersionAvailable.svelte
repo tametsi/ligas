@@ -36,19 +36,3 @@
 		</button>
 	</div>
 {/if}
-
-<style lang="scss">
-	.card {
-		position: fixed;
-		bottom: 1rem;
-		right: 1rem;
-		width: auto;
-
-		padding: 2rem;
-		background-color: var(--clr-bg2);
-		border-radius: 0.5rem;
-
-		width: auto;
-		max-width: 70%;
-	}
-</style>

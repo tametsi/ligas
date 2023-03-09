@@ -30,37 +30,3 @@
 
 	<NewVersionAvailable />
 </div>
-
-<style lang="scss">
-	.wrapper {
-		display: grid;
-		grid-template-areas:
-			'nav nav'
-			'side main';
-		grid-template-columns: clamp(50px, 18rem, 10%) 1fr;
-		grid-template-rows: auto 1fr;
-
-		height: 100vh;
-		overflow-y: hidden;
-
-		transition: grid-template-columns 0.2s;
-		&.sidebar-closed {
-			grid-template-columns: 0 1fr;
-		}
-
-		.navbar {
-			grid-area: nav;
-			box-shadow: 0px 2px 2px rgba($black, 0.6);
-		}
-		.sidebar {
-			grid-area: side;
-			overflow-y: auto;
-			box-shadow: 2px 1px 1px var(--clr-accent-transparent);
-		}
-		.pages {
-			grid-area: main;
-			height: 100%;
-			overflow: auto;
-		}
-	}
-</style>

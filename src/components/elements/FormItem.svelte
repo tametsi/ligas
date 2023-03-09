@@ -10,17 +10,3 @@
 		<slot name="details" />
 	</p>
 </label>
-
-<style lang="scss">
-	label {
-		.label-name {
-			display: inline-block;
-			width: clamp(10rem, 20rem, 70%);
-		}
-
-		.label-details {
-			font-size: 0.7em;
-			padding: 0.5rem 0;
-		}
-	}
-</style>

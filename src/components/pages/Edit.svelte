@@ -77,17 +77,3 @@
 		{/each}
 	</div>
 </BasePage>
-
-<style lang="scss">
-	.runners {
-		display: flex;
-		justify-content: space-around;
-
-		&.layout-grid {
-			flex-flow: row wrap;
-		}
-		&.layout-list {
-			flex-flow: column nowrap;
-		}
-	}
-</style>

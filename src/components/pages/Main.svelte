@@ -17,11 +17,3 @@
 		{/each}
 	</div>
 </BasePage>
-
-<style lang="scss">
-	.runners {
-		display: flex;
-		justify-content: space-around;
-		flex-flow: row wrap;
-	}
-</style>

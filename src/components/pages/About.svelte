@@ -94,28 +94,3 @@
 		<p>{__APP_VERSION_STRING__}</p>
 	</section>
 </BasePage>
-
-<style lang="scss">
-	section {
-		margin: 0.4rem 0;
-
-		.box {
-			display: inline-block;
-			margin-left: 1.4rem;
-			margin-bottom: 1rem;
-			padding: 1rem 2rem;
-
-			border-radius: 0 0.4rem 0.4rem 0;
-			border-left: 0.3rem solid var(--clr-accent);
-			background-color: var(--clr-bg2);
-
-			&.space {
-				margin-top: 2rem;
-			}
-
-			.red {
-				color: #b82525;
-			}
-		}
-	}
-</style>
