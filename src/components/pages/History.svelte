@@ -23,12 +23,15 @@
 </script>
 
 <BasePage>
-	<form on:submit|preventDefault>
-		<figure>
-			<figcaption>Run History</figcaption>
-		</figure>
+	<form on:submit|preventDefault class="mb-4">
+		<h2 class="text-2xl font-bold">Run History</h2>
+
 		<FormItem name="Sort By">
-			<select bind:value={currentSorting} on:change={reload}>
+			<select
+				bind:value={currentSorting}
+				on:change={reload}
+				class="select w-96"
+			>
 				<option value={HistorySorting.ModificationDescending}>
 					Modification Date: Newest to oldest
 				</option>
@@ -45,18 +48,23 @@
 		</FormItem>
 
 		<FormItem name="Exclude Empty Sessions">
-			<input type="checkbox" bind:checked={excludeEmptySessions} />
+			<input
+				type="checkbox"
+				bind:checked={excludeEmptySessions}
+				class="checkbox"
+			/>
 			<svelte:fragment slot="details">
 				Empty sessions are sessions without runners.
 			</svelte:fragment>
 		</FormItem>
 		<button
-			class="button"
+			class="btn btn-primary"
 			on:click={() => {
 				$activeSession.save();
 				$activeSession = new Session(new Timer(), new Run());
 			}}
-			>New Run
+		>
+			New Run
 		</button>
 	</form>
 

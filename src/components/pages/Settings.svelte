@@ -7,21 +7,32 @@
 
 <BasePage>
 	<form on:submit|preventDefault>
-		<figure>
-			<figcaption>Settings</figcaption>
+		<h2 class="text-2xl font-bold">Settings</h2>
 
-			<FormItem name="Theme">
-				<ThemePicker />
-			</FormItem>
-			<FormItem name="Autoload Sessions">
-				<select bind:value={$activeSettings.sessionLoading}>
-					<option value={SessionLoading.Never}>Never</option>
-					<option value={SessionLoading.IncompleteSessions}
-						>Incomplete</option
-					>
-					<option value={SessionLoading.Always}>Always</option>
-				</select>
-			</FormItem>
-		</figure>
+		<FormItem name="Autoload Sessions">
+			<div class="btn-group">
+				<input
+					type="radio"
+					data-title="Never"
+					value={SessionLoading.Never}
+					bind:group={$activeSettings.sessionLoading}
+					class="btn"
+				/>
+				<input
+					type="radio"
+					data-title="Incomplete"
+					value={SessionLoading.IncompleteSessions}
+					bind:group={$activeSettings.sessionLoading}
+					class="btn"
+				/>
+				<input
+					type="radio"
+					data-title="Always"
+					value={SessionLoading.Always}
+					bind:group={$activeSettings.sessionLoading}
+					class="btn"
+				/>
+			</div>
+		</FormItem>
 	</form>
 </BasePage>

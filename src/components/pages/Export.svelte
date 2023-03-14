@@ -12,12 +12,14 @@
 <BasePage>
 	<form on:submit|preventDefault={exportData}>
 		<figure>
-			<figcaption>Export data</figcaption>
+			<figcaption class="text-2xl font-bold">Export data</figcaption>
 
-			<HeadedTable data={$activeSession.run.stats} />
+			<div class="my-2">
+				<HeadedTable data={$activeSession.run.stats} />
+			</div>
 
-			<div class="form-controls">
-				<button type="submit" class="button">Export</button>
+			<div class="my-2">
+				<button type="submit" class="btn btn-primary">Export</button>
 			</div>
 		</figure>
 	</form>

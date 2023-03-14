@@ -2,7 +2,6 @@
 	import Sidebar from '@components/layout/Sidebar.svelte';
 	import Navbar from '@components/layout/Navbar.svelte';
 	import NewVersionAvailable from '@components/elements/NewVersionAvailable.svelte';
-	import sidebarOpened from '@stores/sidebarOpened';
 	import activeSettings, { Theme } from '@stores/activeSettings';
 	import Router from 'svelte-spa-router';
 	import routes from './routes';
@@ -15,18 +14,20 @@
 	});
 </script>
 
-<div class="wrapper" class:sidebar-closed={!$sidebarOpened}>
-	<nav class="navbar">
+<div class="drawer drawer-mobile">
+	<input type="checkbox" id="drawer-toggle" class="drawer-toggle" />
+	<div class="drawer-content bg-base-200 z-10">
 		<Navbar />
-	</nav>
 
-	<aside class="sidebar">
-		<Sidebar />
-	</aside>
-
-	<div class="pages">
 		<Router {routes} />
 	</div>
+	<div class="drawer-side">
+		<label for="drawer-toggle" class="drawer-overlay" />
 
+		<Sidebar />
+	</div>
+</div>
+
+<div class="toast">
 	<NewVersionAvailable />
 </div>

@@ -25,4 +25,4 @@
 	});
 </script>
 
-<span>{time}</span>
+<span class="align-middle font-mono">{time}</span>

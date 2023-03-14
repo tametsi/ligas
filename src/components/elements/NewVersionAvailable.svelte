@@ -13,26 +13,33 @@
 </script>
 
 {#if $needRefresh}
-	<div class="card">
-		<h3>
-			<AlertCircleIcon class="icon-in-text" /> Update available!
-		</h3>
-		<p>
-			New Updates provide you with a better experience, new features and
-			sometimes less bugs.
-			<br />
-			Feel free to check out the
-			<a
-				href="https://github.com/tametsi/ligas/blob/main/CHANGELOG.md"
-				target="_blank"
-				rel="noopener noreferrer">CHANGELOG</a
-			>
-		</p>
-		<button class="button success" on:click={updateSw}>
-			<DownloadIcon class="icon-in-text" /> Update & Reload
-		</button>
-		<button class="button warning" on:click={close}>
-			<CalendarIcon class="icon-in-text" /> Yeah, yeah...
-		</button>
+	<div class="card bg-base-100 p-4">
+		<div class="card-content">
+			<h3 class="card-title">
+				<AlertCircleIcon /> Update available!
+			</h3>
+
+			<p class="py-2">
+				New Updates provide you with a better experience, new features
+				and sometimes less bugs.
+				<br />
+				Feel free to check out the
+				<a
+					href="https://github.com/tametsi/ligas/blob/main/CHANGELOG.md"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="link link-hover link-primary">CHANGELOG</a
+				>
+			</p>
+
+			<div class="card-actions">
+				<button class="btn btn-primary gap-2" on:click={updateSw}>
+					<DownloadIcon /> Update & Reload
+				</button>
+				<button class="btn btn-error gap-2" on:click={close}>
+					<CalendarIcon /> Yeah, yeah...
+				</button>
+			</div>
+		</div>
 	</div>
 {/if}
