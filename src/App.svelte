@@ -2,16 +2,13 @@
 	import Sidebar from '@components/layout/Sidebar.svelte';
 	import Navbar from '@components/layout/Navbar.svelte';
 	import NewVersionAvailable from '@components/elements/NewVersionAvailable.svelte';
-	import activeSettings, { Theme } from '@stores/activeSettings';
+	import activeSettings from '@stores/activeSettings';
 	import Router from 'svelte-spa-router';
 	import routes from './routes';
 
-	activeSettings.subscribe(settings => {
-		document.body.classList.forEach(x => {
-			if (x.startsWith('theme-')) document.body.classList.remove(x);
-		});
-		document.body.classList.add(`theme-${Theme[settings.theme]}`);
-	});
+	activeSettings.subscribe(settings =>
+		document.documentElement.setAttribute('data-theme', settings.theme)
+	);
 </script>
 
 <div class="drawer drawer-mobile">
