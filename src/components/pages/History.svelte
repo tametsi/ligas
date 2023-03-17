@@ -30,7 +30,7 @@
 			<select
 				bind:value={currentSorting}
 				on:change={reload}
-				class="select w-96"
+				class="select w-96 max-w-full"
 			>
 				<option value={HistorySorting.ModificationDescending}>
 					Modification Date: Newest to oldest

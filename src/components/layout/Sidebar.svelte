@@ -1,4 +1,5 @@
 <script>
+	import SidebarItem from '@components/elements/SidebarItem.svelte';
 	import {
 		HomeIcon,
 		Edit2Icon,
@@ -9,8 +10,6 @@
 		BookOpenIcon,
 		SettingsIcon,
 	} from 'svelte-feather-icons';
-	import { link } from 'svelte-spa-router';
-	import active from 'svelte-spa-router/active';
 </script>
 
 <ul
@@ -18,69 +17,30 @@
 >
 	<!-- Sidebar content here -->
 	<div class="flex flex-col gap-2">
-		<li title="Home">
-			<a href="/" use:link use:active class="btn btn-square btn-ghost"
-				><HomeIcon /></a
-			>
-		</li>
-		<li title="Edit">
-			<a href="/edit" use:link use:active class="btn btn-square btn-ghost"
-				><Edit2Icon /></a
-			>
-		</li>
-		<li title="Export">
-			<a
-				href="/export"
-				use:link
-				use:active
-				class="btn btn-square btn-ghost"
-			>
-				<DatabaseIcon />
-			</a>
-		</li>
-		<li title="Analytics">
-			<a
-				href="/analytics"
-				use:link
-				use:active
-				class="btn btn-square btn-ghost"
-			>
-				<ActivityIcon />
-			</a>
-		</li>
-		<li title="History">
-			<a
-				href="/history"
-				use:link
-				use:active
-				class="btn btn-square btn-ghost group"
-			>
-				<BookOpenIcon class="hidden group-[.active]:block" />
-				<BookIcon class="group-[.active]:hidden" />
-			</a>
-		</li>
+		<SidebarItem title="Home" href="/">
+			<HomeIcon />
+		</SidebarItem>
+		<SidebarItem title="Edit" href="/edit">
+			<Edit2Icon />
+		</SidebarItem>
+		<SidebarItem title="Export" href="/export">
+			<DatabaseIcon />
+		</SidebarItem>
+		<SidebarItem title="Analytics" href="/analytics">
+			<ActivityIcon />
+		</SidebarItem>
+		<SidebarItem title="History" href="/history">
+			<BookOpenIcon class="hidden group-[.active]:block" />
+			<BookIcon class="group-[.active]:hidden" />
+		</SidebarItem>
 	</div>
 
 	<div class="flex flex-col gap-2">
-		<li>
-			<a
-				href="/settings"
-				use:link
-				use:active
-				class="btn btn-square btn-ghost no-animation"
-			>
-				<SettingsIcon />
-			</a>
-		</li>
-		<li>
-			<a
-				href="/about"
-				use:link
-				use:active
-				class="btn btn-square btn-ghost"
-			>
-				<CoffeeIcon />
-			</a>
-		</li>
+		<SidebarItem title="Settings" href="/settings">
+			<SettingsIcon />
+		</SidebarItem>
+		<SidebarItem title="About" href="/about">
+			<CoffeeIcon />
+		</SidebarItem>
 	</div>
 </ul>

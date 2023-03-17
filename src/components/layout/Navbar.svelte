@@ -21,7 +21,7 @@
 		</label>
 	</div>
 
-	<h1 class="navbar-center h-12 align-middle">LIGAS</h1>
+	<h1 class="navbar-center h-12 hidden md:flex">LIGAS</h1>
 
 	<div class="navbar-end timer">
 		<button on:click={pauseTimer} class="btn btn-ghost btn-square">
