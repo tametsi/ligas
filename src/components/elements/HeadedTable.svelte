@@ -2,7 +2,7 @@
 	export let data: unknown[][];
 
 	let maxLength = Math.max(...data.map(x => x.length));
-	data.forEach((x, i) => {
+	$: data.forEach((x, i) => {
 		if (i === 0) return; // skip headline
 
 		for (let i = x.length; i < maxLength; i++) x.push('');
