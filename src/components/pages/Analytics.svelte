@@ -90,5 +90,6 @@
 			<a href="/edit" use:link class="link link-hover link-primary"
 				>Change it!</a
 			>
-		</p>{/if}
+		</p>
+	{/if}
 </BasePage>

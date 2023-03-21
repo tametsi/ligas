@@ -23,7 +23,7 @@
 
 	<h1 class="navbar-center h-12 hidden md:flex">LIGAS</h1>
 
-	<div class="navbar-end timer">
+	<div class="navbar-end">
 		<button on:click={pauseTimer} class="btn btn-ghost btn-square">
 			{#if $activeSession.timer.state === TimerState.Running}
 				<PauseIcon />

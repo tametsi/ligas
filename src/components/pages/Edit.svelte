@@ -19,7 +19,7 @@
 </script>
 
 <BasePage>
-	<form on:submit|preventDefault class="">
+	<form on:submit|preventDefault>
 		<figure>
 			<figcaption class="text-2xl font-bold">Run Details</figcaption>
 			<FormItem name="Round Length">

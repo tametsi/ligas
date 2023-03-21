@@ -6,8 +6,9 @@
 	import Router from 'svelte-spa-router';
 	import routes from './routes';
 
-	activeSettings.subscribe(settings =>
-		document.documentElement.setAttribute('data-theme', settings.theme)
+	$: document.documentElement.setAttribute(
+		'data-theme',
+		$activeSettings.theme
 	);
 </script>
 
