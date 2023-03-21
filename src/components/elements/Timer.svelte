@@ -25,12 +25,4 @@
 	});
 </script>
 
-<span>{time}</span>
-
-<style lang="scss">
-	span {
-		font-family: 'Noto Mono', monospace;
-		letter-spacing: -0.075em;
-		font-size: inherit;
-	}
-</style>
+<span class="align-middle font-mono">{time}</span>

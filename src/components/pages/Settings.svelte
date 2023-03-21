@@ -1,27 +1,65 @@
 <script lang="ts">
 	import BasePage from './BasePage.svelte';
 	import FormItem from '@components/elements/FormItem.svelte';
-	import ThemePicker from '@components/elements/ThemePicker.svelte';
-	import activeSettings, { SessionLoading } from '@stores/activeSettings';
+	import activeSettings, {
+		SessionLoading,
+		Theme,
+	} from '@stores/activeSettings';
 </script>
 
 <BasePage>
 	<form on:submit|preventDefault>
-		<figure>
-			<figcaption>Settings</figcaption>
+		<h2 class="text-2xl font-bold">Settings</h2>
 
-			<FormItem name="Theme">
-				<ThemePicker />
-			</FormItem>
-			<FormItem name="Autoload Sessions">
-				<select bind:value={$activeSettings.sessionLoading}>
-					<option value={SessionLoading.Never}>Never</option>
-					<option value={SessionLoading.IncompleteSessions}
-						>Incomplete</option
-					>
-					<option value={SessionLoading.Always}>Always</option>
-				</select>
-			</FormItem>
-		</figure>
+		<FormItem name="Theme">
+			<div class="btn-group">
+				<input
+					type="radio"
+					data-title="Dark"
+					value={Theme.Dark}
+					bind:group={$activeSettings.theme}
+					class="btn"
+				/>
+				<input
+					type="radio"
+					data-title="Light"
+					value={Theme.Light}
+					bind:group={$activeSettings.theme}
+					class="btn"
+				/>
+				<input
+					type="radio"
+					data-title="Night"
+					value={Theme.Night}
+					bind:group={$activeSettings.theme}
+					class="btn"
+				/>
+			</div>
+		</FormItem>
+		<FormItem name="Autoload Sessions">
+			<div class="btn-group">
+				<input
+					type="radio"
+					data-title="Never"
+					value={SessionLoading.Never}
+					bind:group={$activeSettings.sessionLoading}
+					class="btn"
+				/>
+				<input
+					type="radio"
+					data-title="Incomplete"
+					value={SessionLoading.IncompleteSessions}
+					bind:group={$activeSettings.sessionLoading}
+					class="btn"
+				/>
+				<input
+					type="radio"
+					data-title="Always"
+					value={SessionLoading.Always}
+					bind:group={$activeSettings.sessionLoading}
+					class="btn"
+				/>
+			</div>
+		</FormItem>
 	</form>
 </BasePage>

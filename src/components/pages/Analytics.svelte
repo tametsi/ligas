@@ -24,21 +24,20 @@
 </script>
 
 <BasePage>
+	<h2 class="text-2xl font-bold">Analytics</h2>
+
 	{#if $activeSession.run.runners.length != 0}
 		<form on:submit|preventDefault>
-			<figure>
-				<figcaption>Analytics</figcaption>
-				<FormItem name="Select Runner">
-					<select bind:value={selectedRunner}>
-						{#each $activeSession.run.runners as runner}
-							<option value={runner}>{runner.name}</option>
-						{/each}
-					</select>
-				</FormItem>
-			</figure>
+			<FormItem name="Select Runner">
+				<select bind:value={selectedRunner} class="select">
+					{#each $activeSession.run.runners as runner}
+						<option value={runner}>{runner.name}</option>
+					{/each}
+				</select>
+			</FormItem>
 		</form>
 
-		<table>
+		<table class="table table-zebra table-compact">
 			<tbody>
 				<tr>
 					<td>Name</td>
@@ -86,17 +85,11 @@
 
 		<Chart {data} type="line" lineOptions={{ regionFill: 1 }} />
 	{:else}
-		<article>
-			<h2>Analytics</h2>
-			<p>
-				No runners created yet. <a href="/edit" use:link>Change it!</a>
-			</p>
-		</article>
+		<p>
+			No runners created yet.
+			<a href="/edit" use:link class="link link-hover link-primary"
+				>Change it!</a
+			>
+		</p>
 	{/if}
 </BasePage>
-
-<style lang="scss">
-	table {
-		width: 47.4rem;
-	}
-</style>

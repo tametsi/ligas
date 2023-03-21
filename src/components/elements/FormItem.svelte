@@ -2,25 +2,16 @@
 	export let name: string;
 </script>
 
-<!-- svelte-ignore a11y-label-has-associated-control -->
-<label>
-	<div class="label-name">{name}</div>
-	<slot />
-	<p class="label-details">
-		<slot name="details" />
-	</p>
-</label>
-
-<style lang="scss">
-	label {
-		.label-name {
-			display: inline-block;
-			width: clamp(10rem, 20rem, 70%);
-		}
-
-		.label-details {
-			font-size: 0.7em;
-			padding: 0.5rem 0;
-		}
-	}
-</style>
+<div class="form-control py-2">
+	<div class="label"><span class="label-text font-bold">{name}</span></div>
+	<div class="max-w-xl">
+		<slot />
+	</div>
+	{#if $$slots.details}
+		<div class="label">
+			<span class="label-text">
+				<slot name="details" />
+			</span>
+		</div>
+	{/if}
+</div>

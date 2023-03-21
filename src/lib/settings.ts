@@ -1,6 +1,7 @@
 export enum Theme {
-	Dark,
-	Light,
+	Dark = 'dark',
+	Light = 'light',
+	Night = 'night',
 }
 
 export enum SessionLoading {

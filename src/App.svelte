@@ -2,65 +2,30 @@
 	import Sidebar from '@components/layout/Sidebar.svelte';
 	import Navbar from '@components/layout/Navbar.svelte';
 	import NewVersionAvailable from '@components/elements/NewVersionAvailable.svelte';
-	import sidebarOpened from '@stores/sidebarOpened';
-	import activeSettings, { Theme } from '@stores/activeSettings';
+	import activeSettings from '@stores/activeSettings';
 	import Router from 'svelte-spa-router';
 	import routes from './routes';
 
-	activeSettings.subscribe(settings => {
-		document.body.classList.forEach(x => {
-			if (x.startsWith('theme-')) document.body.classList.remove(x);
-		});
-		document.body.classList.add(`theme-${Theme[settings.theme]}`);
-	});
+	$: document.documentElement.setAttribute(
+		'data-theme',
+		$activeSettings.theme
+	);
 </script>
 
-<div class="wrapper" class:sidebar-closed={!$sidebarOpened}>
-	<nav class="navbar">
+<div class="drawer drawer-mobile">
+	<input type="checkbox" id="drawer-toggle" class="drawer-toggle" />
+	<div class="drawer-content bg-base-200 z-10">
 		<Navbar />
-	</nav>
 
-	<aside class="sidebar">
-		<Sidebar />
-	</aside>
-
-	<div class="pages">
 		<Router {routes} />
 	</div>
+	<div class="drawer-side">
+		<label for="drawer-toggle" class="drawer-overlay" />
 
-	<NewVersionAvailable />
+		<Sidebar />
+	</div>
 </div>
 
-<style lang="scss">
-	.wrapper {
-		display: grid;
-		grid-template-areas:
-			'nav nav'
-			'side main';
-		grid-template-columns: clamp(50px, 18rem, 10%) 1fr;
-		grid-template-rows: auto 1fr;
-
-		height: 100vh;
-		overflow-y: hidden;
-
-		transition: grid-template-columns 0.2s;
-		&.sidebar-closed {
-			grid-template-columns: 0 1fr;
-		}
-
-		.navbar {
-			grid-area: nav;
-			box-shadow: 0px 2px 2px rgba($black, 0.6);
-		}
-		.sidebar {
-			grid-area: side;
-			overflow-y: auto;
-			box-shadow: 2px 1px 1px var(--clr-accent-transparent);
-		}
-		.pages {
-			grid-area: main;
-			height: 100%;
-			overflow: auto;
-		}
-	}
-</style>
+<div class="toast">
+	<NewVersionAvailable />
+</div>
