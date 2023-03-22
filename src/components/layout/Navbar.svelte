@@ -10,7 +10,11 @@
 	} from 'svelte-feather-icons';
 
 	const pauseTimer = () => activeSession.updateSelf(x => x.timer.pause());
-	const resetTimer = () => activeSession.updateSelf(x => x.timer.reset());
+	const resetTimer = () =>
+		activeSession.updateSelf(x => {
+			if (confirm('Do you really want to reset the timer?'))
+				x.timer.reset();
+		});
 </script>
 
 <nav class="navbar sticky top-0 z-50 bg-base-300 text-3xl text-justify">
