@@ -27,3 +27,15 @@ Hello World!
 - add analytics ([#4](https://github.com/tametsi/ligas/pull/4))
 
 **Full Changelog**: [`v1.1.0...v1.2.0`](https://github.com/tametsi/ligas/compare/v1.1.0...v1.2.0)
+
+### [v1.3.0](https://github.com/tametsi/ligas/tree/v1.3.0)
+
+#### Changes
+
+- feat(timer): add timer-pause in [#9](https://github.com/tametsi/ligas/pull/9)
+- feat: add settings by @xXjojaXx in [#12](https://github.com/tametsi/ligas/pull/12)
+- feat: add tailwind css & daisyui in [#13](https://github.com/tametsi/ligas/pull/13)
+- fix(routing): add svelte-spa-router to fix routing issue
+- feat: add confirm dialog before resetting the timer
+
+**Full Changelog**: [`v1.2.0...v1.3.0`](https://github.com/tametsi/ligas/compare/v1.2.0...v1.3.0)
