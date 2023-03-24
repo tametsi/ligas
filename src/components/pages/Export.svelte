@@ -13,7 +13,9 @@
 <BasePage>
 	<form on:submit|preventDefault={exportData}>
 		<figure>
-			<figcaption class="text-2xl font-bold">{$_('export.title')}</figcaption>
+			<figcaption class="text-2xl font-bold">
+				{$_('export.title')}
+			</figcaption>
 
 			<div class="my-2">
 				<HeadedTable data={$activeSession.run.stats} />

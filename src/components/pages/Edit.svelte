@@ -22,7 +22,9 @@
 <BasePage>
 	<form on:submit|preventDefault>
 		<figure>
-			<figcaption class="text-2xl font-bold">{$_('edit.run_details')}</figcaption>
+			<figcaption class="text-2xl font-bold">
+				{$_('edit.run_details')}
+			</figcaption>
 			<FormItem name={$_('edit.round_length')}>
 				<input
 					type="number"
@@ -38,7 +40,9 @@
 
 	<form on:submit|preventDefault={addRunner}>
 		<figure>
-			<figcaption class="text-2xl font-bold">{$_('edit.add_runner')}</figcaption>
+			<figcaption class="text-2xl font-bold">
+				{$_('edit.add_runner')}
+			</figcaption>
 			<FormItem name={$_('runner.stats.name')}>
 				<input
 					type="text"
