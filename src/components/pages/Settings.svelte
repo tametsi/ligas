@@ -3,7 +3,7 @@
 	import FormItem from '@components/elements/FormItem.svelte';
 	import ThemePicker from '@components/elements/ThemePicker.svelte';
 	import activeSettings, { SessionLoading } from '@stores/activeSettings';
-	import { _, locale, getLocaleFromNavigator } from '@lib/util/translations';
+	import { _ } from '@lib/util/translations';
 </script>
 
 <BasePage>
@@ -28,8 +28,8 @@
 				</select>
 			</FormItem>
 			<FormItem name={$_('settings.language')}>
-				<select bind:value={$locale}>
-					<option value={getLocaleFromNavigator()}> Auto </option>
+				<select bind:value={$activeSettings.language}>
+					<option value="auto"> Auto </option>
 					<option value="de"> Deutsch </option>
 					<option value="en"> English </option>
 				</select>
