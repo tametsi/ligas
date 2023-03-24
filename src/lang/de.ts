@@ -38,9 +38,8 @@ export default {
 		round_length_description: `Lege die Strecke einer einzelnen Runde fest, um LIGAS die
 			Möglichkeit zu geben, die gesamte Strecke zu berechnen, welche die Läufer
 			zurückgelegt haben.`,
-		alias_description: `Der Alias wird angezeigt, falls vorhanden. Der Name ist ebenfalls
-			sichtbar. Sowohl der Name als auch der Alias werden in den Rundendaten
-			angezeigt.`,
+		alias_description: `Der Alias wird angezeigt, wenn er vorhanden ist. Der Name ist ebenfalls
+			sichtbar. In den Rundendaten wird sowohl der Name als auch der Alias angezeigt.`,
 		add_runner: 'Läufer hinzufügen',
 	},
 	export: {
@@ -56,7 +55,8 @@ export default {
 			creation_ascending: 'Erstellungs-Datum: Älteste zuerst',
 		},
 		empty_sessions: 'Leere Läufe ausblenden',
-		empty_sessions_description: 'Leere Läufe sind Läufe ohne Läufer.',
+		empty_sessions_description:
+			'Läufe sind dann leer, wenn sie keine Läufer haben.',
 		new_run: 'Neuer Lauf',
 		no_entries: `Es wurden noch keine Einträge im Verlauf erstellt, aber dein momentaner Fortschritt wird
 			automatisch gespeichert sobald du die Seite verlässt.`,

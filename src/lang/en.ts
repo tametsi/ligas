@@ -77,7 +77,7 @@ export default {
 		},
 	},
 	main: {
-		title: 'Main',
+		title: 'Home',
 		no_runners: 'No runners created yet.',
 		change_it: 'Change it!',
 	},
