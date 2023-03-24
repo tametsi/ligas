@@ -1,9 +1,9 @@
 <script lang="ts">
 	import activeSession from '@stores/activeSession';
 	import FormItem from '@components/elements/FormItem.svelte';
-	import Runner from '@components/elements/Runner.svelte';
 	import BasePage from '@components/pages/BasePage.svelte';
 	import { GridIcon, ListIcon } from 'svelte-feather-icons';
+	import EditRunner from '@components/elements/EditRunner.svelte';
 	import { _ } from '@lib/util/translations';
 
 	let layoutGrid = true;
@@ -22,11 +22,12 @@
 <BasePage>
 	<form on:submit|preventDefault>
 		<figure>
-			<figcaption>{$_('edit.run_details')}</figcaption>
+			<figcaption class="text-2xl font-bold">{$_('edit.run_details')}</figcaption>
 			<FormItem name={$_('edit.round_length')}>
 				<input
 					type="number"
 					bind:value={$activeSession.run.roundLength}
+					class="input w-full"
 				/>
 				<svelte:fragment slot="details">
 					{$_('edit.round_length_description')}
@@ -37,56 +38,51 @@
 
 	<form on:submit|preventDefault={addRunner}>
 		<figure>
-			<figcaption>{$_('edit.add_runner')}</figcaption>
+			<figcaption class="text-2xl font-bold">{$_('edit.add_runner')}</figcaption>
 			<FormItem name={$_('runner.stats.name')}>
-				<input type="text" required bind:value={newRunner.name} />
+				<input
+					type="text"
+					required
+					bind:value={newRunner.name}
+					class="input w-full"
+				/>
 			</FormItem>
 			<FormItem name={$_('runner.stats.alias')}>
-				<input type="text" bind:value={newRunner.alias} />
+				<input
+					type="text"
+					bind:value={newRunner.alias}
+					class="input w-full"
+				/>
 				<svelte:fragment slot="details">
 					{$_('edit.alias_description')}
 				</svelte:fragment>
 			</FormItem>
 
-			<div class="form-controls">
-				<button type="submit" class="button"
-					>{$_('edit.add_runner')}</button
-				>
+			<div class="py-2">
+				<button type="submit" class="btn btn-primary"
+					>{$_('edit.add_runner')}
+				</button>
 			</div>
 		</figure>
 	</form>
 
-	<div class="runner-layout">
-		<button class="button-icon" on:click={() => (layoutGrid = true)}>
+	<div class="py-2">
+		<button class="btn btn-square" on:click={() => (layoutGrid = true)}>
 			<GridIcon size="25" />
 		</button>
 
-		<button class="button-icon" on:click={() => (layoutGrid = false)}>
+		<button class="btn btn-square" on:click={() => (layoutGrid = false)}>
 			<ListIcon size="25" />
 		</button>
 	</div>
 
 	<div
-		class="runners"
+		class="flex justify-between gap-2 flex-wrap py-2"
 		class:layout-grid={layoutGrid}
-		class:layout-list={!layoutGrid}
+		class:flex-col={!layoutGrid}
 	>
 		{#each $activeSession.run.runners as runner (runner.id)}
-			<Runner {runner} edit row={!layoutGrid} />
+			<EditRunner {runner} row={!layoutGrid} />
 		{/each}
 	</div>
 </BasePage>
-
-<style lang="scss">
-	.runners {
-		display: flex;
-		justify-content: space-around;
-
-		&.layout-grid {
-			flex-flow: row wrap;
-		}
-		&.layout-list {
-			flex-flow: column nowrap;
-		}
-	}
-</style>

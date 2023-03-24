@@ -24,12 +24,15 @@
 </script>
 
 <BasePage>
-	<form on:submit|preventDefault>
-		<figure>
-			<figcaption>{$_('history.title')}</figcaption>
-		</figure>
+	<form on:submit|preventDefault class="mb-4">
+		<h2 class="text-2xl font-bold">{$_('history.title')}</h2>
+
 		<FormItem name={$_('history.sorting.title')}>
-			<select bind:value={currentSorting} on:change={reload}>
+			<select
+				bind:value={currentSorting}
+				on:change={reload}
+				class="select w-96 max-w-full"
+			>
 				<option value={HistorySorting.ModificationDescending}>
 					{$_('history.sorting.modification_descending')}
 				</option>
@@ -46,18 +49,23 @@
 		</FormItem>
 
 		<FormItem name={$_('history.empty_sessions')}>
-			<input type="checkbox" bind:checked={excludeEmptySessions} />
+			<input
+				type="checkbox"
+				bind:checked={excludeEmptySessions}
+				class="checkbox"
+			/>
 			<svelte:fragment slot="details">
 				{$_('history.empty_sessions_description')}
 			</svelte:fragment>
 		</FormItem>
 		<button
-			class="button"
+			class="btn btn-primary"
 			on:click={() => {
 				$activeSession.save();
 				$activeSession = new Session(new Timer(), new Run());
 			}}
-			>{$_('history.new_run')}
+		>
+			{$_('history.new_run')}
 		</button>
 	</form>
 
@@ -78,10 +86,3 @@
 		</p>
 	{/each}
 </BasePage>
-
-<style lang="scss">
-	select,
-	option {
-		padding: 0.5rem;
-	}
-</style>

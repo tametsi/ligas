@@ -37,18 +37,21 @@
 	}
 </script>
 
-<div class="entry">
-	<div class="content">
-		<div class="session">
-			<p>
-				{$_('history.entry.time')}
-				<b>{formatTime(Timer.fromJSON(timer).getRunDuration())}</b>
-			</p>
+<div class="card card-compact bg-base-100 my-2">
+	<div class="card-body">
+		<p>
+			{$_('history.entry.last_modified')}:
+			<b>{new Date(lastChanged).toLocaleString()}</b>
+			<br />
+			{$_('history.entry.created')}:
+			<b>{new Date(created).toLocaleString()}</b>
+		</p>
 
-			<p>{$_('history.entry.runners')}:</p>
-			<div class="runners">
+		<div>
+			<h3 class="font-bold">{$_('history.entry.runners')}:</h3>
+			<div class="flex justify-start gap-1 flex-wrap">
 				{#each run.runners as runner}
-					<div class="runner">
+					<div class="card card-compact bg-base-200 p-3">
 						<p>{$_('runner.stats.name')}: <b>{runner.name}</b></p>
 						{#if runner.alias}
 							<p>
@@ -65,85 +68,38 @@
 					<p class="runner">{$_('history.entry.none')}</p>
 				{/each}
 			</div>
-
-			<p>
-				{$_('edit.round_length')}: <b>{run.roundLength}</b>
-			</p>
 		</div>
 
-		<div class="dates">
-			<p>
-				{$_('history.entry.last_modified')}:
-				<b>{new Date(lastChanged).toLocaleString()}</b>
-			</p>
-			<p>
-				{$_('history.entry.created')}:
-				<b>{new Date(created).toLocaleString()}</b>
-			</p>
+		<p>
+			{$_('history.entry.time')}:
+			<b>{formatTime(Timer.fromJSON(timer).getRunDuration())}</b>
+			<br />
+			{$_('edit.round_length')}:
+			<b>{run.roundLength}</b>
+		</p>
+
+		<div class="card-actions">
+			<button
+				on:click={() => loadSession(id, session)}
+				class="btn btn-sm"
+				title="Loads this session. This session will be modified."
+			>
+				{$_('history.entry.load')}
+			</button>
+			<button
+				on:click={() => loadSession(id, session, true)}
+				class="btn btn-sm"
+				title="Copies this session and loads the copy. This session will stay untouched."
+			>
+				{$_('history.entry.copy')} & {$_('history.entry.load')}
+			</button>
+			<button
+				on:click={() => deleteSession(id)}
+				class="btn btn-sm btn-error"
+				title="Deletes this session."
+			>
+				{$_('history.entry.delete')}
+			</button>
 		</div>
 	</div>
-
-	<button
-		on:click={() => loadSession(id, session)}
-		class="button small"
-		title="Loads this session. This session will be modified."
-	>
-		{$_('history.entry.load')}
-	</button>
-	<button
-		on:click={() => loadSession(id, session, true)}
-		class="button small"
-		title="Copies this session and loads the copy. This session will stay untouched."
-	>
-		{$_('history.entry.copy')} & {$_('history.entry.load')}
-	</button>
-	<button
-		on:click={() => deleteSession(id)}
-		class="button small warning"
-		title="Deletes this session."
-	>
-		{$_('history.entry.delete')}
-	</button>
 </div>
-
-<style lang="scss">
-	.entry {
-		user-select: none;
-
-		background-color: var(--clr-bg2);
-		border-radius: 0.5rem;
-		padding: 1.5rem;
-		margin: 1rem;
-
-		.content {
-			display: flex;
-			justify-content: space-between;
-
-			margin-bottom: 2rem;
-
-			.session {
-				.runners {
-					display: flex;
-					flex-flow: row wrap;
-
-					.runner {
-						padding: 1rem;
-						margin: 0.5rem;
-						border-radius: 0.5rem;
-						box-shadow: inset 0 0 1em #00000050;
-					}
-				}
-			}
-
-			.dates {
-				display: flex;
-				flex-flow: column nowrap;
-				align-items: flex-end;
-
-				p {
-					font-size: 1.2rem;
-				}
-			}
-		}
-	}
-</style>

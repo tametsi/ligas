@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Runner from '@components/elements/Runner.svelte';
+	import MainRunner from '@components/elements/MainRunner.svelte';
 	import BasePage from '@components/pages/BasePage.svelte';
 	import activeSession from '@stores/activeSession';
 	import { link } from 'svelte-spa-router';
@@ -7,22 +7,16 @@
 </script>
 
 <BasePage>
-	<div class="runners">
+	<div class="flex justify-around gap-2 flex-wrap">
 		{#each $activeSession.run.runners as runner}
-			<Runner {runner} />
+			<MainRunner {runner} />
 		{:else}
 			<p>
 				{$_('main.no_runners')}
-				<a href="/edit" use:link>{$_('main.change_it')}</a>
+				<a href="/edit" use:link class="link link-hover link-primary"
+					>{$_('main.change_it')}</a
+				>
 			</p>
 		{/each}
 	</div>
 </BasePage>
-
-<style lang="scss">
-	.runners {
-		display: flex;
-		justify-content: space-around;
-		flex-flow: row wrap;
-	}
-</style>

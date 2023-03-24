@@ -28,21 +28,20 @@
 </script>
 
 <BasePage>
+	<h2 class="text-2xl font-bold">{$_('analytics.title')}</h2>
+
 	{#if $activeSession.run.runners.length != 0}
 		<form on:submit|preventDefault>
-			<figure>
-				<figcaption>{$_('analytics.title')}</figcaption>
-				<FormItem name={$_('analytics.select_runner')}>
-					<select bind:value={selectedRunner}>
-						{#each $activeSession.run.runners as runner}
-							<option value={runner}>{runner.name}</option>
-						{/each}
-					</select>
-				</FormItem>
-			</figure>
+			<FormItem name={$_('analytics.select_runner')}>
+				<select bind:value={selectedRunner} class="select">
+					{#each $activeSession.run.runners as runner}
+						<option value={runner}>{runner.name}</option>
+					{/each}
+				</select>
+			</FormItem>
 		</form>
 
-		<table>
+		<table class="table table-zebra table-compact">
 			<tbody>
 				<tr>
 					<td>{$_('runner.stats.name')}</td>
@@ -90,18 +89,11 @@
 
 		<Chart {data} type="line" lineOptions={{ regionFill: 1 }} />
 	{:else}
-		<article>
-			<h2>{$_('analytics.title')}</h2>
-			<p>
-				{$_('main.no_runners')}
-				<a href="/edit" use:link>{$_('main.change_it')}</a>
-			</p>
-		</article>
+		<p>
+			{$_('main.no_runners')}
+			<a href="/edit" use:link class="link link-hover link-primary">
+				{$_('main.change_it')}
+			</a>
+		</p>
 	{/if}
 </BasePage>
-
-<style lang="scss">
-	table {
-		width: 47.4rem;
-	}
-</style>

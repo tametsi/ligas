@@ -2,12 +2,6 @@
 	import { fade } from 'svelte/transition';
 </script>
 
-<main in:fade={{ duration: 200 }}>
+<main class="px-8 py-4" in:fade={{ duration: 200 }}>
 	<slot />
 </main>
-
-<style lang="scss">
-	main {
-		padding: 1rem 2rem;
-	}
-</style>

@@ -13,14 +13,16 @@
 <BasePage>
 	<form on:submit|preventDefault={exportData}>
 		<figure>
-			<figcaption>{$_('export.title')}</figcaption>
+			<figcaption class="text-2xl font-bold">{$_('export.title')}</figcaption>
 
-			<HeadedTable data={$activeSession.run.stats} />
+			<div class="my-2">
+				<HeadedTable data={$activeSession.run.stats} />
+			</div>
 
-			<div class="form-controls">
-				<button type="submit" class="button"
-					>{$_('export.title')}</button
-				>
+			<div class="my-2">
+				<button type="submit" class="btn btn-primary">
+					{$_('export.title')}
+				</button>
 			</div>
 		</figure>
 	</form>

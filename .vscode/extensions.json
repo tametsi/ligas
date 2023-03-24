@@ -2,6 +2,7 @@
 	"recommendations": [
 		"exodiusstudios.comment-anchors",
 		"svelte.svelte-vscode",
-		"EditorConfig.EditorConfig"
+		"editorconfig.editorconfig",
+		"bradlc.vscode-tailwindcss"
 	]
 }
