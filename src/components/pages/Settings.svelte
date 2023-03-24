@@ -62,5 +62,30 @@
 				/>
 			</div>
 		</FormItem>
+		<FormItem name={$_('settings.language')}>
+			<div class="btn-group">
+				<input
+					type="radio"
+					data-title="Auto"
+					value="auto"
+					bind:group={$activeSettings.language}
+					class="btn"
+				/>
+				<input
+					type="radio"
+					data-title="Deutsch"
+					value="de"
+					bind:group={$activeSettings.language}
+					class="btn"
+				/>
+				<input
+					type="radio"
+					data-title="English"
+					value="en"
+					bind:group={$activeSettings.language}
+					class="btn"
+				/>
+			</div>
+		</FormItem>
 	</form>
 </BasePage>
