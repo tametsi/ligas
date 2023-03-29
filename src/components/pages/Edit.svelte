@@ -4,6 +4,7 @@
 	import BasePage from '@components/pages/BasePage.svelte';
 	import { GridIcon, ListIcon } from 'svelte-feather-icons';
 	import EditRunner from '@components/elements/EditRunner.svelte';
+	import { _ } from '@lib/util/translations';
 
 	let layoutGrid = true;
 	let newRunner = {
@@ -21,17 +22,17 @@
 <BasePage>
 	<form on:submit|preventDefault>
 		<figure>
-			<figcaption class="text-2xl font-bold">Run Details</figcaption>
-			<FormItem name="Round Length">
+			<figcaption class="text-2xl font-bold">
+				{$_('edit.run_details')}
+			</figcaption>
+			<FormItem name={$_('edit.round_length')}>
 				<input
 					type="number"
 					bind:value={$activeSession.run.roundLength}
 					class="input w-full"
 				/>
 				<svelte:fragment slot="details">
-					Specify the length of a single round to give LIGAS the
-					possibility to calculate the complete route length the
-					runners passed.
+					{$_('edit.round_length_description')}
 				</svelte:fragment>
 			</FormItem>
 		</figure>
@@ -39,8 +40,10 @@
 
 	<form on:submit|preventDefault={addRunner}>
 		<figure>
-			<figcaption class="text-2xl font-bold">Add Runner</figcaption>
-			<FormItem name="Name">
+			<figcaption class="text-2xl font-bold">
+				{$_('edit.add_runner')}
+			</figcaption>
+			<FormItem name={$_('runner.stats.name')}>
 				<input
 					type="text"
 					required
@@ -48,22 +51,21 @@
 					class="input w-full"
 				/>
 			</FormItem>
-			<FormItem name="Alias">
+			<FormItem name={$_('runner.stats.alias')}>
 				<input
 					type="text"
 					bind:value={newRunner.alias}
 					class="input w-full"
 				/>
 				<svelte:fragment slot="details">
-					The alias will be shown if provided. The name can also be
-					seen. Both, the name and the alias are listed in the round
-					data.
+					{$_('edit.alias_description')}
 				</svelte:fragment>
 			</FormItem>
 
 			<div class="py-2">
-				<button type="submit" class="btn btn-primary">Add Runner</button
-				>
+				<button type="submit" class="btn btn-primary">
+					{$_('edit.add_runner')}
+				</button>
 			</div>
 		</figure>
 	</form>

@@ -10,6 +10,7 @@
 		BookOpenIcon,
 		SettingsIcon,
 	} from 'svelte-feather-icons';
+	import { _ } from '@lib/util/translations';
 </script>
 
 <ul
@@ -17,29 +18,29 @@
 >
 	<!-- Sidebar content here -->
 	<div class="flex flex-col gap-2">
-		<SidebarItem title="Home" href="/">
+		<SidebarItem title={$_('main.title')} href="/">
 			<HomeIcon />
 		</SidebarItem>
-		<SidebarItem title="Edit" href="/edit">
+		<SidebarItem title={$_('edit.title')} href="/edit">
 			<Edit2Icon />
 		</SidebarItem>
-		<SidebarItem title="Export" href="/export">
+		<SidebarItem title={$_('export.title')} href="/export">
 			<DatabaseIcon />
 		</SidebarItem>
-		<SidebarItem title="Analytics" href="/analytics">
+		<SidebarItem title={$_('analytics.title')} href="/analytics">
 			<ActivityIcon />
 		</SidebarItem>
-		<SidebarItem title="History" href="/history">
+		<SidebarItem title={$_('history.title')} href="/history">
 			<BookOpenIcon class="hidden group-[.active]:block" />
 			<BookIcon class="group-[.active]:hidden" />
 		</SidebarItem>
 	</div>
 
 	<div class="flex flex-col gap-2">
-		<SidebarItem title="Settings" href="/settings">
+		<SidebarItem title={$_('settings.title')} href="/settings">
 			<SettingsIcon />
 		</SidebarItem>
-		<SidebarItem title="About" href="/about">
+		<SidebarItem title={$_('about.title')} href="/about">
 			<CoffeeIcon />
 		</SidebarItem>
 	</div>

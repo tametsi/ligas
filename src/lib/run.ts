@@ -1,4 +1,6 @@
 import Runner from '@lib/runner';
+import { get } from 'svelte/store';
+import { _ } from '@lib/util/translations';
 
 export default class Run {
 	private _runners: Map<string, Runner> = new Map();
@@ -14,12 +16,12 @@ export default class Run {
 	/** The statistics of this run (naming and performance of all runners) */
 	get stats() {
 		const header = [
-			'Name',
-			'Alias',
-			'Rounds',
-			'Distance',
-			'Max. Difference (in s)',
-			'Rounds (Format: mm:ss:ff)',
+			get(_)('runner.stats.name'),
+			get(_)('runner.stats.alias'),
+			get(_)('runner.stats.rounds'),
+			get(_)('runner.stats.distance'),
+			`${get(_)('runner.stats.max_difference')}`,
+			`${get(_)('runner.stats.rounds')}`,
 		];
 		const stats = this.runners.map(runner => runner.stats);
 

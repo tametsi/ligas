@@ -14,7 +14,8 @@ const storageId = 'settings';
 export default class Settings {
 	constructor(
 		public theme = Theme.Dark,
-		public sessionLoading = SessionLoading.Never
+		public sessionLoading = SessionLoading.Never,
+		public language = 'auto'
 	) {}
 
 	/** Loads the settings from local storage */
@@ -31,7 +32,7 @@ export default class Settings {
 
 	/** Creates new settings from an json-like object */
 	static fromJSON(json: ReturnType<Settings['toJSON']>) {
-		return new Settings(json.theme, json.sessionLoading);
+		return new Settings(json.theme, json.sessionLoading, json.language);
 	}
 
 	/** Converts the settings to a json-like object */
@@ -39,6 +40,7 @@ export default class Settings {
 		return {
 			theme: this.theme,
 			sessionLoading: this.sessionLoading,
+			language: this.language,
 		};
 	}
 }

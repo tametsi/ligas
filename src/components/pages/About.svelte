@@ -8,26 +8,27 @@
 		CpuIcon,
 		HeartIcon,
 	} from 'svelte-feather-icons';
+	import { _ } from '@lib/util/translations';
 </script>
 
 <BasePage>
-	<h2 class="text-2xl font-bold">About</h2>
+	<h2 class="text-2xl font-bold">{$_('about.title')}</h2>
 
 	<section class="my-2">
-		<Comment>LIGAS - Time measurement made easy!</Comment>
+		<Comment>{$_('about.app_title')}</Comment>
 		<p class="mt-2">
-			LIGAS is a tool to simplify the measurement
+			{$_('about.app_description.0')}
 			<WatchIcon class="inline-block" />
-			and managment
+			{$_('about.app_description.1')}
 			<CpuIcon class="inline-block" />
-			of round times during a competition.
+			{$_('about.app_description.2')}
 		</p>
 	</section>
 
 	<section class="my-2">
 		<h3 class="text-xl font-bold my-2">Code</h3>
 		<p>
-			This project is open source. The code can be found on
+			{$_('about.open_source')}
 			<a
 				href="https://github.com/tametsi/ligas/"
 				target="_blank"
@@ -41,7 +42,7 @@
 	</section>
 
 	<section class="my-2">
-		<h3 class="text-xl font-bold my-2">Libraries</h3>
+		<h3 class="text-xl font-bold my-2">{$_('about.libraries')}</h3>
 		<ul class="list-[square] list-inside">
 			<li>
 				<a
@@ -89,9 +90,9 @@
 
 	<section class="my-2">
 		<Comment>
-			Built with
+			{$_('about.built_with.0')}
 			<span class="text-red-700"><HeartIcon class="inline-block" /></span>
-			and TypeScript
+			{$_('about.built_with.1')}
 		</Comment>
 	</section>
 

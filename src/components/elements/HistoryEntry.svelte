@@ -4,6 +4,7 @@
 	import Session, { sessionHistory } from '@lib/session';
 	import activeSession from '@stores/activeSession';
 	import type Run from '@lib/run';
+	import { _ } from '@lib/util/translations';
 
 	export let id: string,
 		timer: ReturnType<Timer['toJSON']>,
@@ -19,9 +20,9 @@
 	) {
 		if (
 			confirm(
-				`Do you really want to ${
-					copy ? 'copy' : 'load'
-				} that session? Your current session will be lost!`
+				`${$_('history.entry.load_prompt.0')} ${
+					copy ? $_('history.entry.copy') : $_('history.entry.load')
+				}${$_('history.entry.load_prompt.1')}`
 			)
 		) {
 			$activeSession.delete();
@@ -31,7 +32,7 @@
 	}
 
 	function deleteSession(id: string) {
-		if (confirm('Do you really want to delete this session?'))
+		if (confirm($_('history.entry.delete_prompt')))
 			sessionHistory.removeEntry(id);
 	}
 </script>
@@ -39,58 +40,65 @@
 <div class="card card-compact bg-base-100 my-2">
 	<div class="card-body">
 		<p>
-			Last modified: <b>{new Date(lastChanged).toLocaleString()}</b>
+			{$_('history.entry.last_modified')}:
+			<b>{new Date(lastChanged).toLocaleString()}</b>
 			<br />
-			Created: <b>{new Date(created).toLocaleString()}</b>
+			{$_('history.entry.created')}:
+			<b>{new Date(created).toLocaleString()}</b>
 		</p>
 
-		<div class="">
-			<h3 class="font-bold">Runners:</h3>
+		<div>
+			<h3 class="font-bold">{$_('history.entry.runners')}:</h3>
 			<div class="flex justify-start gap-1 flex-wrap">
 				{#each run.runners as runner}
 					<div class="card card-compact bg-base-200 p-3">
-						<p>Name: <b>{runner.name}</b></p>
+						<p>{$_('runner.stats.name')}: <b>{runner.name}</b></p>
 						{#if runner.alias}
-							<p>Alias: <b>{runner.alias}</b></p>
+							<p>
+								{$_('runner.stats.alias')}:
+								<b>{runner.alias}</b>
+							</p>
 						{/if}
 						<p>
-							Rounds: <b>{runner.rounds.rounds.length}</b>
+							{$_('runner.stats.rounds')}:
+							<b>{runner.rounds.rounds.length}</b>
 						</p>
 					</div>
 				{:else}
-					<p>None</p>
+					<p class="runner">{$_('history.entry.none')}</p>
 				{/each}
 			</div>
 		</div>
 
 		<p>
-			Time:
+			{$_('history.entry.time')}:
 			<b>{formatTime(Timer.fromJSON(timer).getRunDuration())}</b>
 			<br />
-			Round Length: <b>{run.roundLength}</b>
+			{$_('edit.round_length')}:
+			<b>{run.roundLength}</b>
 		</p>
 
 		<div class="card-actions">
 			<button
 				on:click={() => loadSession(id, session)}
 				class="btn btn-sm"
-				title="Loads this session. This session will be modified."
+				title={$_('history.entry.load_title')}
 			>
-				Load
+				{$_('history.entry.load')}
 			</button>
 			<button
 				on:click={() => loadSession(id, session, true)}
 				class="btn btn-sm"
-				title="Copies this session and loads the copy. This session will stay untouched."
+				title={$_('history.entry.copy_title')}
 			>
-				Copy & Load
+				{$_('history.entry.copy')} & {$_('history.entry.load')}
 			</button>
 			<button
 				on:click={() => deleteSession(id)}
 				class="btn btn-sm btn-error"
-				title="Deletes this session."
+				title={$_('history.entry.delete_title')}
 			>
-				Delete
+				{$_('history.entry.delete')}
 			</button>
 		</div>
 	</div>
