@@ -82,21 +82,21 @@
 			<button
 				on:click={() => loadSession(id, session)}
 				class="btn btn-sm"
-				title="Loads this session. This session will be modified."
+				title={$_('history.entry.load_title')}
 			>
 				{$_('history.entry.load')}
 			</button>
 			<button
 				on:click={() => loadSession(id, session, true)}
 				class="btn btn-sm"
-				title="Copies this session and loads the copy. This session will stay untouched."
+				title={$_('history.entry.copy_title')}
 			>
 				{$_('history.entry.copy')} & {$_('history.entry.load')}
 			</button>
 			<button
 				on:click={() => deleteSession(id)}
 				class="btn btn-sm btn-error"
-				title="Deletes this session."
+				title={$_('history.entry.delete_title')}
 			>
 				{$_('history.entry.delete')}
 			</button>

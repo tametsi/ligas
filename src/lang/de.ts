@@ -5,13 +5,16 @@ export default {
 		stats: {
 			name: 'Name',
 			alias: 'Alias',
-			rounds: 'Runden',
+			rounds: 'Runden (Format: mm:ss:ff)',
 			distance: 'Distanz',
 			average_roundtime: 'Durchschnittliche Rundenzeit',
 			fastest_round: 'Schnellste Runde',
 			slowest_round: 'Langsamste Runde',
-			max_difference: 'Max. Unterschied',
+			max_difference: 'Max. Unterschied (in s)',
 		},
+	},
+	timer: {
+		reset_prompt: 'Möchtest du den Timer wirklich zurücksetzen?',
 	},
 	about: {
 		title: 'Über LIGAS',
@@ -19,7 +22,7 @@ export default {
 		app_description: [
 			'LIGAS ist ein Werkzeug, um das Messen',
 			'und die Verwaltung',
-			'von Rundenzeiten während einem Wettkampf zu erleichtern.',
+			'von Rundenzeiten während eines Wettkampfes zu erleichtern.',
 		],
 		open_source:
 			'Dieses Projekt ist Open-Source. Der Code befindet sich auf',
@@ -67,13 +70,18 @@ export default {
 			last_modified: 'Letzte Änderung',
 			created: 'Erstelllung',
 			copy: 'Kopieren',
+			copy_title:
+				'Lädt eine Kopie dieses Laufes. Der ursprüngliche Lauf bleibt dabei unverändert.',
 			load: 'Laden',
+			load_title:
+				'Lädt diesen Lauf. Der ursprüngliche Lauf wird hierdurch verändert.',
 			load_prompt: [
 				'Möchtest du diesen Lauf wirklich',
 				'? Dein aktueller Lauf wird dabei überschrieben!',
 			],
-			delete_prompt: 'Möchtest du diesen Lauf wirklich löschen?',
 			delete: 'Löschen',
+			delete_title: 'Löscht diesen Lauf permanent.',
+			delete_prompt: 'Möchtest du diesen Lauf wirklich löschen?',
 		},
 	},
 	main: {
@@ -84,6 +92,11 @@ export default {
 	settings: {
 		title: 'Einstellungen',
 		theme: 'Erscheinungsbild',
+		themes: {
+			dark: 'Dunkel',
+			light: 'Hell',
+			night: 'Nachtmodus',
+		},
 		session_loading: {
 			title: 'Lauf-Ladeverhalten',
 			never: 'Nie',

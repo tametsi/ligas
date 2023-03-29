@@ -8,12 +8,12 @@
 		PlayIcon,
 		RotateCcwIcon,
 	} from 'svelte-feather-icons';
+	import { _ } from '@lib/util/translations';
 
 	const pauseTimer = () => activeSession.updateSelf(x => x.timer.pause());
 	const resetTimer = () =>
 		activeSession.updateSelf(x => {
-			if (confirm('Do you really want to reset the timer?'))
-				x.timer.reset();
+			if (confirm($_('timer.reset_prompt'))) x.timer.reset();
 		});
 </script>
 

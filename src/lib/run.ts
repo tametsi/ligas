@@ -20,8 +20,8 @@ export default class Run {
 			get(_)('runner.stats.alias'),
 			get(_)('runner.stats.rounds'),
 			get(_)('runner.stats.distance'),
-			`${get(_)('runner.stats.max_difference')} (in s)`,
-			`${get(_)('runner.stats.rounds')} (Format: mm:ss:ff)`,
+			`${get(_)('runner.stats.max_difference')}`,
+			`${get(_)('runner.stats.rounds')}`,
 		];
 		const stats = this.runners.map(runner => runner.stats);
 

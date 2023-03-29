@@ -5,13 +5,16 @@ export default {
 		stats: {
 			name: 'Name',
 			alias: 'Alias',
-			rounds: 'Rounds',
+			rounds: 'Rounds (Format: mm:ss:ff)',
 			distance: 'Distance',
 			average_roundtime: 'Average Roundtime',
 			fastest_round: 'Fastest Round',
 			slowest_round: 'Slowest Round',
-			max_difference: 'Max. Difference',
+			max_difference: 'Max. Difference (in s)',
 		},
+	},
+	timer: {
+		reset_prompt: 'Do you really want to reset the timer?',
 	},
 	about: {
 		title: 'About',
@@ -67,13 +70,17 @@ export default {
 			last_modified: 'Last modified',
 			created: 'Created',
 			copy: 'Copy',
+			copy_title:
+				'Copies this session and loads the copy. This session will stay untouched.',
 			load: 'Load',
+			load_title: 'Loads this session. This session will be modified.',
 			load_prompt: [
 				'Do you really want to',
 				' that session? Your current session will be lost!',
 			],
-			delete_prompt: 'Do you really want to delete this session?',
 			delete: 'Delete',
+			delete_title: 'Deletes this session.',
+			delete_prompt: 'Do you really want to delete this session?',
 		},
 	},
 	main: {
@@ -84,6 +91,11 @@ export default {
 	settings: {
 		title: 'Settings',
 		theme: 'Theme',
+		themes: {
+			dark: 'Dark',
+			light: 'Light',
+			night: 'Night',
+		},
 		session_loading: {
 			title: 'Autoload Sessions',
 			never: 'Never',

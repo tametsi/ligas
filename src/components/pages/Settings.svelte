@@ -16,21 +16,21 @@
 			<div class="btn-group">
 				<input
 					type="radio"
-					data-title="Dark"
+					data-title={$_('settings.themes.dark')}
 					value={Theme.Dark}
 					bind:group={$activeSettings.theme}
 					class="btn"
 				/>
 				<input
 					type="radio"
-					data-title="Light"
+					data-title={$_('settings.themes.light')}
 					value={Theme.Light}
 					bind:group={$activeSettings.theme}
 					class="btn"
 				/>
 				<input
 					type="radio"
-					data-title="Night"
+					data-title={$_('settings.themes.night')}
 					value={Theme.Night}
 					bind:group={$activeSettings.theme}
 					class="btn"
