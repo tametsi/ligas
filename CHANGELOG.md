@@ -39,3 +39,11 @@ Hello World!
 - feat: add confirm dialog before resetting the timer
 
 **Full Changelog**: [`v1.2.0...v1.3.0`](https://github.com/tametsi/ligas/compare/v1.2.0...v1.3.0)
+
+### [v1.4.0](https://github.com/tametsi/ligas/tree/v1.4.0)
+
+#### Changes
+
+- feat: add translations by @xXjojaXx in [#14](https://github.com/tametsi/ligas/pull/14)
+
+**Full Changelog**: [`v1.3.0...v1.4.0`](https://github.com/tametsi/ligas/compare/v1.3.0...v1.4.0)
