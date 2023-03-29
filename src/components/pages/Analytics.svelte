@@ -5,7 +5,6 @@
 	import activeSession from '@stores/activeSession';
 	import Chart from 'svelte-frappe-charts';
 	import { link } from 'svelte-spa-router';
-	import { get } from 'svelte/store';
 	import { _ } from '@lib/util/translations';
 
 	let selectedRunner: Runner;
@@ -17,7 +16,7 @@
 		: $activeSession.run.runners[0];
 	$: data = {
 		labels: selectedRunner?.rounds.all.map(
-			(_v, i) => `${get(_)('analytics.round')}: ${i + 1}`
+			(_v, i) => `${$_('analytics.round')}: ${i + 1}`
 		),
 		datasets: [
 			{

@@ -63,8 +63,8 @@
 			</FormItem>
 
 			<div class="py-2">
-				<button type="submit" class="btn btn-primary"
-					>{$_('edit.add_runner')}
+				<button type="submit" class="btn btn-primary">
+					{$_('edit.add_runner')}
 				</button>
 			</div>
 		</figure>
