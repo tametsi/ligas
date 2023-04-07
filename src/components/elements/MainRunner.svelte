@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type Runner from '@lib/runner';
 	import formatTime from '@lib/util/formatTime';
-	import { TimerState } from '@lib/timer';
 	import activeSession from '@stores/activeSession';
 	import RunnerTitle from './RunnerTitle.svelte';
+	import { get } from 'svelte/store';
 
 	export let runner: Runner;
 
@@ -19,8 +19,8 @@
 	update();
 
 	function finishRound() {
-		if ($activeSession.timer.state === TimerState.Running) {
-			runner.rounds.addByTime($activeSession.timer.getRunDuration());
+		if ($activeSession.timer.running) {
+			runner.rounds.addByTime(get($activeSession.timer.passed));
 			update();
 		}
 	}

@@ -5,6 +5,7 @@
 	import activeSession from '@stores/activeSession';
 	import type Run from '@lib/run';
 	import { _ } from '@lib/util/translations';
+	import { get } from 'svelte/store';
 
 	export let id: string,
 		timer: ReturnType<Timer['toJSON']>,
@@ -72,7 +73,7 @@
 
 		<p>
 			{$_('history.entry.time')}:
-			<b>{formatTime(Timer.fromJSON(timer).getRunDuration())}</b>
+			<b>{formatTime(get(Timer.fromJSON(timer).remaining))}</b>
 			<br />
 			{$_('edit.round_length')}:
 			<b>{run.roundLength}</b>
