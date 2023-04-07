@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Timer from '@components/elements/Timer.svelte';
-	import activeSession from '@stores/activeSession';
 	import { MenuIcon } from 'svelte-feather-icons';
 	import { _ } from '@lib/util/translations';
 </script>
