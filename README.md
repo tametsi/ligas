@@ -35,7 +35,7 @@ pnpm format
 
 ## Libraries
 
-- :key: [Svelte](https://svelte.dev/) and :art: [Sass](https://sass-lang.com/) are used for the UI
+- :key: [Svelte](https://svelte.dev/), :dash: [TailwindCSS](https://tailwindcss.com/) and :art: [daisyUI](https://daisyui.com/) are used for the UI
 - :gem: [Vite](https://vitejs.dev/) is used to build the app
 - :balloon: [Feather](http://feathericons.com/) provides the icons in the app
 
