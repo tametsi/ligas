@@ -4,6 +4,13 @@
 
 The latest version can be found [here](https://ligas.dev).
 
+### [PWA (v2.0.0)](https://github.com/tametsi/ligas/tree/stable)
+
+**Last version release**  
+The current version can be found on the [stable](https://github.com/tametsi/ligas/tree/stable) branch.
+
+**Full Changelog**: [`v1.4.0...stable`](https://github.com/tametsi/ligas/compare/v1.4.0...stable)
+
 ### [v1.4.0](https://github.com/tametsi/ligas/tree/v1.4.0)
 
 #### Changes
