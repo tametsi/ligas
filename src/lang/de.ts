@@ -44,6 +44,7 @@ export default {
 		alias_description: `Der Alias wird angezeigt, wenn er vorhanden ist. Der Name ist ebenfalls
 			sichtbar. In den Rundendaten wird sowohl der Name als auch der Alias angezeigt.`,
 		add_runner: 'Läufer hinzufügen',
+		ready: 'Fertig!',
 	},
 	export: {
 		title: 'Exportieren',

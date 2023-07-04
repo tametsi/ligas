@@ -44,6 +44,7 @@ export default {
 			seen. Both, the name and the alias are listed in the round
 			data.`,
 		add_runner: 'Add Runner',
+		ready: 'Ready!',
 	},
 	export: {
 		title: 'Export',

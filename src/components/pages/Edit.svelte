@@ -5,6 +5,7 @@
 	import { GridIcon, ListIcon } from 'svelte-feather-icons';
 	import EditRunner from '@components/elements/EditRunner.svelte';
 	import { _ } from '@lib/util/translations';
+	import { link } from 'svelte-spa-router';
 
 	let layoutGrid = true;
 	let newRunner = {
@@ -66,6 +67,9 @@
 				<button type="submit" class="btn btn-primary">
 					{$_('edit.add_runner')}
 				</button>
+				<a href="/" use:link class="btn">
+					{$_('edit.ready')}
+				</a>
 			</div>
 		</figure>
 	</form>
