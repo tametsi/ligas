@@ -10,11 +10,18 @@ export enum SessionLoading {
 	Always,
 }
 
+export enum RunnerSorting {
+	Name,
+	Alias,
+	None,
+}
+
 const storageId = 'settings';
 export default class Settings {
 	constructor(
 		public theme = Theme.Dark,
 		public sessionLoading = SessionLoading.Never,
+		public runnerSorting = RunnerSorting.None,
 		public language = 'auto'
 	) {}
 
@@ -32,7 +39,12 @@ export default class Settings {
 
 	/** Creates new settings from an json-like object */
 	static fromJSON(json: ReturnType<Settings['toJSON']>) {
-		return new Settings(json.theme, json.sessionLoading, json.language);
+		return new Settings(
+			json.theme,
+			json.sessionLoading,
+			json.runnerSorting,
+			json.language
+		);
 	}
 
 	/** Converts the settings to a json-like object */
@@ -40,6 +52,7 @@ export default class Settings {
 		return {
 			theme: this.theme,
 			sessionLoading: this.sessionLoading,
+			runnerSorting: this.runnerSorting,
 			language: this.language,
 		};
 	}

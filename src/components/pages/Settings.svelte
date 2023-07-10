@@ -3,6 +3,7 @@
 	import FormItem from '@components/elements/FormItem.svelte';
 	import activeSettings, {
 		SessionLoading,
+		RunnerSorting,
 		Theme,
 	} from '@stores/activeSettings';
 	import { _ } from '@lib/util/translations';
@@ -58,6 +59,31 @@
 					data-title={$_('settings.session_loading.always')}
 					value={SessionLoading.Always}
 					bind:group={$activeSettings.sessionLoading}
+					class="btn"
+				/>
+			</div>
+		</FormItem>
+		<FormItem name={$_('settings.runner_sorting.title')}>
+			<div class="btn-group">
+				<input
+					type="radio"
+					data-title={$_('settings.runner_sorting.none')}
+					value={RunnerSorting.None}
+					bind:group={$activeSettings.runnerSorting}
+					class="btn"
+				/>
+				<input
+					type="radio"
+					data-title={$_('settings.runner_sorting.name')}
+					value={RunnerSorting.Name}
+					bind:group={$activeSettings.runnerSorting}
+					class="btn"
+				/>
+				<input
+					type="radio"
+					data-title={$_('settings.runner_sorting.alias')}
+					value={RunnerSorting.Alias}
+					bind:group={$activeSettings.runnerSorting}
 					class="btn"
 				/>
 			</div>

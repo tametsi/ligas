@@ -5,7 +5,7 @@ import {
 	locale,
 } from '@lib/util/translations';
 import { createWriteableObjectStore } from './createStore';
-export { Theme, SessionLoading } from '@lib/settings';
+export { Theme, SessionLoading, RunnerSorting } from '@lib/settings';
 
 const activeSettings = createWriteableObjectStore(
 	Settings.load() ?? new Settings()

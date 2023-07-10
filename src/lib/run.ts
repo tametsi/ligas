@@ -1,6 +1,7 @@
 import Runner from '@lib/runner';
 import { get } from 'svelte/store';
 import { _ } from '@lib/util/translations';
+import activeSettings, { RunnerSorting } from '@stores/activeSettings';
 
 export default class Run {
 	private _runners: Map<string, Runner> = new Map();
@@ -10,7 +11,18 @@ export default class Run {
 
 	/** All the runners currently being part of this run */
 	get runners() {
-		return [...this._runners.values()];
+		return [...this._runners.values()].sort((r1, r2) => {
+			switch (get(activeSettings).runnerSorting) {
+				case RunnerSorting.None:
+					return 0;
+
+				case RunnerSorting.Name:
+					return r1.name > r2.name ? 1 : -1;
+
+				case RunnerSorting.Alias:
+					return r1.alias > r2.alias ? 1 : -1;
+			}
+		});
 	}
 
 	/** The statistics of this run (naming and performance of all runners) */

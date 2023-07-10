@@ -103,6 +103,12 @@ export default {
 			incomplete: 'Incomplete',
 			always: 'Always',
 		},
+		runner_sorting: {
+			title: 'Sorting of Runners',
+			none: 'None',
+			name: 'By Name',
+			alias: 'By Alias',
+		},
 		language: 'Language',
 	},
 };

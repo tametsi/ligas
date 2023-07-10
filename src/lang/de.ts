@@ -104,6 +104,12 @@ export default {
 			incomplete: 'Unvollständige',
 			always: 'Immer',
 		},
+		runner_sorting: {
+			title: 'Läufer-Sortierung',
+			none: 'Keine',
+			name: 'Nach Name',
+			alias: 'Nach Alias',
+		},
 		language: 'Sprache',
 	},
 } satisfies typeof import('./en').default;
