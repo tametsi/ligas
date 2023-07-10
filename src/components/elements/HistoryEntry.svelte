@@ -3,7 +3,7 @@
 	import formatTime from '@lib/util/formatTime';
 	import Session, { sessionHistory } from '@lib/session';
 	import activeSession from '@stores/activeSession';
-	import type Run from '@lib/run';
+	import Run from '@lib/run';
 	import { _ } from '@lib/util/translations';
 
 	export let id: string,
@@ -50,7 +50,7 @@
 		<div>
 			<h3 class="font-bold">{$_('history.entry.runners')}:</h3>
 			<div class="flex justify-start gap-1 flex-wrap">
-				{#each run.runners as runner}
+				{#each Run.fromJSON(run).runners as runner}
 					<div class="card card-compact bg-base-200 p-3">
 						<p>{$_('runner.stats.name')}: <b>{runner.name}</b></p>
 						{#if runner.alias}
@@ -61,7 +61,7 @@
 						{/if}
 						<p>
 							{$_('runner.stats.rounds')}:
-							<b>{runner.rounds.rounds.length}</b>
+							<b>{runner.rounds.count}</b>
 						</p>
 					</div>
 				{:else}
