@@ -5,7 +5,8 @@ export default {
 		stats: {
 			name: 'Name',
 			alias: 'Alias',
-			rounds: 'Runden (Format: mm:ss:ff)',
+			rounds: 'Runden',
+			rounds_format: 'Runden (Format: mm:ss:ff)',
 			distance: 'Distanz',
 			average_roundtime: 'Durchschnittliche Rundenzeit',
 			fastest_round: 'Schnellste Runde',
