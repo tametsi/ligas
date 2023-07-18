@@ -37,7 +37,7 @@ pnpm format
 
 - :key: [Svelte](https://svelte.dev/), :dash: [TailwindCSS](https://tailwindcss.com/) and :art: [daisyUI](https://daisyui.com/) are used for the UI
 - :gem: [Vite](https://vitejs.dev/) is used to build the app
-- :balloon: [Feather](http://feathericons.com/) provides the icons in the app
+- :balloon: [Lucide](http://lucide.dev/) icons are spread around
 
 ## License
 

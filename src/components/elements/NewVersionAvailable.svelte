@@ -1,10 +1,6 @@
 <script lang="ts">
 	import { useRegisterSW } from 'virtual:pwa-register/svelte';
-	import {
-		AlertCircleIcon,
-		DownloadIcon,
-		CalendarIcon,
-	} from 'svelte-feather-icons';
+	import { AlertCircle, Download, Calendar } from 'lucide-svelte';
 
 	const { needRefresh, updateServiceWorker } = useRegisterSW();
 
@@ -16,7 +12,7 @@
 	<div class="card bg-base-100 p-4">
 		<div class="card-content">
 			<h3 class="card-title">
-				<AlertCircleIcon /> Update available!
+				<AlertCircle /> Update available!
 			</h3>
 
 			<p class="py-2">
@@ -34,10 +30,10 @@
 
 			<div class="card-actions">
 				<button class="btn btn-primary gap-2" on:click={updateSw}>
-					<DownloadIcon /> Update & Reload
+					<Download /> Update & Reload
 				</button>
 				<button class="btn btn-error gap-2" on:click={close}>
-					<CalendarIcon /> Yeah, yeah...
+					<Calendar /> Yeah, yeah...
 				</button>
 			</div>
 		</div>

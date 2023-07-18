@@ -1,15 +1,15 @@
 <script>
 	import SidebarItem from '@components/elements/SidebarItem.svelte';
 	import {
-		HomeIcon,
-		Edit2Icon,
-		DatabaseIcon,
-		CoffeeIcon,
-		ActivityIcon,
-		BookIcon,
-		BookOpenIcon,
-		SettingsIcon,
-	} from 'svelte-feather-icons';
+		Home,
+		Edit2,
+		Database,
+		Coffee,
+		Activity,
+		Book,
+		BookOpen,
+		Settings,
+	} from 'lucide-svelte';
 	import { _ } from '@lib/util/translations';
 </script>
 
@@ -19,29 +19,29 @@
 	<!-- Sidebar content here -->
 	<div class="flex flex-col gap-2">
 		<SidebarItem title={$_('main.title')} href="/">
-			<HomeIcon />
+			<Home />
 		</SidebarItem>
 		<SidebarItem title={$_('edit.title')} href="/edit">
-			<Edit2Icon />
+			<Edit2 />
 		</SidebarItem>
 		<SidebarItem title={$_('export.title')} href="/export">
-			<DatabaseIcon />
+			<Database />
 		</SidebarItem>
 		<SidebarItem title={$_('analytics.title')} href="/analytics">
-			<ActivityIcon />
+			<Activity />
 		</SidebarItem>
 		<SidebarItem title={$_('history.title')} href="/history">
-			<BookOpenIcon class="hidden group-[.active]:block" />
-			<BookIcon class="group-[.active]:hidden" />
+			<BookOpen class="hidden group-[.active]:block" />
+			<Book class="group-[.active]:hidden" />
 		</SidebarItem>
 	</div>
 
 	<div class="flex flex-col gap-2">
 		<SidebarItem title={$_('settings.title')} href="/settings">
-			<SettingsIcon />
+			<Settings />
 		</SidebarItem>
 		<SidebarItem title={$_('about.title')} href="/about">
-			<CoffeeIcon />
+			<Coffee />
 		</SidebarItem>
 	</div>
 </ul>

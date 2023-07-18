@@ -1,13 +1,7 @@
 <script lang="ts">
 	import Comment from '@components/elements/Comment.svelte';
 	import BasePage from '@components/pages/BasePage.svelte';
-	import {
-		FeatherIcon,
-		GithubIcon,
-		WatchIcon,
-		CpuIcon,
-		HeartIcon,
-	} from 'svelte-feather-icons';
+	import { Github, Watch, Cpu, Heart } from 'lucide-svelte';
 	import { _ } from '@lib/util/translations';
 </script>
 
@@ -18,9 +12,9 @@
 		<Comment>{$_('about.app_title')}</Comment>
 		<p class="mt-2">
 			{$_('about.app_description.0')}
-			<WatchIcon class="inline-block" />
+			<Watch class="inline-block" />
 			{$_('about.app_description.1')}
-			<CpuIcon class="inline-block" />
+			<Cpu class="inline-block" />
 			{$_('about.app_description.2')}
 		</p>
 	</section>
@@ -35,7 +29,7 @@
 				rel="noopener noreferrer"
 				class="link link-hover link-primary"
 			>
-				<GithubIcon class="inline-block align-sub" />
+				<Github class="inline-block align-sub" />
 				GitHub</a
 			>.
 		</p>
@@ -49,41 +43,39 @@
 					href="https://svelte.dev/"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="link link-hover link-primary"
-				>
-					Svelte
-				</a>
-			</li>
-			<li>
+					class="link link-hover link-primary">Svelte</a
+				>,
 				<a
-					href="https://sass-lang.com/"
+					href="https://tailwindcss.com/"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="link link-hover link-primary"
+					class="link link-hover link-primary">TailwindCSS</a
 				>
-					Sass
-				</a>
+				and
+				<a
+					href="https://daisyui.com/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="link link-hover link-primary">daisyUI</a
+				> are used for the UI
 			</li>
 			<li>
 				<a
 					href="https://vitejs.dev/"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="link link-hover link-primary"
-				>
-					Vite
-				</a>
+					class="link link-hover link-primary">Vite</a
+				> is used to build the app
 			</li>
 			<li>
 				<a
-					href="http://feathericons.com/"
+					href="https://lucide.dev/"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="link link-hover link-primary"
 				>
-					<FeatherIcon class="inline-block align-sub" />
-					Feather
-				</a>
+					Lucide
+				</a> icons are spread around
 			</li>
 		</ul>
 	</section>
@@ -91,7 +83,7 @@
 	<section class="my-2">
 		<Comment>
 			{$_('about.built_with.0')}
-			<span class="text-red-700"><HeartIcon class="inline-block" /></span>
+			<span class="text-red-700"><Heart class="inline-block" /></span>
 			{$_('about.built_with.1')}
 		</Comment>
 	</section>

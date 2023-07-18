@@ -20,6 +20,9 @@ devDependencies:
   jsdom:
     specifier: ^22.1.0
     version: 22.1.0
+  lucide-svelte:
+    specifier: ^0.261.0
+    version: 0.261.0(svelte@3.59.2)
   postcss:
     specifier: ^8.4.24
     version: 8.4.24
@@ -35,9 +38,6 @@ devDependencies:
   svelte-check:
     specifier: ^3.4.4
     version: 3.4.4(@babel/core@7.22.6)(postcss@8.4.24)(svelte@3.59.2)
-  svelte-feather-icons:
-    specifier: ^4.0.1
-    version: 4.0.1
   svelte-frappe-charts:
     specifier: ^1.10.0
     version: 1.10.0(svelte@3.59.2)
@@ -3090,6 +3090,14 @@ packages:
       es5-ext: 0.10.62
     dev: true
 
+  /lucide-svelte@0.261.0(svelte@3.59.2):
+    resolution: {integrity: sha512-bDJQXDdNj8lP88e0+c3/XOAc1TYQPvjPsXVN5viYvgO2qWHkyzIi3lcwojQ4a85RL9XawSWRfL4mK95zgQMfQg==}
+    peerDependencies:
+      svelte: '>=3 <5'
+    dependencies:
+      svelte: 3.59.2
+    dev: true
+
   /magic-string@0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
     dependencies:
@@ -3863,12 +3871,6 @@ packages:
       - sass
       - stylus
       - sugarss
-    dev: true
-
-  /svelte-feather-icons@4.0.1:
-    resolution: {integrity: sha512-DMDrlbblaRUHLcTFtKHE4GWQ/Fk/kneGIZrrI75EmTxCu1hgHe8uq8e80ONrmdjL/i3f1d8fkcx73SWng2X6Gg==}
-    dependencies:
-      svelte: 3.59.2
     dev: true
 
   /svelte-frappe-charts@1.10.0(svelte@3.59.2):

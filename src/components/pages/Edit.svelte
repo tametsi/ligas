@@ -2,7 +2,7 @@
 	import activeSession from '@stores/activeSession';
 	import FormItem from '@components/elements/FormItem.svelte';
 	import BasePage from '@components/pages/BasePage.svelte';
-	import { GridIcon, ListIcon } from 'svelte-feather-icons';
+	import { Grid, List } from 'lucide-svelte';
 	import EditRunner from '@components/elements/EditRunner.svelte';
 	import { _ } from '@lib/util/translations';
 	import { link } from 'svelte-spa-router';
@@ -79,14 +79,14 @@
 			class="btn btn-square btn-neutral"
 			on:click={() => (layoutGrid = true)}
 		>
-			<GridIcon size="25" />
+			<Grid size="25" />
 		</button>
 
 		<button
 			class="btn btn-square btn-neutral"
 			on:click={() => (layoutGrid = false)}
 		>
-			<ListIcon size="25" />
+			<List size="25" />
 		</button>
 	</div>
 

@@ -2,12 +2,7 @@
 	import Timer from '@components/elements/Timer.svelte';
 	import { TimerState } from '@lib/timer';
 	import activeSession from '@stores/activeSession';
-	import {
-		MenuIcon,
-		PauseIcon,
-		PlayIcon,
-		RotateCcwIcon,
-	} from 'svelte-feather-icons';
+	import { Menu, Pause, Play, RotateCcw } from 'lucide-svelte';
 	import { _ } from '@lib/util/translations';
 
 	const pauseTimer = () => activeSession.updateSelf(x => x.timer.pause());
@@ -21,7 +16,7 @@
 	<!-- navbar content -->
 	<div class="navbar-start">
 		<label for="drawer-toggle" class="btn btn-ghost btn-square lg:hidden">
-			<MenuIcon />
+			<Menu />
 		</label>
 	</div>
 
@@ -30,16 +25,16 @@
 	<div class="navbar-end">
 		<button on:click={pauseTimer} class="btn btn-ghost btn-square">
 			{#if $activeSession.timer.state === TimerState.Running}
-				<PauseIcon />
+				<Pause />
 			{:else}
-				<PlayIcon />
+				<Play />
 			{/if}
 		</button>
 		<p class="px-2 h-12">
 			<Timer />
 		</p>
 		<button on:click={resetTimer} class="btn btn-ghost btn-square">
-			<RotateCcwIcon />
+			<RotateCcw />
 		</button>
 	</div>
 </nav>
