@@ -11,7 +11,7 @@
 		{href}
 		use:link
 		use:active
-		class="btn btn-ghost lg:btn-square lg:px-4 lg:py-3 gap-2 justify-start group"
+		class="btn btn-ghost lg:btn-square py-3 lg:py-3 gap-2 justify-start lg:justify-center group"
 	>
 		<slot />
 		<span class="lg:hidden">{title}</span>

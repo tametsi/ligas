@@ -14,7 +14,7 @@
 </script>
 
 <ul
-	class="menu justify-between gap-2 p-2 w-fit bg-base-300 text-base-content border-r-0 border-base-300"
+	class="menu justify-between flex-nowrap gap-2 p-2 w-fit h-full bg-base-300 text-base-content border-r-0 border-base-300"
 >
 	<!-- Sidebar content here -->
 	<div class="flex flex-col gap-2">

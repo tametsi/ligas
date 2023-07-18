@@ -9,8 +9,8 @@
 	});
 </script>
 
-<div class="overflow-x-auto block max-w-full x roundded-box">
-	<table class="table table-zebra table-compact w-full">
+<div class="overflow-x-auto rounded-btn bg-base-100">
+	<table class="table table-zebra table-sm">
 		<thead>
 			<tr>
 				{#each data[0] as header, i}

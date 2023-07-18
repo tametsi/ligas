@@ -40,51 +40,56 @@
 			</FormItem>
 		</form>
 
-		<table class="table table-zebra table-compact">
-			<tbody>
-				<tr>
-					<td>{$_('runner.stats.name')}</td>
-					<td>{selectedRunner?.name ?? '-'}</td>
-				</tr>
-				<tr>
-					<td>{$_('runner.stats.alias')}</td>
-					<td>{selectedRunner?.alias ?? '-'}</td>
-				</tr>
-				<tr>
-					<td>{$_('runner.stats.rounds')}</td>
-					<td>{selectedRunner?.rounds.count ?? '-'}</td>
-				</tr>
-				<tr>
-					<td>{$_('runner.stats.distance')}</td>
-					<td>{selectedRunner?.distance ?? '-'}</td>
-				</tr>
-				<tr>
-					<td>{$_('runner.stats.average_roundtime')}</td>
-					<td
-						>{Math.round(selectedRunner?.rounds.averageTime ?? 0) /
-							1000}s</td
-					>
-				</tr>
-				<tr>
-					<td>{$_('runner.stats.fastest_round')}</td>
-					<td
-						>{selectedRunner?.rounds.count !== 0
-							? Math.min(...(selectedRunner?.rounds.all ?? [0])) /
-							  1000
-							: 0}s</td
-					>
-				</tr>
-				<tr>
-					<td>{$_('runner.stats.slowest_round')}</td>
-					<td>
-						{selectedRunner?.rounds.count !== 0
-							? Math.max(...(selectedRunner?.rounds.all ?? [0])) /
-							  1000
-							: 0}s</td
-					>
-				</tr>
-			</tbody>
-		</table>
+		<div class="bg-base-100 w-fit rounded-btn">
+			<table class="table table-zebra table-sm w-auto">
+				<tbody>
+					<tr>
+						<td>{$_('runner.stats.name')}</td>
+						<td>{selectedRunner?.name ?? '-'}</td>
+					</tr>
+					<tr>
+						<td>{$_('runner.stats.alias')}</td>
+						<td>{selectedRunner?.alias ?? '-'}</td>
+					</tr>
+					<tr>
+						<td>{$_('runner.stats.rounds')}</td>
+						<td>{selectedRunner?.rounds.count ?? '-'}</td>
+					</tr>
+					<tr>
+						<td>{$_('runner.stats.distance')}</td>
+						<td>{selectedRunner?.distance ?? '-'}</td>
+					</tr>
+					<tr>
+						<td>{$_('runner.stats.average_roundtime')}</td>
+						<td
+							>{Math.round(
+								selectedRunner?.rounds.averageTime ?? 0
+							) / 1000}s</td
+						>
+					</tr>
+					<tr>
+						<td>{$_('runner.stats.fastest_round')}</td>
+						<td
+							>{selectedRunner?.rounds.count !== 0
+								? Math.min(
+										...(selectedRunner?.rounds.all ?? [0])
+								  ) / 1000
+								: 0}s</td
+						>
+					</tr>
+					<tr>
+						<td>{$_('runner.stats.slowest_round')}</td>
+						<td>
+							{selectedRunner?.rounds.count !== 0
+								? Math.max(
+										...(selectedRunner?.rounds.all ?? [0])
+								  ) / 1000
+								: 0}s</td
+						>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
 		<Chart {data} type="line" lineOptions={{ regionFill: 1 }} />
 	{:else}

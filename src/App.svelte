@@ -12,14 +12,14 @@
 	);
 </script>
 
-<div class="drawer drawer-mobile">
+<div class="drawer lg:drawer-open">
 	<input type="checkbox" id="drawer-toggle" class="drawer-toggle" />
-	<div class="drawer-content bg-base-200 z-10">
+	<div class="drawer-content bg-base-200 min-h-screen overflow-x-hidden">
 		<Navbar />
 
 		<Router {routes} />
 	</div>
-	<div class="drawer-side">
+	<div class="drawer-side z-20">
 		<label for="drawer-toggle" class="drawer-overlay" />
 
 		<Sidebar />

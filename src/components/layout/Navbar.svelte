@@ -17,7 +17,7 @@
 		});
 </script>
 
-<nav class="navbar sticky top-0 z-50 bg-base-300 text-3xl text-justify">
+<nav class="navbar sticky top-0 z-10 bg-base-300 text-3xl text-justify">
 	<!-- navbar content -->
 	<div class="navbar-start">
 		<label for="drawer-toggle" class="btn btn-ghost btn-square lg:hidden">

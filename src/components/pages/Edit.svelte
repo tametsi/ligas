@@ -67,7 +67,7 @@
 				<button type="submit" class="btn btn-primary">
 					{$_('edit.add_runner')}
 				</button>
-				<a href="/" use:link class="btn">
+				<a href="/" use:link class="btn btn-neutral">
 					{$_('edit.ready')}
 				</a>
 			</div>
@@ -75,11 +75,17 @@
 	</form>
 
 	<div class="py-2">
-		<button class="btn btn-square" on:click={() => (layoutGrid = true)}>
+		<button
+			class="btn btn-square btn-neutral"
+			on:click={() => (layoutGrid = true)}
+		>
 			<GridIcon size="25" />
 		</button>
 
-		<button class="btn btn-square" on:click={() => (layoutGrid = false)}>
+		<button
+			class="btn btn-square btn-neutral"
+			on:click={() => (layoutGrid = false)}
+		>
 			<ListIcon size="25" />
 		</button>
 	</div>

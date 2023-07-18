@@ -19,7 +19,7 @@
 		"@sveltejs/vite-plugin-svelte": "^2.4.2",
 		"@tsconfig/svelte": "^5.0.0",
 		"autoprefixer": "^10.4.14",
-		"daisyui": "^2.52.0",
+		"daisyui": "^3.2.1",
 		"jsdom": "^22.1.0",
 		"postcss": "^8.4.24",
 		"prettier": "^2.8.8",
