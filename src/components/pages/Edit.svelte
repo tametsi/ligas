@@ -1,11 +1,13 @@
 <script lang="ts">
 	import activeSession from '@stores/activeSession';
+	import activeSettings from '@stores/activeSettings';
 	import FormItem from '@components/elements/FormItem.svelte';
 	import BasePage from '@components/pages/BasePage.svelte';
-	import { Grid, List } from 'lucide-svelte';
 	import EditRunner from '@components/elements/EditRunner.svelte';
+	import RunnerSortingPicker from '@components/elements/RunnerSortingPicker.svelte';
 	import { _ } from '@lib/util/translations';
 	import { link } from 'svelte-spa-router';
+	import { Grid, List } from 'lucide-svelte';
 
 	let layoutGrid = true;
 	let newRunner = {
@@ -74,20 +76,32 @@
 		</figure>
 	</form>
 
-	<div class="py-2">
-		<button
-			class="btn btn-square btn-neutral"
-			on:click={() => (layoutGrid = true)}
-		>
-			<Grid size="25" />
-		</button>
+	<div class="flex flex-row py-2">
+		<div>
+			<div class="join">
+				<button
+					type="button"
+					class="join-item btn btn-square"
+					class:btn-primary={layoutGrid}
+					on:click={() => (layoutGrid = true)}
+				>
+					<Grid size="25" />
+				</button>
+				<button
+					class="join-item btn btn-square"
+					class:btn-primary={!layoutGrid}
+					on:click={() => (layoutGrid = false)}
+				>
+					<List size="25" />
+				</button>
+			</div>
+		</div>
 
-		<button
-			class="btn btn-square btn-neutral"
-			on:click={() => (layoutGrid = false)}
-		>
-			<List size="25" />
-		</button>
+		<div class="divider divider-horizontal" />
+
+		<div>
+			<RunnerSortingPicker />
+		</div>
 	</div>
 
 	<div
@@ -95,8 +109,10 @@
 		class:layout-grid={layoutGrid}
 		class:flex-col={!layoutGrid}
 	>
-		{#each $activeSession.run.runners as runner (runner.id)}
-			<EditRunner {runner} row={!layoutGrid} />
-		{/each}
+		{#key $activeSettings.runnerSorting + $activeSettings.runnerSortingKey}
+			{#each $activeSession.run.runnersSorted as runner (runner.id)}
+				<EditRunner {runner} row={!layoutGrid} />
+			{/each}
+		{/key}
 	</div>
 </BasePage>

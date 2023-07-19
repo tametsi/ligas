@@ -8,12 +8,12 @@
 	import { _ } from '@lib/util/translations';
 
 	let selectedRunner: Runner;
-	//avoid having an invalid runner (not in run.runners)
-	$: selectedRunner = $activeSession.run.runners
+	// avoid having an invalid runner (not in run.runners)
+	$: selectedRunner = $activeSession.run.runnersSorted
 		.map(x => x.id)
 		.includes(selectedRunner?.id)
 		? selectedRunner
-		: $activeSession.run.runners[0];
+		: $activeSession.run.runnersSorted[0];
 	$: data = {
 		labels: selectedRunner?.rounds.all.map(
 			(_v, i) => `${$_('analytics.round')}: ${i + 1}`
@@ -33,7 +33,7 @@
 		<form on:submit|preventDefault>
 			<FormItem name={$_('analytics.select_runner')}>
 				<select bind:value={selectedRunner} class="select">
-					{#each $activeSession.run.runners as runner}
+					{#each $activeSession.run.runnersSorted as runner}
 						<option value={runner}>{runner.name}</option>
 					{/each}
 				</select>

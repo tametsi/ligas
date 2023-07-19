@@ -105,10 +105,10 @@ export default {
 			always: 'Always',
 		},
 		runner_sorting: {
-			title: 'Sorting of Runners',
+			title: 'Sort Runners By',
 			none: 'None',
-			name: 'By Name',
-			alias: 'By Alias',
+			name: 'Name',
+			alias: 'Alias',
 		},
 		language: 'Language',
 	},

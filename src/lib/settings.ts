@@ -11,9 +11,13 @@ export enum SessionLoading {
 }
 
 export enum RunnerSorting {
+	None,
+	Asc,
+	Des,
+}
+export enum RunnerSortingKey {
 	Name,
 	Alias,
-	None,
 }
 
 const storageId = 'settings';
@@ -22,6 +26,7 @@ export default class Settings {
 		public theme = Theme.Dark,
 		public sessionLoading = SessionLoading.Never,
 		public runnerSorting = RunnerSorting.None,
+		public runnerSortingKey = RunnerSortingKey.Name,
 		public language = 'auto'
 	) {}
 
@@ -43,6 +48,7 @@ export default class Settings {
 			json.theme,
 			json.sessionLoading,
 			json.runnerSorting,
+			json.runnerSortingKey,
 			json.language
 		);
 	}
@@ -53,6 +59,7 @@ export default class Settings {
 			theme: this.theme,
 			sessionLoading: this.sessionLoading,
 			runnerSorting: this.runnerSorting,
+			runnerSortingKey: this.runnerSortingKey,
 			language: this.language,
 		};
 	}

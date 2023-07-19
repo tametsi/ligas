@@ -1,7 +1,10 @@
 import Runner from '@lib/runner';
 import { get } from 'svelte/store';
 import { _ } from '@lib/util/translations';
-import activeSettings, { RunnerSorting } from '@stores/activeSettings';
+import activeSettings, {
+	RunnerSorting,
+	RunnerSortingKey,
+} from '@stores/activeSettings';
 
 export default class Run {
 	private _runners: Map<string, Runner> = new Map();
@@ -11,16 +14,23 @@ export default class Run {
 
 	/** All the runners currently being part of this run */
 	get runners() {
+		return [...this._runners.values()];
+	}
+
+	/** All the runners currently being part of this run, sorted */
+	get runnersSorted() {
 		return [...this._runners.values()].sort((r1, r2) => {
-			switch (get(activeSettings).runnerSorting) {
-				case RunnerSorting.None:
-					return 0;
+			const s = get(activeSettings);
 
-				case RunnerSorting.Name:
-					return r1.name > r2.name ? 1 : -1;
+			if (s.runnerSorting === RunnerSorting.None) return 0;
+			const direction = s.runnerSorting === RunnerSorting.Asc ? 1 : -1;
 
-				case RunnerSorting.Alias:
-					return r1.alias > r2.alias ? 1 : -1;
+			switch (s.runnerSortingKey) {
+				case RunnerSortingKey.Name:
+					return r1.name > r2.name ? 1 * direction : -1 * direction;
+
+				case RunnerSortingKey.Alias:
+					return r1.alias > r2.alias ? 1 * direction : -1 * direction;
 			}
 		});
 	}
@@ -35,7 +45,7 @@ export default class Run {
 			get(_)('runner.stats.max_difference'),
 			get(_)('runner.stats.rounds_format'),
 		];
-		const stats = this.runners.map(runner => runner.stats);
+		const stats = this.runnersSorted.map(runner => runner.stats);
 
 		return [header, ...stats];
 	}
