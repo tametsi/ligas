@@ -46,6 +46,8 @@ export default {
 			data.`,
 		add_runner: 'Add Runner',
 		ready: 'Ready!',
+		delete: 'Delete',
+		delete_prompt: 'Do you really want to delete this runner?',
 	},
 	export: {
 		title: 'Export',

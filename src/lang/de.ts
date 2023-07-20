@@ -46,6 +46,8 @@ export default {
 			sichtbar. In den Rundendaten wird sowohl der Name als auch der Alias angezeigt.`,
 		add_runner: 'Läufer hinzufügen',
 		ready: 'Fertig!',
+		delete: 'Löschen',
+		delete_prompt: 'Möchtest du diesen Läufer wirklich löschen?',
 	},
 	export: {
 		title: 'Exportieren',
