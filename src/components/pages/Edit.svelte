@@ -76,7 +76,7 @@
 		</figure>
 	</form>
 
-	<div class="flex flex-row py-2">
+	<div class="flex flex-col sm:flex-row py-2">
 		<div>
 			<div class="join">
 				<button
@@ -97,7 +97,7 @@
 			</div>
 		</div>
 
-		<div class="divider divider-horizontal" />
+		<div class="divider sm:divider-horizontal m-2" />
 
 		<div>
 			<RunnerSortingPicker />
