@@ -15,11 +15,14 @@
 		alias: '',
 	};
 
-	function addRunner() {
+	const addRunner = () => {
 		activeSession.updateSelf(session =>
 			session.run.addRunner(newRunner.name, newRunner.alias)
 		);
-	}
+
+		// clear inputs
+		newRunner = { name: '', alias: '' };
+	};
 </script>
 
 <BasePage>
