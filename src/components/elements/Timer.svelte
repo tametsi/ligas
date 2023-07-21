@@ -4,20 +4,17 @@
 	import { _ } from '@lib/util/translations';
 	import { PauseIcon, PlayIcon, RotateCcwIcon } from 'svelte-feather-icons';
 
-	$: running = $activeSession.timer.running;
-	$: time = $activeSession.timer.remaining;
-	const reset = () =>
-		activeSession.updateSelf(x => {
-			if (confirm($_('timer.reset_prompt'))) $activeSession.timer.reset();
-		});
+	$: ({ time, running } = $activeSession.timer);
+	const reset = () => {
+		if (confirm($_('timer.reset_prompt'))) $activeSession.timer.reset();
+	};
 </script>
 
-<button
-	on:click={() => $activeSession.timer.toggle()}
-	class="btn btn-ghost btn-square"
->
-	<svelte:component this={running ? PauseIcon : PlayIcon} />
-</button>
+<label class="btn btn-ghost btn-square swap">
+	<input type="checkbox" bind:checked={$running} />
+	<PauseIcon class="swap-on" />
+	<PlayIcon class="swap-off" />
+</label>
 
 <p class="px-2 h-12">
 	<span class="align-middle font-mono">{formatTime($time)}</span>

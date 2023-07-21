@@ -4,6 +4,7 @@
 	import BasePage from '@components/pages/BasePage.svelte';
 	import { GridIcon, ListIcon } from 'svelte-feather-icons';
 	import EditRunner from '@components/elements/EditRunner.svelte';
+	import TimerSettings from '@components/elements/TimerSettings.svelte';
 	import { _ } from '@lib/util/translations';
 
 	let layoutGrid = true;
@@ -35,6 +36,7 @@
 					{$_('edit.round_length_description')}
 				</svelte:fragment>
 			</FormItem>
+			<TimerSettings />
 		</figure>
 	</form>
 

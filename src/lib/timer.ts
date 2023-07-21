@@ -1,83 +1,80 @@
-import { readable, derived } from 'svelte/store';
+import { get, readable, writable, Writable, derived } from 'svelte/store';
 
-const date = readable(new Date(), set => {
-	const interval = setInterval(() => set(new Date()), 10);
-	return () => clearInterval(interval);
-});
+export enum TimerDirection {
+	Upwards,
+	Downwards,
+}
+
 export default class Timer {
+	private static date = readable(new Date(), set => {
+		const interval = setInterval(() => set(new Date()), 1);
+		return () => clearInterval(interval);
+	});
+
+	public direction: Writable<TimerDirection>;
+	public runtime: Writable<number>;
+	public running: Writable<boolean>;
+	private startTime: number;
+	private pauseTime: number;
+
 	constructor(
-		public duration = 1800000,
-		private startTime = 0,
-		private pausedTime = 0,
-		private active = false
-	) {}
+		direction = TimerDirection.Upwards,
+		runtime = Infinity,
+		running = false
+	) {
+		this.direction = writable(direction);
+		this.runtime = writable(runtime);
+		this.running = writable(running);
 
-	reset() {
-		this.startTime = 0;
-		this.pausedTime = 0;
-		this.active = false;
-	}
+		this.startTime = Date.now();
+		this.pauseTime = this.startTime;
 
-	private start() {
-		if (this.active) return;
-		const pausedTime = Date.now() - this.pausedTime;
-		this.startTime += pausedTime;
-		this.active = true;
-		this.pausedTime = 0;
-	}
+		this.running.subscribe(running => {
+			if (!running) return (this.pauseTime = Date.now());
 
-	private pause() {
-		if (!this.active) return;
-		this.pausedTime = Date.now();
-		this.active = false;
-	}
-
-	get running() {
-		return this.active;
-	}
-
-	set running(state: boolean) {
-		state ? this.start() : this.pause();
-	}
-
-	toggle() {
-		this.running = !this.running;
-	}
-
-	private get paused() {
-		return derived(date, $date =>
-			this.active ? 0 : $date.valueOf() - this.pausedTime
-		);
-	}
-
-	get passed() {
-		return derived([date, this.paused], ([$date, $paused]) => {
-			const elapsed = $date.valueOf() - this.startTime - $paused;
-			return Math.min(elapsed, this.duration, this.startTime);
+			const elapsed = Date.now() - this.pauseTime;
+			this.startTime += elapsed;
+			this.pauseTime = 0;
 		});
 	}
 
-	get remaining() {
-		return derived(this.passed, $passed => this.duration - $passed);
+	reset() {
+		this.running.set(false);
+		this.startTime = 0;
+		this.pauseTime = 0;
 	}
 
-	/** Creates a new timer from an json-like object */
-	static fromJSON(json: ReturnType<Timer['toJSON']>) {
-		return new Timer(
-			json.duration,
-			json.started,
-			json.paused,
-			json.running
+	get time() {
+		return derived(
+			[Timer.date, this.direction, this.runtime, this.running],
+			([$date, $direction, $runtime, $running]) => {
+				const elapsed = Math.min(
+					$running
+						? $date.valueOf() - this.startTime
+						: this.pauseTime - this.startTime,
+					$runtime
+				);
+				return $direction === TimerDirection.Upwards
+					? elapsed
+					: $runtime - elapsed;
+			}
 		);
 	}
 
-	/** Converts this timer to a json-like object */
+	static fromJSON(json: ReturnType<Timer['toJSON']>) {
+		const timer = new Timer(json.direction, json.runtime, json.running);
+		timer.startTime = json.startTime;
+		timer.pauseTime = json.pauseTime;
+		return timer;
+	}
+
 	toJSON() {
 		return {
-			duration: this.duration,
-			started: this.startTime,
-			paused: this.pausedTime,
-			running: this.active,
+			direction: get(this.direction),
+			runtime: get(this.runtime),
+			running: get(this.running),
+			startTime: this.startTime,
+			pauseTime: this.pauseTime,
 		};
 	}
 }

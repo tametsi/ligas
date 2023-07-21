@@ -15,6 +15,14 @@ export default {
 	},
 	timer: {
 		reset_prompt: 'Do you really want to reset the timer?',
+		settings: {
+			title: 'Timer Settings',
+			minutes: 'Minutes',
+			seconds: 'Seconds',
+			up: 'Up',
+			down: 'Down',
+			infinite: 'Infinite',
+		},
 	},
 	about: {
 		title: 'About',

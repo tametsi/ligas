@@ -15,6 +15,14 @@ export default {
 	},
 	timer: {
 		reset_prompt: 'Möchtest du den Timer wirklich zurücksetzen?',
+		settings: {
+			title: 'Timer-Einstellungen',
+			minutes: 'Minuten',
+			seconds: 'Sekunden',
+			up: 'Aufwärts',
+			down: 'Abwärts',
+			infinite: 'Endlos',
+		},
 	},
 	about: {
 		title: 'Über LIGAS',
