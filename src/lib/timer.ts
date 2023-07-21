@@ -1,4 +1,4 @@
-import { get, readable, writable, Writable, derived } from 'svelte/store';
+import { get, readable, writable, type Writable, derived } from 'svelte/store';
 
 export enum TimerDirection {
 	Upwards,
