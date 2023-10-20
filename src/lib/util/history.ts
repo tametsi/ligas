@@ -13,7 +13,7 @@ class HistoryEntry<ContentType> {
 
 	constructor(
 		content: ContentType,
-		lifeData?: { lastChanged: number; created: number }
+		lifeData?: { lastChanged: number; created: number },
 	) {
 		this._content = content;
 		this.created = lifeData?.created || Date.now();
@@ -28,7 +28,7 @@ class HistoryEntry<ContentType> {
 
 	/** Creates a new history-entry of the given type from an json-like object */
 	static fromJSON<ContentType>(
-		json: ReturnType<HistoryEntry<ContentType>['toJSON']>
+		json: ReturnType<HistoryEntry<ContentType>['toJSON']>,
 	) {
 		const entry = new HistoryEntry<ContentType>(json.content, {
 			lastChanged: json.lastChanged,
@@ -62,7 +62,7 @@ export enum HistorySorting {
 const HistorySorters: {
 	[key in HistorySorting]: (
 		a: [string, HistoryEntry<unknown>],
-		b: [string, HistoryEntry<unknown>]
+		b: [string, HistoryEntry<unknown>],
 	) => number;
 } = Object.freeze({
 	[HistorySorting.ModificationAscending]: (a, b) =>
@@ -76,9 +76,12 @@ const HistorySorters: {
 
 export default class History<
 	InputType extends Storable<OutputType>,
-	OutputType
+	OutputType,
 > {
-	constructor(private readonly name: string, public onUpdate?: () => void) {
+	constructor(
+		private readonly name: string,
+		public onUpdate?: () => void,
+	) {
 		if (localStorage.getItem(this.name) === null) this.setHistory({});
 	}
 
@@ -95,7 +98,7 @@ export default class History<
 	/** Sets a history-entry in local storage */
 	private setEntry = (
 		id: string,
-		entry: HistoryEntry<InputType> | HistoryEntry<OutputType>
+		entry: HistoryEntry<InputType> | HistoryEntry<OutputType>,
 	) => {
 		const history = this.getHistory();
 		history[id] = entry;
@@ -136,7 +139,7 @@ export default class History<
 			Object.entries(history).map(([id, historyObject]) => [
 				id,
 				HistoryEntry.fromJSON<OutputType>(historyObject),
-			])
+			]),
 		);
 		return entries;
 	};

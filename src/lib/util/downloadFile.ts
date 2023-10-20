@@ -9,7 +9,7 @@ export function downloadFile(data: string, options?: DownloadOptions) {
 	const url = URL.createObjectURL(
 		new Blob([data], {
 			type: options?.type ?? 'text/plain;charset=utf-8;',
-		})
+		}),
 	);
 
 	const anchor = Object.assign(document.createElement('a'), {

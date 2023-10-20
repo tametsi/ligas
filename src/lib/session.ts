@@ -9,7 +9,11 @@ export const sessionHistory = new History<
 >('sessionHistory');
 
 export default class Session {
-	constructor(public timer: Timer, public run: Run, public id?: string) {}
+	constructor(
+		public timer: Timer,
+		public run: Run,
+		public id?: string,
+	) {}
 	public completed = false;
 
 	/** Saves this session to history */
@@ -34,7 +38,7 @@ export default class Session {
 		return new Session(
 			Timer.fromJSON(json.timer),
 			Run.fromJSON(json.run),
-			id
+			id,
 		);
 	}
 

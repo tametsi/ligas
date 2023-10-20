@@ -17,7 +17,7 @@
 
 	const addRunner = () => {
 		activeSession.updateSelf(session =>
-			session.run.addRunner(newRunner.name, newRunner.alias)
+			session.run.addRunner(newRunner.name, newRunner.alias),
 		);
 
 		// clear inputs

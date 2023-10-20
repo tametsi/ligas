@@ -8,7 +8,7 @@
 
 	$: document.documentElement.setAttribute(
 		'data-theme',
-		$activeSettings.theme
+		$activeSettings.theme,
 	);
 </script>
 

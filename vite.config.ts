@@ -32,7 +32,7 @@ export default defineConfig({
 		__APP_VERSION_STRING__: JSON.stringify(
 			env.GITHUB_SHA
 				? `Commit: ${process.env.GITHUB_SHA} (v${version})`
-				: `Version: ${version}`
+				: `Version: ${version}`,
 		),
 	},
 	test: {

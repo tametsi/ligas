@@ -6,7 +6,7 @@ import Session, { sessionHistory, HistorySorting } from '@lib/session';
 import activeSettings, { SessionLoading } from './activeSettings';
 
 const lastSessionEntry = sessionHistory.getEntriesSorted(
-	HistorySorting.ModificationDescending
+	HistorySorting.ModificationDescending,
 )[0];
 const lastSession =
 	lastSessionEntry === undefined
@@ -19,7 +19,7 @@ const activeSession = createWriteableObjectStore(
 		(loading === SessionLoading.IncompleteSessions &&
 			!lastSession.completed)
 		? lastSession
-		: new Session(new Timer(), new Run())
+		: new Session(new Timer(), new Run()),
 );
 window.addEventListener('beforeunload', () => get(activeSession).save());
 export default activeSession;
