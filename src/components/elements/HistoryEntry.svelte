@@ -16,13 +16,13 @@
 	function loadSession(
 		id: string,
 		savedSession: ReturnType<Session['toJSON']>,
-		copy = false
+		copy = false,
 	) {
 		if (
 			confirm(
 				`${$_('history.entry.load_prompt.0')} ${
 					copy ? $_('history.entry.copy') : $_('history.entry.load')
-				}${$_('history.entry.load_prompt.1')}`
+				}${$_('history.entry.load_prompt.1')}`,
 			)
 		) {
 			$activeSession.delete();

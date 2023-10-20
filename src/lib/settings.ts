@@ -27,7 +27,7 @@ export default class Settings {
 		public sessionLoading = SessionLoading.Never,
 		public runnerSorting = RunnerSorting.None,
 		public runnerSortingKey = RunnerSortingKey.Name,
-		public language = 'auto'
+		public language = 'auto',
 	) {}
 
 	/** Loads the settings from local storage */
@@ -49,7 +49,7 @@ export default class Settings {
 			json.sessionLoading,
 			json.runnerSorting,
 			json.runnerSortingKey,
-			json.language
+			json.language,
 		);
 	}
 

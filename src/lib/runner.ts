@@ -8,7 +8,7 @@ export default class Runner {
 		private _run: Run,
 		private _id: string,
 		private _name: string,
-		private _alias?: string
+		private _alias?: string,
 	) {}
 
 	get id() {

@@ -112,7 +112,7 @@ describe('Timer', () => {
 		timer.pause(); // unpause
 		vi.advanceTimersByTime(timerAdvanceTimes[2]);
 		expect(timer.getRunDuration()).toBe(
-			timerAdvanceTimes[0] + timerAdvanceTimes[2]
+			timerAdvanceTimes[0] + timerAdvanceTimes[2],
 		);
 
 		vi.useRealTimers();

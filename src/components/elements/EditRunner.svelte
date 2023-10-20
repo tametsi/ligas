@@ -10,7 +10,7 @@
 	const deleteSelf = () => {
 		if (confirm($_('edit.delete_prompt')))
 			activeSession.updateSelf(session =>
-				session.run.deleteRunner(runner.id)
+				session.run.deleteRunner(runner.id),
 			);
 	};
 </script>

@@ -13,7 +13,7 @@ export {
 } from '@lib/settings';
 
 const activeSettings = createWriteableObjectStore(
-	Settings.load() ?? new Settings()
+	Settings.load() ?? new Settings(),
 );
 window.addEventListener('storage', ({ key }) => {
 	if (key !== 'settings') return;
@@ -25,7 +25,7 @@ activeSettings.subscribe(settings => {
 	locale.set(
 		settings.language === 'auto'
 			? getLocaleFromNavigator()
-			: settings.language
+			: settings.language,
 	);
 	settings.save();
 });

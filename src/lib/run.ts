@@ -86,7 +86,7 @@ export default class Run {
 		const run = new Run();
 		run.roundLength = json.roundLength;
 		json.runners.forEach(jsonRunner =>
-			run.addExistingRunner(Runner.fromJSON(run, jsonRunner))
+			run.addExistingRunner(Runner.fromJSON(run, jsonRunner)),
 		);
 		return run;
 	}

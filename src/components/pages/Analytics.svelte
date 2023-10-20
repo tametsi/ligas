@@ -16,7 +16,7 @@
 		: $activeSession.run.runnersSorted[0];
 	$: data = {
 		labels: selectedRunner?.rounds.all.map(
-			(_v, i) => `${$_('analytics.round')}: ${i + 1}`
+			(_v, i) => `${$_('analytics.round')}: ${i + 1}`,
 		),
 		datasets: [
 			{
@@ -63,7 +63,7 @@
 						<td>{$_('runner.stats.average_roundtime')}</td>
 						<td
 							>{Math.round(
-								selectedRunner?.rounds.averageTime ?? 0
+								selectedRunner?.rounds.averageTime ?? 0,
 							) / 1000}s</td
 						>
 					</tr>
@@ -72,7 +72,7 @@
 						<td
 							>{selectedRunner?.rounds.count !== 0
 								? Math.min(
-										...(selectedRunner?.rounds.all ?? [0])
+										...(selectedRunner?.rounds.all ?? [0]),
 								  ) / 1000
 								: 0}s</td
 						>
@@ -82,7 +82,7 @@
 						<td>
 							{selectedRunner?.rounds.count !== 0
 								? Math.max(
-										...(selectedRunner?.rounds.all ?? [0])
+										...(selectedRunner?.rounds.all ?? [0]),
 								  ) / 1000
 								: 0}s</td
 						>
