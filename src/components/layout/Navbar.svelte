@@ -30,7 +30,7 @@
 				<Play />
 			{/if}
 		</button>
-		<p class="px-2 h-12">
+		<p class="px-2 h-12 font-mono leading-[3rem]">
 			<Timer />
 		</p>
 		<button on:click={resetTimer} class="btn btn-ghost btn-square">
